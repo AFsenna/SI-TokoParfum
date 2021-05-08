@@ -10,7 +10,7 @@
     <link href="assets/css/fontawesome.css" rel="stylesheet">
     <link href="assets/css/brands.css" rel="stylesheet">
     <link href="assets/css/solid.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/allprogramview.css">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
                 <div class="float-left mt-2">
                     <h5>Data Pegawai</h5>
                 </div>
-                <a href="" class="btn btn-success float-right"><i class="fas fa-plus-circle mr-2"></i>Tambah Pegawai</a>
+                <a href="index.php?page=Admin&aksi=addPegawai" class=" btn btn-success float-right"><i class="fas fa-user-plus mr-2"></i>Tambah Pegawai</a>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -47,8 +47,8 @@
                             <td>fgelicia@gmail.com</td>
                             <td>felicia</td>
                             <td>081020</td>
-                            <td><a href="index.php?page=Parfum&aksi=editParfum" class="btn btn-sm btn-success text-white rounded p-2"><i class="fas fa-edit" data-toggle="tooltip" title="Update Data"></i></a></td>
-                            <td><a href="index.php?page=Parfum&aksi=deleteParfum" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-2" data-toggle="tooltip" title="Hapus Data"></i></a></td>
+                            <td><a href="index.php?page=Admin&aksi=editPegawai" class="btn btn-sm btn-success text-white rounded p-2"><i class="fas fa-user-edit" data-toggle="tooltip" title="Update Data"></i></a></td>
+                            <td><a href="index.php?page=Admin&aksi=deletePegawai" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-2" data-toggle="tooltip" title="Hapus Data"></i></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -59,7 +59,7 @@
     <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/admin.js"></script>
+    <script src="assets/js/allprogramview.js"></script>
 </body>
 
 </html>

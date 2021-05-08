@@ -17,8 +17,6 @@
         </div>
         <div class="icon ml-4">
             <h5>
-                <!-- <i class="fas fa-envelope mr-2" data-toggle="tooltip" title="Surat Masuk"></i>
-                <i class="fas fa-bell mr-2" data-toggle="tooltip" title="Notifikasi"></i> -->
                 <a href="index.php?page=Auth&aksi=view"><i class="fas fa-sign-out-alt mr-3 text-dark" data-toggle="tooltip" title="Logout"></i></a>
             </h5>
         </div>
@@ -26,10 +24,17 @@
     </nav>
 
     <div class="row no-gutters mt-4">
-        <div class="col-md-2 mt-3 bg-dark pr-3 pt-4">
+        <div class="sidebar col-md-2 mt-3 bg-dark pr-3 pt-4">
             <ul class="nav flex-column ml-3 mb-4">
                 <li class="nav-item">
                     <a class="nav-link active text-white mt-3" href="index.php?page=Admin&aksi=view"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a>
+                    <hr class="bg-secondary">
+                    <!-- untuk pegawai -->
+                    <a class="nav-link active text-white mt-3" href="index.php?page=Pegawai&aksi=view"><i class="fas fa-address-card mr-2"></i>Profile</a>
+                    <hr class="bg-secondary">
+                    <a class="nav-link active text-white mt-3" href="index.php?page=Pegawai&aksi=viewPembeli"><i class="fas fa-user-friends mr-2"></i>Data Pembeli</a>
+                    <hr class="bg-secondary">
+                    <a class="nav-link active text-white mt-3" href="index.php?page=Transaksi&aksi=view"><i class="fas fa-handshake mr-2"></i></i>Transaksi</a>
                     <hr class="bg-secondary">
                 </li>
                 <p>
@@ -39,6 +44,7 @@
                 </p>
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
+                        <!-- untuk admin -->
                         <a class="nav-link active text-dark" href="index.php?page=Kategori&aksi=view"><i class="fas fa-clipboard-list mr-2"></i>Kategori</a>
                         <hr class="bg-secondary">
                         <a class="nav-link active text-dark" href="index.php?page=Parfum&aksi=view"><i class="fas fa-air-freshener mr-2"></i>Parfum</a>
@@ -48,7 +54,7 @@
                 </div>
                 <li class="nav-item">
                     <hr class="bg-secondary">
-                    <a class="nav-link text-white" href="#"><i class="fas fa-info-circle mr-2"></i>Informasi Transaksi</a>
+                    <a class="nav-link text-white" href="index.php?page=Transaksi&aksi=view"><i class="fas fa-info-circle mr-2"></i>Informasi Transaksi</a>
                     <hr class="bg-secondary">
                 </li>
             </ul>

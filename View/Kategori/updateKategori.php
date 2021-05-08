@@ -10,7 +10,7 @@
         <link href="assets/css/fontawesome.css" rel="stylesheet">
         <link href="assets/css/brands.css" rel="stylesheet">
         <link href="assets/css/solid.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="assets/css/admin.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/allprogramview.css">
     </head>
     <div class="col-md-10 p-5 pt-2">
         <h3><i class="fas fa-clipboard-list mr-2 mt-3"></i>Kategori</h3>
@@ -42,7 +42,7 @@
         <script src="assets/js/popper.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/chart.js"></script>
-        <script src="assets/js/admin.js"></script>
+        <script src="assets/js/allprogramview.js"></script>
     </body>
 
     </html>

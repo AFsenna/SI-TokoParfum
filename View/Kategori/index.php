@@ -10,7 +10,7 @@
     <link href="assets/css/fontawesome.css" rel="stylesheet">
     <link href="assets/css/brands.css" rel="stylesheet">
     <link href="assets/css/solid.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/allprogramview.css">
 </head>
 
 <body>
@@ -57,7 +57,7 @@
     <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/admin.js"></script>
+    <script src="assets/js/allprogramview.js"></script>
 </body>
 
 </html>

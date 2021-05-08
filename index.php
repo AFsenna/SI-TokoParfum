@@ -24,22 +24,22 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             require_once("View/Admin/index.php");
         } else if ($aksi == 'viewPegawai') {
             require_once("View/Admin/pegawai.php");
+        } else if ($aksi == 'addPegawai') {
+            require_once("View/Admin/addPegawai.php");
         } else if ($aksi == 'editPegawai') {
-            require_once("#");
+            require_once("View/Admin/editPegawai.php");
         } else if ($aksi == 'deletePegawai') {
-            require_once("#");
-        } else if ($aksi == 'viewTransaksi') {
-            require_once("#");
+            require_once("View/Admin/pegawai.php");
         } else {
             echo "Method Not Found";
         }
     } else if ($page == "Pegawai") {
-        require_once("View/Menu/main.php"); //belum dibuat
+        require_once("View/Menu/main.php");
         if ($aksi == 'view') {
-            require_once("#");
-        } else if ($aksi == 'buatTransaksi') {
-            require_once("#");
-        } else if ($aksi == 'statusTransaksi') {
+            require_once("View/Pegawai/index.php");
+        } else if ($aksi == 'viewPembeli') {
+            require_once("View/Pegawai/pembeli.php");
+        } else if ($aksi == 'editTransaksi') {
             require_once("#");
         } else {
             echo "Method Not Found";
@@ -67,6 +67,19 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             require_once("View/Parfum/editParfum.php");
         } else if ($aksi == 'deleteParfum') {
             require_once("View/Parfum/index.php");
+        } else {
+            echo "Method Not Found";
+        }
+    } else if ($page == "Transaksi") {
+        require_once("View/Menu/main.php");
+        if ($aksi == 'view') {
+            require_once("View/Transaksi/index.php");
+        } else if ($aksi == 'addTransaksi') {
+            require_once("View/Transaksi/addTransaksi.php");
+        } else if ($aksi == 'aktif') {
+            require_once("View/Transaksi/index.php");
+        } else if ($aksi == 'nonAktif') {
+            require_once("View/Transaksi/index.php");
         } else {
             echo "Method Not Found";
         }

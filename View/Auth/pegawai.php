@@ -32,12 +32,12 @@
                             </p>
                             <form action="index.php?page=Auth&aksi=authPegawai" method="POST">
                                 <div class="form-group">
-                                    <label for="username" class="sr-only">Username</label>
-                                    <input type="username" name="username" id="username" class="form-control" placeholder="Username">
+                                    <label for="usernamePG" class="sr-only">Username</label>
+                                    <input type="username" name="usernamePG" id="usernamePG" class="form-control" placeholder="Username">
                                 </div>
                                 <div class="form-group mb-4">
-                                    <label for="password" class="sr-only">Password</label>
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="***********">
+                                    <label for="passwordPG" class="sr-only">Password</label>
+                                    <input type="password" name="passwordPG" id="passwordPG" class="form-control" placeholder="***********">
                                 </div>
                                 <button type="submit" class="btn btn-block login-btn mb-2 bg-primary text-white">Login</button>
                                 <a href="index.php?page=Auth&aksi=view" class="btn btn-block mb-2 bg-danger text-white" style="height: 40px;">Kembali</a>

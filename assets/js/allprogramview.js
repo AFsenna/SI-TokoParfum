@@ -37,3 +37,4 @@ var ctx = document.getElementById("chartLine").getContext('2d');
 			},
 			options: chartOptions
 		});
+		

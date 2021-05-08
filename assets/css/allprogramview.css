@@ -1,0 +1,35 @@
+.nav-link:hover {
+  background-color: rgb(90, 89, 87);
+}
+.display-4 {
+  font-weight: bold;
+}
+.card-body-icon {
+  position: absolute;
+  z-index: 0;
+  top: 25px;
+  right: 4px;
+  opacity: 0.4;
+  font-size: 90px;
+}
+.sidebar {
+  height: 900px;
+}
+
+.searching {
+  padding: 8px 15px;
+  background: rgba(50, 50, 50, 0.2);
+  border: 0px solid #dbdbdb;
+}
+.tombol {
+  position: relative;
+  padding: 6px 15px;
+  left: -8px;
+  border: 2px solid #53bd84;
+  background-color: #53bd84;
+  color: #fafafa;
+}
+.tombol:hover {
+  background-color: #fafafa;
+  color: #207cca;
+}
