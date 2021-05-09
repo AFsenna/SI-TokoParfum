@@ -15,11 +15,7 @@
 
 <body>
     <div class="col-md-10 p-5 pt-2">
-        <!-- untuk pegawai -->
-        <h3><i class="fas fa-handshake mr-2 mt-3"></i>Transaksi</h3>
-        <hr>
-        <!-- untuk admin -->
-        <h3><i class="fas fa-info-circle mr-2 mt-3"></i>Informasi Transaksi</h3>
+        <h3><i class="fas fa-info-circle mr-2 mt-3"></i>Transaksi</h3>
         <hr>
         <div class="card">
             <div class="card-header">

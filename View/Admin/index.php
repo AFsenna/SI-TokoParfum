@@ -25,19 +25,19 @@
                     </div>
                     <h5 class="card-title">Pegawai Aktif</h5>
                     <div class="display-4">8</div>
-                    <a href="">
+                    <a href="index.php?page=Admin&aksi=viewPegawai">
                         <p class="card-text text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></p>
                     </a>
                 </div>
             </div>
-            <div class="card bg-success ml-5 mb-5" style="width: 18rem;">
+            <div class="card ml-5 mb-5" style="width: 18rem; background-color:#04047c;">
                 <div class="card-body">
                     <div class="card-body-icon">
                         <i class="fas fa-air-freshener mr-2"></i>
                     </div>
                     <h5 class="card-title">Stok Parfum</h5>
                     <div class="display-4">500</div>
-                    <a href="">
+                    <a href="index.php?page=Parfum&aksi=view">
                         <p class="card-text text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></p>
                     </a>
                 </div>
@@ -49,7 +49,7 @@
                     </div>
                     <h5 class="card-title">Parfum Terjual</h5>
                     <div class="display-4">8.100</div>
-                    <a href="">
+                    <a href="index.php?page=Transaksi&aksi=view">
                         <p class="card-text text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></p>
                     </a>
                 </div>
@@ -69,7 +69,6 @@
         </div>
     </div>
     </div>
-
     <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
