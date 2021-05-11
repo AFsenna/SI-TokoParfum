@@ -1,9 +1,18 @@
+.card {
+  width: 970px;
+}
+.garis {
+  width: 980px;
+}
+
 .nav-link:hover {
   background-color: rgb(90, 89, 87);
   width: 185px;
 }
-.display-4 {
-  font-weight: bold;
+
+.navcollapse:hover {
+  background-color: rgb(175, 174, 171);
+  width: 150px;
 }
 .card-body-icon {
   position: absolute;
@@ -33,12 +42,13 @@
 }
 
 .main {
+  z-index: 0;
   margin-left: 220px;
   /* Same as the width of the sidenav */
   font-size: 15px;
   /* Increased text to enable scrolling */
   padding: 0px 10px;
-  width: 1350px;
+  width: 1129px;
 }
 
 @media screen and (max-height: 450px) {
@@ -49,22 +59,4 @@
   .sidenav a {
     font-size: 18px;
   }
-}
-
-.searching {
-  padding: 8px 15px;
-  background: rgba(50, 50, 50, 0.2);
-  border: 0px solid #dbdbdb;
-}
-.tombol {
-  position: relative;
-  padding: 6px 15px;
-  left: -8px;
-  border: 2px solid #53bd84;
-  background-color: #53bd84;
-  color: #fafafa;
-}
-.tombol:hover {
-  background-color: #fafafa;
-  color: #207cca;
 }

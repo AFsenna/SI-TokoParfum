@@ -10,16 +10,18 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         } else if ($aksi == 'loginPegawai') {
             require_once("View/Auth/pegawai.php");
         } else if ($aksi == 'authAdmin') {
-            require_once("View/Menu/main.php");
+            require_once("View/Menu/header.php");
             require_once("View/Admin/index.php");
+            require_once("View/Menu/footer.php");
         } else if ($aksi == 'authPegawai') {
-            require_once("View/Menu/main.php");
+            require_once("View/Menu/header.php");
             require_once("View/Pegawai/index.php");
+            require_once("View/Menu/footer.php");
         } else {
             echo "Method Not Found";
         }
     } else if ($page == "Admin") {
-        require_once("View/Menu/main.php");
+        require_once("View/Menu/header.php");
         if ($aksi == 'view') {
             require_once("View/Admin/index.php");
         } else if ($aksi == 'viewPegawai') {
@@ -33,8 +35,9 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         } else {
             echo "Method Not Found";
         }
+        require_once("View/Menu/footer.php");
     } else if ($page == "Pegawai") {
-        require_once("View/Menu/main.php");
+        require_once("View/Menu/header.php");
         if ($aksi == 'view') {
             require_once("View/Pegawai/index.php");
         } else if ($aksi == 'viewPembeli') {
@@ -44,8 +47,9 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         } else {
             echo "Method Not Found";
         }
+        require_once("View/Menu/footer.php");
     } else if ($page == "Kategori") {
-        require_once("View/Menu/main.php");
+        require_once("View/Menu/header.php");
         if ($aksi == 'view') {
             require_once("View/Kategori/index.php");
         } else if ($aksi == 'createKategori') {
@@ -57,8 +61,9 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         } else {
             echo "Method Not Found";
         }
+        require_once("View/Menu/footer.php");
     } else if ($page == "Parfum") {
-        require_once("View/Menu/main.php");
+        require_once("View/Menu/header.php");
         if ($aksi == 'view') {
             require_once("View/Parfum/index.php");
         } else if ($aksi == 'addParfum') {
@@ -70,8 +75,9 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         } else {
             echo "Method Not Found";
         }
+        require_once("View/Menu/footer.php");
     } else if ($page == "Transaksi") {
-        require_once("View/Menu/main.php");
+        require_once("View/Menu/header.php");
         if ($aksi == 'view') {
             require_once("View/Transaksi/index.php");
         } else if ($aksi == 'addTransaksi') {
@@ -83,6 +89,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         } else {
             echo "Method Not Found";
         }
+        require_once("View/Menu/footer.php");
     }
 } else {
     header("location: index.php?page=Auth&aksi=view");

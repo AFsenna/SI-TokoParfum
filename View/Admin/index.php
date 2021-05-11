@@ -1,30 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link href="assets/css/fontawesome.css" rel="stylesheet">
-    <link href="assets/css/brands.css" rel="stylesheet">
-    <link href="assets/css/solid.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/allprogramview.css">
-</head>
-
-<body>
     <div class="col-md-10 p-5 pt-2">
         <h3><i class="fas fa-tachometer-alt mr-2 mt-3"></i>Dashboard</h3>
-        <hr>
-        <div class="row text-white">
-            <div class="card bg-info ml-5 mb-5" style="width: 18rem;">
+        <hr class="garis">
+        <div class="row text-white" style="width: 1080px;">
+            <div class="card bg-info ml-4 mb-5" style="width: 18rem;">
                 <div class="card-body">
                     <div class="card-body-icon">
                         <i class="fa fa-users mr-2"></i>
                     </div>
                     <h5 class="card-title">Pegawai Aktif</h5>
-                    <div class="display-4">8</div>
+                    <div class="display-4"><strong>8</strong></div>
                     <a href="index.php?page=Admin&aksi=viewPegawai">
                         <p class="card-text text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></p>
                     </a>
@@ -36,7 +20,7 @@
                         <i class="fas fa-air-freshener mr-2"></i>
                     </div>
                     <h5 class="card-title">Stok Parfum</h5>
-                    <div class="display-4">500</div>
+                    <div class="display-4"><strong>500</strong></div>
                     <a href="index.php?page=Parfum&aksi=view">
                         <p class="card-text text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></p>
                     </a>
@@ -48,15 +32,15 @@
                         <i class="fas fa-shopping-cart mr-2"></i>
                     </div>
                     <h5 class="card-title">Parfum Terjual</h5>
-                    <div class="display-4">8.100</div>
+                    <div class="display-4"><strong>8100</strong></div>
                     <a href="index.php?page=Transaksi&aksi=view">
                         <p class="card-text text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></p>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="row text-white">
-            <div class="card bg-grey ml-5">
+        <div class="row text-white" style="width: 990px;">
+            <div class="card bg-grey ml-4">
                 <div class="card-header text-dark">
                     <center><b>Penjualan Tahun Ini</b></center>
                 </div>
@@ -68,12 +52,3 @@
             </div>
         </div>
     </div>
-    </div>
-    <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/chart.js"></script>
-    <script src="assets/js/allprogramview.js"></script>
-</body>
-
-</html>
