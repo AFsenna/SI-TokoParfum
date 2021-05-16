@@ -6,30 +6,31 @@
                 <h5>Edit Pegawai</h5>
             </div>
             <div class="card-body ml-2 mr-2">
-                <form action="index.php?page=Admin&aksi=viewPegawai" method="POST">
+                <form action="index.php?page=Admin&aksi=updatePegawai" method="POST">
+                    <input type="hidden" name="idPG" value="<?= $data['id_pegawai'] ?>">
                     <div class="form-group">
                         <label for="NIK">NIK</label>
-                        <input type="text" id="NIK" class="form-control" value="0810200121821978">
+                        <input type="text" name="NIK" class="form-control" value="<?= $data['nik_pegawai'] ?>">
                     </div>
                     <div class="form-group">
                         <label for="namapegawai">Nama</label>
-                        <input type="text" id="namapegawai" class="form-control" value="alexandria felicia seanne">
+                        <input type="text" name="namapegawai" class="form-control" value="<?= $data['nama_pegawai'] ?>">
                     </div>
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" id="username" class="form-control" value="senna">
+                        <input type="text" name="username" class="form-control" value="<?= $data['username_pegawai'] ?>">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" class="form-control" value="0810">
+                        <input type="password" name="password" class="form-control" value="<?= $data['password_pegawai'] ?>">
                     </div>
                     <div class="form-group">
                         <label for="notelpPG">Nomor Telepon</label>
-                        <input type="text" id="notelpPG" class="form-control" value="082285132960">
+                        <input type="text" name="notelpPG" class="form-control" value="<?= $data['notelp_pegawai'] ?>">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" id="email" class="form-control" value="fgelicia@gmail.com">
+                        <input type="text" name="email" class="form-control" value="<?= $data['email_pegawai'] ?>">
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle mr-2"></i>Simpan</button>
                 </form>

@@ -22,17 +22,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Alexandria Felicia Seanne</td>
-                            <td>082285132960</td>
-                            <td>fgelicia@gmail.com</td>
-                            <td>felicia</td>
-                            <td>081020</td>
-                            <td><a href="index.php?page=Admin&aksi=editPegawai" class="btn btn-sm btn-success text-white rounded p-2"><i class="fas fa-user-edit" data-toggle="tooltip" title="Update Data"></i></a>
-                                <a href="index.php?page=Admin&aksi=deletePegawai" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-2" data-toggle="tooltip" title="Hapus Data"></i></a>
-                            </td>
-                        </tr>
+                        <?php $no = 1;
+                        foreach ($data as $row) : ?>
+                            <tr>
+                                <th scope="row"><?= $no ?></th>
+                                <td><?= $row['nama_pegawai']; ?></td>
+                                <td><?= $row['notelp_pegawai']; ?></td>
+                                <td><?= $row['email_pegawai']; ?></td>
+                                <td><?= $row['username_pegawai']; ?></td>
+                                <td><?= $row['password_pegawai']; ?></td>
+                                <td><a href="index.php?page=Admin&aksi=editPegawai&id=<?= $row['id_pegawai'] ?>" class="btn btn-sm btn-success text-white rounded p-2"><i class="fas fa-user-edit" data-toggle="tooltip" title="Update Data"></i></a>
+                                    <a href="index.php?page=Admin&aksi=deletePegawai&id=<?= $row['id_pegawai'] ?>" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-2" data-toggle="tooltip" title="Hapus Data"></i></a>
+                                </td>
+                            </tr>
+                        <?php $no++;
+                        endforeach; ?>
                     </tbody>
                 </table>
             </div>

@@ -1,37 +1,50 @@
 <?php
+
+date_default_timezone_set('Asia/Jakarta');
+require_once("koneksi.php");
+require_once("Model/AuthModel.php");
+require_once("Model/AdminModel.php");
+require_once("Model/KategoriModel.php");
+require_once("Model/ParfumModel.php");
+
 if (isset($_GET['page']) && isset($_GET['aksi'])) {
+    session_start();
     $page = $_GET['page'];
     $aksi = $_GET['aksi'];
     if ($page == "Auth") {
+        $auth = new AuthModel();
         if ($aksi == 'view') {
-            require_once("View/Auth/index.php");
+            $auth->index();
         } else if ($aksi == 'loginAdmin') {
-            require_once("View/Auth/admin.php");
+            $auth->loginAdmin();
         } else if ($aksi == 'loginPegawai') {
-            require_once("View/Auth/pegawai.php");
+            $auth->loginPegawai();
         } else if ($aksi == 'authAdmin') {
-            require_once("View/Menu/header.php");
-            require_once("View/Admin/index.php");
-            require_once("View/Menu/footer.php");
+            $auth->authAdmin();
         } else if ($aksi == 'authPegawai') {
-            require_once("View/Menu/header.php");
-            require_once("View/Pegawai/index.php");
-            require_once("View/Menu/footer.php");
+            $auth->authPegawai();
+        } else if ($aksi == 'logout') {
+            $auth->logout();
         } else {
             echo "Method Not Found";
         }
     } else if ($page == "Admin") {
         require_once("View/Menu/header.php");
+        $admin = new AdminModel();
         if ($aksi == 'view') {
-            require_once("View/Admin/index.php");
+            $admin->index(); //ini belom ya
         } else if ($aksi == 'viewPegawai') {
-            require_once("View/Admin/pegawai.php");
+            $admin->showPegawai();
         } else if ($aksi == 'addPegawai') {
-            require_once("View/Admin/addPegawai.php");
+            $admin->addPegawai();
+        } else if ($aksi == 'storePegawai') {
+            $admin->storePegawai();
         } else if ($aksi == 'editPegawai') {
-            require_once("View/Admin/editPegawai.php");
+            $admin->editPegawai();
+        } else if ($aksi == 'updatePegawai') {
+            $admin->updatePegawai();
         } else if ($aksi == 'deletePegawai') {
-            require_once("View/Admin/pegawai.php");
+            $admin->deletePegawai();
         } else {
             echo "Method Not Found";
         }
@@ -50,28 +63,38 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         require_once("View/Menu/footer.php");
     } else if ($page == "Kategori") {
         require_once("View/Menu/header.php");
+        $kategori = new KategoriModel();
         if ($aksi == 'view') {
-            require_once("View/Kategori/index.php");
+            $kategori->index();
         } else if ($aksi == 'createKategori') {
-            require_once("View/Kategori/createKategori.php");
+            $kategori->addKategori();
+        } else if ($aksi == 'storeKategori') {
+            $kategori->storeKategori();
+        } else if ($aksi == 'editKategori') {
+            $kategori->editKategori();
         } else if ($aksi == 'updateKategori') {
-            require_once("View/Kategori/updateKategori.php");
+            $kategori->updateKategori();
         } else if ($aksi == 'deleteKategori') {
-            require_once("View/Kategori/index.php");
+            $kategori->deleteKategori();
         } else {
             echo "Method Not Found";
         }
         require_once("View/Menu/footer.php");
     } else if ($page == "Parfum") {
         require_once("View/Menu/header.php");
+        $parfum = new ParfumModel();
         if ($aksi == 'view') {
-            require_once("View/Parfum/index.php");
+            $parfum->index();
         } else if ($aksi == 'addParfum') {
-            require_once("View/Parfum/addParfum.php");
+            $parfum->addParfum();
+        } else if ($aksi == 'storeParfum') {
+            $parfum->storeParfum();
         } else if ($aksi == 'editParfum') {
-            require_once("View/Parfum/editParfum.php");
+            $parfum->editParfum();
+        } else if ($aksi == 'updateParfum') {
+            $parfum->updateParfum();
         } else if ($aksi == 'deleteParfum') {
-            require_once("View/Parfum/index.php");
+            $parfum->deleteParfum();
         } else {
             echo "Method Not Found";
         }

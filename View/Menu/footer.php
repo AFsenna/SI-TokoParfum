@@ -24,7 +24,15 @@
                                        <label>NIK</label>
                                    </div>
                                    <div class="col-md-5 mt-3">
-                                       : 0810017837482946
+                                       <?php
+                                        if ($_SESSION['role'] == 'Pegawai') {
+                                            $tampil = $_SESSION['pegawai']['nik_pegawai'];
+                                            echo ": $tampil";
+                                        } else {
+                                            $tampil = $_SESSION['admin']['nik_admin'];
+                                            echo ": $tampil";
+                                        }
+                                        ?>
                                    </div>
                                </div>
                                <hr>
@@ -33,7 +41,15 @@
                                        <label>Nama</label>
                                    </div>
                                    <div class="col-md-5">
-                                       : Alexandria Felicia Seanne
+                                       <?php
+                                        if ($_SESSION['role'] == 'Pegawai') {
+                                            $tampil = $_SESSION['pegawai']['nama_pegawai'];
+                                            echo ": $tampil";
+                                        } else {
+                                            $tampil = $_SESSION['admin']['nama_admin'];
+                                            echo ": $tampil";
+                                        }
+                                        ?>
                                    </div>
                                </div>
                                <hr>
@@ -42,7 +58,15 @@
                                        <label>Nomor Telepon</label>
                                    </div>
                                    <div class="col-md-5">
-                                       : 082285132960
+                                       <?php
+                                        if ($_SESSION['role'] == 'Pegawai') {
+                                            $tampil = $_SESSION['pegawai']['notelp_pegawai'];
+                                            echo ": $tampil";
+                                        } else {
+                                            $tampil = $_SESSION['admin']['notelp_admin'];
+                                            echo ": $tampil";
+                                        }
+                                        ?>
                                    </div>
                                </div>
                                <hr>
@@ -51,7 +75,15 @@
                                        <label>Email</label>
                                    </div>
                                    <div class="col-md-5">
-                                       : Fgelicia@gmail.com
+                                       <?php
+                                        if ($_SESSION['role'] == 'Pegawai') {
+                                            $tampil = $_SESSION['pegawai']['email_pegawai'];
+                                            echo ": $tampil";
+                                        } else {
+                                            $tampil = $_SESSION['admin']['email_admin'];
+                                            echo ": $tampil";
+                                        }
+                                        ?>
                                    </div>
                                </div>
                            </div>

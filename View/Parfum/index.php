@@ -13,8 +13,8 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Nama Kategori</th>
                             <th scope="col">Nama Parfum</th>
+                            <th scope="col">Nama Kategori</th>
                             <th scope="col">Expired</th>
                             <th scope="col">Stok</th>
                             <th scope="col">Harga Parfum</th>
@@ -22,116 +22,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Female</td>
-                            <td>Harmony</td>
-                            <td>19-10-2021</td>
-                            <td>5</td>
-                            <td>120000</td>
-                            <td><a href="index.php?page=Parfum&aksi=editParfum" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
-                                <a href="index.php?page=Parfum&aksi=deleteParfum" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Female</td>
-                            <td>Harmony</td>
-                            <td>19-10-2021</td>
-                            <td>5</td>
-                            <td>120000</td>
-                            <td><a href="index.php?page=Parfum&aksi=editParfum" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
-                                <a href="index.php?page=Parfum&aksi=deleteParfum" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Female</td>
-                            <td>Harmony</td>
-                            <td>19-10-2021</td>
-                            <td>5</td>
-                            <td>120000</td>
-                            <td><a href="index.php?page=Parfum&aksi=editParfum" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
-                                <a href="index.php?page=Parfum&aksi=deleteParfum" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Female</td>
-                            <td>Harmony</td>
-                            <td>19-10-2021</td>
-                            <td>5</td>
-                            <td>120000</td>
-                            <td><a href="index.php?page=Parfum&aksi=editParfum" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
-                                <a href="index.php?page=Parfum&aksi=deleteParfum" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Female</td>
-                            <td>Harmony</td>
-                            <td>19-10-2021</td>
-                            <td>5</td>
-                            <td>120000</td>
-                            <td><a href="index.php?page=Parfum&aksi=editParfum" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
-                                <a href="index.php?page=Parfum&aksi=deleteParfum" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Female</td>
-                            <td>Harmony</td>
-                            <td>19-10-2021</td>
-                            <td>5</td>
-                            <td>120000</td>
-                            <td><a href="index.php?page=Parfum&aksi=editParfum" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
-                                <a href="index.php?page=Parfum&aksi=deleteParfum" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Female</td>
-                            <td>Harmony</td>
-                            <td>19-10-2021</td>
-                            <td>5</td>
-                            <td>120000</td>
-                            <td><a href="index.php?page=Parfum&aksi=editParfum" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
-                                <a href="index.php?page=Parfum&aksi=deleteParfum" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Female</td>
-                            <td>Harmony</td>
-                            <td>19-10-2021</td>
-                            <td>5</td>
-                            <td>120000</td>
-                            <td><a href="index.php?page=Parfum&aksi=editParfum" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
-                                <a href="index.php?page=Parfum&aksi=deleteParfum" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Female</td>
-                            <td>Harmony</td>
-                            <td>19-10-2021</td>
-                            <td>5</td>
-                            <td>120000</td>
-                            <td><a href="index.php?page=Parfum&aksi=editParfum" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
-                                <a href="index.php?page=Parfum&aksi=deleteParfum" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Female</td>
-                            <td>Harmony</td>
-                            <td>19-10-2021</td>
-                            <td>5</td>
-                            <td>120000</td>
-                            <td><a href="index.php?page=Parfum&aksi=editParfum" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
-                                <a href="index.php?page=Parfum&aksi=deleteParfum" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
-                            </td>
-                        </tr>
+                        <?php $no = 1;
+                        foreach ($data as $row) : ?>
+                            <tr>
+                                <td scope="row"><?= $no ?></td>
+                                <td><?= $row['nama_parfum'] ?></td>
+                                <td><?= $row['nama_kategori'] ?></td>
+                                <td><?= $row['expired_parfum'] ?></td>
+                                <td><?= $row['stok'] ?></td>
+                                <td><?= $row['harga_parfum'] ?></td>
+                                <td><a href="index.php?page=Parfum&aksi=editParfum&id=<?= $row['id_parfum'] ?>" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
+                                    <a href="index.php?page=Parfum&aksi=deleteParfum&id=<?= $row['id_parfum'] ?>" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
+                                </td>
+                            </tr>
+                        <?php $no++;
+                        endforeach; ?>
                     </tbody>
                 </table>
             </div>

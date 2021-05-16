@@ -23,7 +23,7 @@
                 <img src="assets/images/logo.jpg" alt="logo" width="15%">
             </a>
             <div class="form-inline my-2 my-lg-0 ml-auto">
-                <label class="form-control">Admin Page</label>
+                <label class="form-control"> Page <?= $_SESSION['role'] ?></label>
             </div>
             <div class="icon ml-4">
                 <button class="btn btn-sm" id="btnTes" style="background-color: #e3f2fd;">
