@@ -8,7 +8,7 @@
             <div class="card-body ml-2 mr-2">
                 <form action="index.php?page=Parfum&aksi=updateParfum" method="POST">
                     <input type="hidden" name="idParfum" value="<?= $data['id_parfum'] ?>">
-                    <input type="hidden" name="idadmin" value="<?= $_SESSION['admin']['id_admin'] ?>">
+                    <input type="hidden" name="idPegawai" value="<?= $_SESSION['pegawai']['id_pegawai'] ?>">
                     <div class="form-group">
                         <label for="kategoriP">Kategori</label>
                         <select name="kategoriP" class="form-control" style="width: 200px;">

@@ -18,3 +18,14 @@ function koneksi()
         echo "Terjadi Kesalahan koneksi database";
     }
 }
+
+/**
+ * function dd ini berfungsi untuk melihat/debug sebuah varianel dan menghentikan program
+ * @param variabel $data berisi data yang ingin di debug
+ */
+
+function dd($data)
+{
+    echo '<pre>' . var_export($data, true) . '</pre>';
+    die();
+}

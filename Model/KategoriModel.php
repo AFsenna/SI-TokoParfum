@@ -48,7 +48,7 @@ class KategoriModel
 
     /**
      * Function store berfungsi untuk memproses data untuk di tambahkan
-     * Fungsi ini membutuhkan data nikPegawai, namaPegawai, usernamePegawai, passwordPegawai, emailPegawai, notelpPegawai dengan metode http request POST
+     * Fungsi ini membutuhkan data gender dengan metode http request POST
      */
 
     public function storeKategori()

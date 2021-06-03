@@ -1,6 +1,38 @@
 <?php
-class AdminModel
+class PegawaiModel
 {
+    /**
+     * Function ini digunakan untuk menjumlahkan data pegawai
+     */
+
+    public function CountPegawai()
+    {
+        $sql = "SELECT COUNT(*) as jumlahPegawai FROM pegawai";
+        $query = koneksi()->query($sql);
+        return $query->fetch_assoc();
+    }
+
+    /**
+     * Function ini digunakan untuk menjumlahkan data stok parfum
+     */
+
+    public function CountStok()
+    {
+        $sql = "SELECT SUM(stok) as stokParfum FROM parfum";
+        $query = koneksi()->query($sql);
+        return $query->fetch_assoc();
+    }
+
+    /**
+     * Function ini digunakan untuk menjumlahkan data jumlah parfum terjual
+     */
+
+    public function CountTerjual()
+    {
+        $sql = "SELECT SUM(jumlah_parfum) as jumlahPenjualan FROM detail_transaksi";
+        $query = koneksi()->query($sql);
+        return $query->fetch_assoc();
+    }
 
     /**
      * Untuk mengatur tampilan awal
@@ -8,16 +40,26 @@ class AdminModel
 
     public function index()
     {
-        require_once("View/Admin/index.php");
+        $pegawai = $this->CountPegawai();
+        $stok = $this->CountStok();
+        $transaksi = $this->CountTerjual();
+        extract($pegawai);
+        extract($stok);
+        extract($transaksi);
+        require_once("View/Pegawai/index.php");
     }
 
     /**
      * Function get berfungsi untuk mengambil seluruh data pegawai dari database
      */
 
-    public function get()
+    public function getPegawai()
     {
-        $sql = "SELECT * FROM pegawai";
+        $sql = "SELECT nama_jabatan, nama_pegawai, 
+        nik_pegawai, username_pegawai,
+        password_pegawai, email_pegawai, 
+        notelp_pegawai FROM pegawai
+        JOIN jabatan ON pegawai.jabatan_id = jabatan.id_jabatan";
         $query = koneksi()->query($sql);
         $hasil = [];
         while ($data = $query->fetch_assoc()) {
@@ -32,9 +74,9 @@ class AdminModel
 
     public function showPegawai()
     {
-        $data = $this->get();
+        $data = $this->getPegawai();
         extract($data);
-        require_once("View/Admin/pegawai.php");
+        require_once("View/Pegawai/dataPegawai.php");
     }
 
     /**
@@ -43,7 +85,7 @@ class AdminModel
 
     public function addPegawai()
     {
-        require_once("View/Admin/addPegawai.php");
+        require_once("View/Pegawai/addPegawai.php");
     }
 
     /**
@@ -71,9 +113,9 @@ class AdminModel
         $notelpPegawai = $_POST['notelpPG'];
 
         if ($this->prosesStore($nikPegawai, $namaPegawai, $usernamePegawai, $passwordPegawai, $emailPegawai, $notelpPegawai)) {
-            header("location: index.php?page=Admin&aksi=viewPegawai&pesan=Berhasil Tambah Data");
+            header("location: index.php?page=Pegawai&aksi=viewPegawai&pesan=Berhasil Tambah Data");
         } else {
-            header("location: index.php?page=Admin&aksi=viewPegawai&pesan=Gagal Tambah Data");
+            header("location: index.php?page=Pegawai&aksi=viewPegawai&pesan=Gagal Tambah Data");
         }
     }
 
@@ -100,7 +142,7 @@ class AdminModel
         $id = $_GET['id'];
         $data = $this->getById($id);
         extract($data);
-        require_once("View/Admin/editPegawai.php");
+        require_once("View/Pegawai/editPegawai.php");
     }
 
     /**
@@ -133,9 +175,9 @@ class AdminModel
         $notelpPegawai = $_POST['notelpPG'];
 
         if ($this->prosesUpdate($idPegawai, $nikPegawai, $namaPegawai, $usernamePegawai, $passwordPegawai, $emailPegawai, $notelpPegawai)) {
-            header("location: index.php?page=Admin&aksi=viewPegawai&pesan=Berhasil Ubah Data");
+            header("location: index.php?page=Pegawai&aksi=viewPegawai&pesan=Berhasil Ubah Data");
         } else {
-            header("location: index.php?page=Admin&aksi=viewPegawai&pesan=Gagal Ubah Data");
+            header("location: index.php?page=Pegawai&aksi=viewPegawai&pesan=Gagal Ubah Data");
         }
     }
 
@@ -158,9 +200,9 @@ class AdminModel
     {
         $idPegawai = $_GET['id'];
         if ($this->prosesDelete($idPegawai)) {
-            header("location: index.php?page=Admin&aksi=viewPegawai&pesan=Berhasil Delete Data");
+            header("location: index.php?page=Pegawai&aksi=viewPegawai&pesan=Berhasil Delete Data");
         } else {
-            header("location: index.php?page=Admin&aksi=viewPegawai&pesan=Gagal Delete Data");
+            header("location: index.php?page=Pegawai&aksi=viewPegawai&pesan=Gagal Delete Data");
         }
     }
 }

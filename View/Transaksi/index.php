@@ -3,13 +3,31 @@
     <hr class="garis">
     <div class="card">
         <div class="card-header">
+            <h5>Tambah Transaksi</h5>
+        </div>
+        <div class="card-body ml-2 mr-2">
+            <form action="index.php?page=Transaksi&aksi=createTransaksi" method="POST">
+                <div class="form-group">
+                    <label for="namaPembeli">Nama Pembeli</label>
+                    <select name="idPembeli" class="form-control">
+                        <option value="">- Pilih Nama -</option>
+                        <?php foreach ($pembeli as $row) : ?>
+                            <option value="<?= $row['id_pembeli'] ?>"><?= $row['nama_pembeli'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle mr-2"></i>Tambahkan</button>
+            </form>
+        </div>
+    </div>
+    <div class="card mt-4">
+        <div class="card-header">
             <div class="float-left mt-2">
                 <h5>Data Transaksi</h5>
             </div>
-            <a href="index.php?page=Transaksi&aksi=addTransaksi" class="btn btn-success float-right"><i class="fas fa-plus-circle mr-1 ml-1" data-toggle="tooltip" title="Tambah Data"></i></a>
         </div>
         <div class="card-body ml-2 mr-2">
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <table id="table-transaksi" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -25,30 +43,70 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td scope="row">1</td>
-                        <td>04-05-2021</td>
-                        <td>Awe</td>
-                        <td>5000</td>
-                        <td>
-                            <span class="badge badge-pill badge-success" style="width: 150px; font-size:15px;">Sudah Checkout</span>
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-info"><i class="fas fa-eye mr-1 ml-1" data-toggle="tooltip" title="Detail Transaksi"></button></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">2</td>
-                        <td>08-10-2021</td>
-                        <td>Senna</td>
-                        <td>2000</td>
-                        <td><span class="badge badge-pill badge-primary" style="width: 150px; font-size:15px;">Belum Checkout</span></td>
-                        <td>
-                            <button class="btn btn-sm btn-danger"><i class="fas fa-shopping-cart mr-1 ml-1" data-toggle="tooltip" title="Lihat Keranjang"></button></i>
-                        </td>
-                    </tr>
+                    <?php $no = 1;
+                    foreach ($data as $row) : ?>
+                        <tr>
+                            <td scope="row"><?= $no ?></td>
+                            <td><?= date('d-m-Y H:i:s', strtotime($row['tanggal'])); ?></td>
+                            <td><?= $row['nama_pembeli'] ?></td>
+                            <td><?= $row['total_harga'] ?></td>
+                            <td>
+                                <?php if ($row['status_transaksi'] == 0) : ?>
+                                    <span class="badge badge-pill badge-primary" style="width: 170px; font-size:15px;">Belum Checkout</span>
+                                <?php elseif ($row['status_transaksi'] == 1) : ?>
+                                    <span class="badge badge-pill badge-success" style="width: 170px; font-size:15px;">Sudah Checkout</span>
+                                <?php else : ?>
+                                    <span class="badge badge-pill badge-danger" style="width: 170px; font-size:15px;">Transaksi Dibatalkan</span>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if ($row['status_transaksi'] == 0) : ?>
+                                    <a href="index.php?page=Transaksi&aksi=Keranjang" class="btn btn-outline-warning btn-sm text-dark"><i class="fa fa-shopping-basket mr-1 ml-1" data-toggle="tooltip" title="Lihat Keranjang"></a></i>
+                                    <a href="index.php?page=Transaksi&aksi=batalkan" class="btn btn-outline-danger btn-sm"><i class="fa fa-times mr-1 ml-1" data-toggle="tooltip" title="Batalkan Transaksi"></a></i>
+                                <?php elseif ($row['status_transaksi'] == 1) : ?>
+                                    <a href="index.php?page=Transaksi&aksi=detailTransaksi" class="btn btn-sm btn-outline-info"><i class="fas fa-eye mr-1 ml-1" data-toggle="tooltip" title="Detail Transaksi"></a></i>
+                                <?php else : ?>
+                                    <a href="index.php?page=Transaksi&aksi=aktifkan" class="btn btn-outline-success btn-sm text-dark"><i class="fa fa-check mr-1 ml-1" data-toggle="tooltip" title="Aktifkan Transaksi"></a></i>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php $no++;
+                    endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        var table = $('#table-transaksi').DataTable({
+            lengthChange: true,
+            buttons: [{
+                    extend: 'excelHtml5',
+                    title: `Data Transaksi_<?= date('Y-m-d H:i:s'); ?>`,
+                    messageBottom: '©Cabriz Parfum',
+                    customize: function(xlsx) {
+                        var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                        $('row c', sheet).attr('s', '25');
+                        $('row:first c', sheet).attr('s', '51');
+                        $('row:last c', sheet).attr('s', '51');
+                    },
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4],
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    title: `Data Transaksi_<?= date('Y-m-d H:i:s'); ?>`,
+                    messageBottom: '©Cabriz Parfum',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4]
+                    }
+                },
+            ]
+        });
+
+        table.buttons().container()
+            .appendTo('#table-transaksi_wrapper .col-md-6:eq(0)');
+    });
+</script>

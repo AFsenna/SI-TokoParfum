@@ -2,48 +2,53 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link href="assets/css/fontawesome.css" rel="stylesheet">
-    <link href="assets/css/brands.css" rel="stylesheet">
-    <link href="assets/css/solid.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 
 <body>
-    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
-        <div class="container">
-            <div class="card login-card">
-                <div class="row no-gutters">
-                    <div class="col-md-5">
-                        <img src="assets/images/produk3.jpg" alt="login" class="login-card-img" width="100%px">
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('assets/images/produk3.jpg');">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" action="index.php?page=Auth&aksi=authPegawai" method="POST">
+                    <span class="login100-form-logo">
+                        <img src="assets/images/logo.jpg" alt="logo" class="logo" width="60%px">
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Log in
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="usernamePG" placeholder="Username">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
                     </div>
-                    <div class="col-md-7">
-                        <div class="card-body">
-                            <div class="brand-wrapper">
-                                <img src="assets/images/logo.jpg" alt="logo" class="logo ml-5 float-right" width="10%px">
-                            </div>
-                            <center>
-                                <p class="login-card-description pt-5 mt-5">
-                                    <b>
-                                        <h3>Welcome to Cabriz Parfum</h3>
-                                    </b>
-                                </p>
-                                <a href="index.php?page=Auth&aksi=loginAdmin" class="btn btn-primary btn-lg active mt-3" role="button" aria-pressed="true" style="width: 30%;">Admin</a>
-                                <a href="index.php?page=Auth&aksi=loginPegawai" class="btn btn-success btn-lg active mt-3 ml-3" role="button" aria-pressed="true" style="width: 30%;">Pegawai</a>
-                            </center>
-                            </nav>
-                        </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="passwordPG" placeholder="Password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
                     </div>
-                </div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn mt-5">
+                            Login
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
-    </main>
+    </div>
+
     <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>

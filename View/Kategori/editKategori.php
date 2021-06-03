@@ -3,7 +3,7 @@
         <hr class="garis">
         <div class="card">
             <div class="card-header">
-                <h5>Update Kategori Parfum</h5>
+                <h5>Edit Kategori Parfum</h5>
             </div>
             <div class="card-body ml-2 mr-2">
                 <form action="index.php?page=Kategori&aksi=updateKategori" method="POST">
@@ -11,7 +11,7 @@
                     <div class="form-group row">
                         <label for="inputKategori" class="col-sm-2 col-form-label">Nama Kategori</label>
                         <div class="col-sm-10">
-                            <input type="kategori" class="form-control" name="gender" value="<?= $data['gender'] ?>">
+                            <input type="text" class="form-control" name="gender" value="<?= $data['gender'] ?>">
                         </div>
                     </div>
                     <div class="form-group row">

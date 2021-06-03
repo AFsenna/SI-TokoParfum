@@ -1,10 +1,16 @@
    </div>
-   <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
    <script type="text/javascript" charset="utf8" src="assets/js/jquery.dataTables.min.js"></script>
    <script type="text/javascript" charset="utf8" src="assets/js/dataTables.bootstrap4.min.js"></script>
+
+   <script type="text/javascript" charset="utf8" src="assets/js/dataTables.buttons.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="assets/js/buttons.bootstrap4.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="assets/js/jszip.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="assets/js/pdfmake.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="assets/js/vfs_fonts.js"></script>
+   <script type="text/javascript" charset="utf8" src="assets/js/buttons.html5.min.js"></script>
+
    <script src="assets/js/popper.min.js"></script>
    <script src="assets/js/bootstrap.min.js"></script>
-   <script src="assets/js/allprogramview.js"></script>
    <!-- Modal -->
    <div class="modal fade show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
        <div class="modal-dialog modal-lg" role="document">
@@ -25,13 +31,8 @@
                                    </div>
                                    <div class="col-md-5 mt-3">
                                        <?php
-                                        if ($_SESSION['role'] == 'Pegawai') {
-                                            $tampil = $_SESSION['pegawai']['nik_pegawai'];
-                                            echo ": $tampil";
-                                        } else {
-                                            $tampil = $_SESSION['admin']['nik_admin'];
-                                            echo ": $tampil";
-                                        }
+                                        $tampil = $_SESSION['pegawai']['nik_pegawai'];
+                                        echo ": $tampil";
                                         ?>
                                    </div>
                                </div>
@@ -42,13 +43,8 @@
                                    </div>
                                    <div class="col-md-5">
                                        <?php
-                                        if ($_SESSION['role'] == 'Pegawai') {
-                                            $tampil = $_SESSION['pegawai']['nama_pegawai'];
-                                            echo ": $tampil";
-                                        } else {
-                                            $tampil = $_SESSION['admin']['nama_admin'];
-                                            echo ": $tampil";
-                                        }
+                                        $tampil = $_SESSION['pegawai']['nama_pegawai'];
+                                        echo ": $tampil";
                                         ?>
                                    </div>
                                </div>
@@ -59,13 +55,8 @@
                                    </div>
                                    <div class="col-md-5">
                                        <?php
-                                        if ($_SESSION['role'] == 'Pegawai') {
-                                            $tampil = $_SESSION['pegawai']['notelp_pegawai'];
-                                            echo ": $tampil";
-                                        } else {
-                                            $tampil = $_SESSION['admin']['notelp_admin'];
-                                            echo ": $tampil";
-                                        }
+                                        $tampil = $_SESSION['pegawai']['notelp_pegawai'];
+                                        echo ": $tampil";
                                         ?>
                                    </div>
                                </div>
@@ -76,13 +67,8 @@
                                    </div>
                                    <div class="col-md-5">
                                        <?php
-                                        if ($_SESSION['role'] == 'Pegawai') {
-                                            $tampil = $_SESSION['pegawai']['email_pegawai'];
-                                            echo ": $tampil";
-                                        } else {
-                                            $tampil = $_SESSION['admin']['email_admin'];
-                                            echo ": $tampil";
-                                        }
+                                        $tampil = $_SESSION['pegawai']['email_pegawai'];
+                                        echo ": $tampil";
                                         ?>
                                    </div>
                                </div>
@@ -101,9 +87,16 @@
            //    console.log("senna");
        });
        $(document).ready(function() {
-           $('#example').DataTable();
+           var table = $('#example').DataTable({
+               lengthChange: true,
+           });
+       });
+
+       $(function() {
+           $('[data-toggle="tooltip"]').tooltip();
        });
    </script>
+
    </body>
 
    </html>

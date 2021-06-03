@@ -10,9 +10,9 @@ class ParfumModel
     {
         $sql = "SELECT id_parfum, nama_parfum, expired_parfum, 
          gender as nama_kategori, stok, harga_parfum, 
-         nama_admin from parfum 
+         nama_pegawai from parfum 
          JOIN kategori ON parfum.kategori_id = kategori.id_kategori
-         JOIN admin ON parfum.admin_id = admin.id_admin";
+         JOIN pegawai ON parfum.pegawai_id = pegawai.id_pegawai";
         $query = koneksi()->query($sql);
         $hasil = [];
         while ($data = $query->fetch_assoc()) {
@@ -62,27 +62,27 @@ class ParfumModel
      * Function prosesStore berfungsi untuk input data parfum
      */
 
-    public function prosesStore($kategori_id, $admin_id, $nama_parfum, $expired, $harga, $stok)
+    public function prosesStore($kategori_id, $pegawai_id, $nama_parfum, $expired, $harga, $stok)
     {
-        $sql = "INSERT INTO parfum(kategori_id,admin_id,nama_parfum,expired_parfum,harga_parfum,stok) VALUES($kategori_id,$admin_id,'$nama_parfum','$expired',$harga,$stok)";
+        $sql = "INSERT INTO parfum(kategori_id,pegawai_id,nama_parfum,expired_parfum,harga_parfum,stok) VALUES($kategori_id,$pegawai_id,'$nama_parfum','$expired',$harga,$stok)";
         return koneksi()->query($sql);
     }
 
     /**
      * Function store berfungsi untuk memproses data untuk di tambahkan
-     * Fungsi ini membutuhkan data kategori_id,admin_id,nama_parfum,expired_parfum,harga_parfum,stok dengan metode http request POST
+     * Fungsi ini membutuhkan data kategori_id,pegawai_id,nama_parfum,expired_parfum,harga_parfum,stok dengan metode http request POST
      */
 
     public function storeParfum()
     {
         $kategori_id = $_POST['kategoriP'];
-        $admin_id = $_POST['idadmin'];
+        $pegawai_id = $_POST['idPegawai'];
         $nama_parfum = $_POST['namaparfum'];
         $expired = $_POST['expired'];
         $harga = $_POST['hargaparfum'];
         $stok = $_POST['stok'];
 
-        if ($this->prosesStore($kategori_id, $admin_id, $nama_parfum, $expired, $harga, $stok)) {
+        if ($this->prosesStore($kategori_id, $pegawai_id, $nama_parfum, $expired, $harga, $stok)) {
             header("location: index.php?page=Parfum&aksi=view&pesan=Berhasil Tambah Data");
         } else {
             header("location: index.php?page=Parfum&aksi=view&pesan=Gagal Tambah Data");
@@ -121,9 +121,9 @@ class ParfumModel
      * Function ini berfungsi untuk memproses update ke database
      */
 
-    public function prosesUpdate($idParfum, $kategori_id, $admin_id, $nama_parfum, $expired_parfum, $harga_parfum, $stok)
+    public function prosesUpdate($idParfum, $kategori_id, $pegawai_id, $nama_parfum, $expired_parfum, $harga_parfum, $stok)
     {
-        $sql = "UPDATE parfum SET kategori_id = $kategori_id ,admin_id = $admin_id,
+        $sql = "UPDATE parfum SET kategori_id = $kategori_id ,pegawai_id = $pegawai_id,
         nama_parfum = '$nama_parfum',expired_parfum = '$expired_parfum',
         harga_parfum = $harga_parfum,stok = $stok
         WHERE id_parfum = $idParfum";
@@ -139,13 +139,12 @@ class ParfumModel
     {
         $idParfum = $_POST['idParfum'];
         $kategori_id = $_POST['kategoriP'];
-        $admin_id = $_POST['idadmin'];
+        $pegawai_id = $_POST['idPegawai'];
         $nama_parfum = $_POST['namaparfum'];
         $expired = $_POST['expired'];
         $harga = $_POST['hargaparfum'];
         $stok = $_POST['stok'];
-
-        if ($this->prosesUpdate($idParfum, $kategori_id, $admin_id, $nama_parfum, $expired, $harga, $stok)) {
+        if ($this->prosesUpdate($idParfum, $kategori_id, $pegawai_id, $nama_parfum, $expired, $harga, $stok)) {
             header("location: index.php?page=Parfum&aksi=view&pesan=Berhasil Ubah Data");
         } else {
             header("location: index.php?page=Parfum&aksi=editParfum&pesan=Gagal Ubah Data");

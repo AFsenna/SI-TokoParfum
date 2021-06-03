@@ -31,7 +31,7 @@
                                 <td><?= $row['expired_parfum'] ?></td>
                                 <td><?= $row['stok'] ?></td>
                                 <td><?= $row['harga_parfum'] ?></td>
-                                <td><a href="index.php?page=Parfum&aksi=editParfum&id=<?= $row['id_parfum'] ?>" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
+                                <td><a href="index.php?page=Parfum&aksi=editParfum&id=<?= $row['id_parfum'] ?>" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit ml-1" data-toggle="tooltip" title="Update Data"></i></a>
                                     <a href="index.php?page=Parfum&aksi=deleteParfum&id=<?= $row['id_parfum'] ?>" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
                                 </td>
                             </tr>

@@ -1,62 +1,65 @@
 .card {
-  width: 970px;
+    width: 990px;
 }
+
 .garis {
-  width: 980px;
+    width: 1000px;
 }
 
 .nav-link:hover {
-  background-color: rgb(90, 89, 87);
-  width: 185px;
+    background-color: rgb(90, 89, 87);
+    width: 185px;
 }
 
 .navcollapse:hover {
-  background-color: rgb(175, 174, 171);
-  width: 150px;
+    background-color: rgb(175, 174, 171);
+    width: 150px;
 }
+
 .card-body-icon {
-  position: absolute;
-  z-index: 0;
-  top: 25px;
-  right: 4px;
-  opacity: 0.4;
-  font-size: 90px;
+    position: absolute;
+    z-index: 0;
+    top: 25px;
+    right: 4px;
+    opacity: 0.4;
+    font-size: 90px;
 }
+
 .sidenav {
-  height: 100%;
-  width: 225px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
+    height: 100%;
+    width: 225px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
 }
 
 .sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 16px;
-  color: #818181;
-  display: block;
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #818181;
+    display: block;
 }
 
 .main {
-  z-index: 0;
-  margin-left: 220px;
-  /* Same as the width of the sidenav */
-  font-size: 15px;
-  /* Increased text to enable scrolling */
-  padding: 0px 10px;
-  width: 1129px;
+    z-index: 0;
+    margin-left: 220px;
+    /* Same as the width of the sidenav */
+    font-size: 15px;
+    /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    width: 1129px;
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
-  }
+    .sidenav {
+        padding-top: 15px;
+    }
 
-  .sidenav a {
-    font-size: 18px;
-  }
+    .sidenav a {
+        font-size: 18px;
+    }
 }
