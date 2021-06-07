@@ -30,10 +30,10 @@
                                     <?php if ($row['status_pembeli'] == 1) : ?>
                                         <span class="badge badge-pill badge-success" style="width: 100px; font-size:15px;">Aktif</span>
                                     <?php elseif ($row['status_pembeli'] == 0) : ?>
-                                        <span class="badge badge-pill badge-primary" style="width: 100px; font-size:15px;">Non-Aktif</span>
+                                        <span class="badge badge-pill badge-danger" style="width: 100px; font-size:15px;">Non-Aktif</span>
                                     <?php endif; ?>
                                 </td>
-                                <td><a href="index.php?page=Pembeli&aksi=editPembeli&id=<?= $row['id_pembeli'] ?>" class="btn btn-sm btn-success text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a></td>
+                                <td><a href="index.php?page=Pembeli&aksi=editPembeli&id=<?= $row['id_pembeli'] ?>" class="btn btn-sm btn-warning text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a></td>
                             </tr>
                         <?php $no++;
                         endforeach; ?>

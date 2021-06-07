@@ -30,7 +30,7 @@
                 <div class="float-left mt-2">
                     <h5>Keranjang : <?= $pembeli['nama_pembeli'] ?></h5>
                 </div>
-                <a href="index.php?page=Transaksi&aksi=checkoutTransaksi" class="btn btn-success float-right"><i class="fas fa-plus-circle mr-2"></i>Checkout</a>
+                <a href="index.php?page=Transaksi&aksi=checkoutTransaksi&idTransaksi=<?= $_GET['idTransaksi'] ?>" class="btn btn-success float-right"><i class="fas fa-plus-circle mr-2"></i>Checkout</a>
             </div>
             <div class="card-body ml-2 mr-2">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -50,7 +50,7 @@
                                 <td scope="row"><?= $no ?></td>
                                 <td><?= $row['nama_parfum'] ?></td>
                                 <td><?= $row['jumlah_parfum'] ?></td>
-                                <td><?= $row['jumlah_harga'] ?></td>
+                                <td>Rp. <?= number_format($row['jumlah_harga'], 2, ',', '.') ?></td>
                                 <td> <a href="index.php?page=Transaksi&aksi=deleteDetailTransaksi&idTransaksi=<?= $row['transaksi_id'] ?>&idParfum=<?= $row['parfum_id'] ?>" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a></td>
                             </tr>
                         <?php $no++;

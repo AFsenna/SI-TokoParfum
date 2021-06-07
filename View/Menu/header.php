@@ -18,9 +18,9 @@
     <script src="assets/js/chart.js"></script>
     <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-light fixed-top" style="background-color: #e3f2fd; ">
         <a class="navbar-brand mr-auto">
-            <img src="assets/images/logo.jpg" alt="logo" width="15%">
+            <img src="assets/images/logo.jpg" alt="logo" width="12%">
         </a>
         <div class="form-inline my-2 my-lg-0 ml-auto">
             <label class="form-control"> Page <?= $_SESSION['role']; ?></label>
@@ -67,4 +67,4 @@
             </li>
         </ul>
     </div>
-    <div class="main pt-3">
+    <div class="main pt-3" style="background-color: rgba(251, 253, 255, 0.966);">

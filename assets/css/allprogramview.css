@@ -4,6 +4,8 @@
 
 .garis {
     width: 1000px;
+    background-color: rgba(240, 248, 255, 0);
+
 }
 
 .nav-link:hover {

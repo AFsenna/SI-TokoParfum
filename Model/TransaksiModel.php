@@ -14,7 +14,7 @@ class TransaksiModel
 
     public function get()
     {
-        $sql = "SELECT pembeli.nama_pembeli, transaksi.tanggal, 
+        $sql = "SELECT pembeli.nama_pembeli, transaksi.tanggal,id_transaksi, 
         COALESCE(SUM(detail_transaksi.jumlah_parfum * parfum.harga_parfum),0) AS total_harga,
         transaksi.status_transaksi FROM transaksi 
         LEFT JOIN detail_transaksi ON transaksi.id_transaksi = detail_transaksi.transaksi_id
@@ -65,7 +65,16 @@ class TransaksiModel
     public function prosesStore($pembeli_id, $pegawai_id)
     {
         $sql = "INSERT INTO transaksi(pembeli_id,pegawai_id,tanggal,status_transaksi) VALUES($pembeli_id,$pegawai_id,now(),0)";
-        $sql .= "UPDATE pembeli SET status_pembeli = 1 WHERE id_pembeli = $pembeli_id";
+        return koneksi()->query($sql);
+    }
+
+    /**
+     * Function updateStatusPembeli untuk update status pembeli menjadi aktif
+     */
+
+    public function updateStatusPembeli($pembeli_id)
+    {
+        $sql = "UPDATE pembeli SET status_pembeli = 1 WHERE id_pembeli = $pembeli_id";
         return koneksi()->query($sql);
     }
 
@@ -94,7 +103,9 @@ class TransaksiModel
         $pegawai_id = $_SESSION['pegawai']['id_pegawai'];
         $idTransaksi = $this->getLast();
         if ($this->prosesStore($pembeli_id, $pegawai_id)) {
-            header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&idTransaksi=" . $idTransaksi['id_transaksi']);
+            if ($this->updateStatusPembeli($pembeli_id)) {
+                header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&idTransaksi=" . $idTransaksi['id_transaksi']);
+            }
         } else {
             header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Tambah Data");
         }
@@ -106,7 +117,7 @@ class TransaksiModel
 
     public function getParfum()
     {
-        $sql = "SELECT * from parfum";
+        $sql = "SELECT * from parfum WHERE stok>0";
         $query = koneksi()->query($sql);
         $hasil = [];
         while ($parfum = $query->fetch_assoc()) {
@@ -254,5 +265,87 @@ class TransaksiModel
         } else {
             header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Delete Data&idTransaksi=" . $transaksiID);
         }
+    }
+
+    /**
+     * 
+     */
+
+    public function getTotalHarga($idTransaksi)
+    {
+        $sql = "SELECT SUM(detail_transaksi.jumlah_parfum * parfum.harga_parfum) AS totalHarga
+        FROM detail_transaksi 
+        JOIN transaksi ON detail_transaksi.transaksi_id = transaksi.id_transaksi
+        JOIN parfum ON detail_transaksi.parfum_id = parfum.id_parfum 
+        WHERE detail_transaksi.transaksi_id = $idTransaksi ";
+        $query = koneksi()->query($sql);
+        return $query->fetch_assoc();
+    }
+
+    /**
+     * Function viewCheckout berfungsi untuk menuju halaman checkout transaksi
+     */
+
+    public function viewCheckout()
+    {
+        $idTransaksi = $_GET['idTransaksi'];
+        $detailTransaksi = $this->getDetailTransaksi($idTransaksi);
+        $pembeli = $this->getNamaPembeli($idTransaksi);
+        $parfum = $this->getParfum();
+        $total = $this->getTotalHarga($idTransaksi);
+        extract($detailTransaksi);
+        extract($pembeli);
+        extract($parfum);
+        extract($total);
+        require_once("View/Transaksi/checkoutTransaksi.php");
+    }
+
+    /**
+     * Function checkout Transaksi untuk mengubah status transaksi menjadi
+     * sudah checkout
+     */
+
+    public function prosesCheckout($idTransaksi)
+    {
+        $sql = "UPDATE transaksi SET status_transaksi=1,tanggal=now() 
+        where id_Transaksi = $idTransaksi";
+        $query = koneksi()->query($sql);
+        return $query;
+    }
+
+    /**
+     * function ini digunakan untuk melakukan checkout
+     */
+
+    public function sudahCheckout()
+    {
+        $idTransaksi = $_GET['idTransaksi'];
+        $tunai = $_POST['tunai'];
+        $totalHarga = $_POST['totalH'];
+        if (($tunai >= $totalHarga)) {
+            if ($this->prosesCheckout($idTransaksi)) {
+                header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Checkout&idTransaksi=" . $idTransaksi);
+            } else {
+                header("location: index.php?page=Transaksi&aksi=checkoutTransaksi&pesan=Gagal checkout&idTransaksi=" . $idTransaksi);
+            }
+        } else {
+            header("location: index.php?page=Transaksi&aksi=checkoutTransaksi&pesan=Gagal Checkout Uang Kurang&idTransaksi=" . $idTransaksi);
+        }
+    }
+
+    /**
+     * Function getTransaksiByID digunakan untuk mendapatkan data Transaksi berdasarkan id
+     */
+
+    public function getTransaksiByID($idTransaksi)
+    {
+    }
+
+    /**
+     * Untuk mengatur tampilan halaman detail pembelian
+     */
+
+    public function viewDetailPembelian()
+    {
     }
 }

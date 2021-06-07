@@ -23,7 +23,7 @@
                             <tr>
                                 <th scope="row"><?= $no ?></th>
                                 <td><?= $row['gender'] ?></td>
-                                <td><a href="index.php?page=Kategori&aksi=editKategori&id=<?= $row['id_kategori'] ?>" class="btn btn-sm btn-success text-white rounded p-2"><i class="fas fa-edit ml-1" data-toggle="tooltip" title="Update Data"></i></a>
+                                <td><a href="index.php?page=Kategori&aksi=editKategori&id=<?= $row['id_kategori'] ?>" class="btn btn-sm btn-warning text-white rounded p-2"><i class="fas fa-edit ml-1" data-toggle="tooltip" title="Update Data"></i></a>
                                     <a href="index.php?page=Kategori&aksi=deleteKategori&id=<?= $row['id_kategori'] ?>" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
                                 </td>
                             </tr>

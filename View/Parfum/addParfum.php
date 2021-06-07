@@ -29,9 +29,16 @@
                         <label for="stok">Stok</label>
                         <input type="number" name="stok" class="form-control">
                     </div>
-                    <div class="form-group">
-                        <label for="hargaparfum">Harga Satuan</label>
-                        <input type="number" name="hargaparfum" class="form-control">
+                    <div class="form-group row">
+                        <label class="col-sm-2 ">Harga Satuan</label>
+                        <div class="col-sm-10">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp.</div>
+                                </div>
+                                <input type="number" name="hargaparfum" class="form-control">
+                            </div>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle mr-2"></i>Tambahkan</button>
                 </form>

@@ -1,5 +1,5 @@
 <?php
-
+//untuk menetapkan zona waktu default yang digunakan
 date_default_timezone_set('Asia/Jakarta');
 
 //routing ke koneksi
@@ -14,10 +14,20 @@ require_once("Model/ParfumModel.php");
 require_once("Model/PembeliModel.php");
 require_once("Model/TransaksiModel.php");
 
+//routing ke controller
+require_once("Controller/AuthController.php");
+require_once("Controller/JabatanController.php");
+require_once("Controller/KategoriController.php");
+require_once("Controller/ParfumController.php");
+require_once("Controller/PegawaiController.php");
+require_once("Controller/PembeliController.php");
+require_once("Controller/TransaksiController.php");
+
+//Routing dari URL ke Obyek Class PHP
 if (isset($_GET['page']) && isset($_GET['aksi'])) {
     session_start();
-    $page = $_GET['page'];
-    $aksi = $_GET['aksi'];
+    $page = $_GET['page']; //berisi nama page
+    $aksi = $_GET['aksi']; //aksi dari setiap page
     if ($page == "Auth") {
         $auth = new AuthModel();
         if ($aksi == 'view') {
@@ -138,9 +148,11 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         } else if ($aksi == 'deleteDetailTransaksi') {
             $transaksi->deleteDetailTransaksi();
         } else if ($aksi == 'checkoutTransaksi') {
-            require_once("View/Transaksi/addTransaksi.php");
-        } else if ($aksi == 'detailTransaksi') {
-            require_once("View/Transaksi/detailTransaksi.php");
+            $transaksi->viewCheckout();
+        } else if ($aksi == 'sudahCheckout') {
+            $transaksi->sudahCheckout();
+        } else if ($aksi == 'detailPembelian') {
+            require_once("View/Transaksi/detailPembelian.php");
         } else if ($aksi == 'Keranjang') {
             $transaksi->addDetailTransaksi();
         } else if ($aksi == 'aktifkan') {

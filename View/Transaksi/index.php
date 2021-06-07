@@ -49,10 +49,10 @@
                             <td scope="row"><?= $no ?></td>
                             <td><?= date('d-m-Y H:i:s', strtotime($row['tanggal'])); ?></td>
                             <td><?= $row['nama_pembeli'] ?></td>
-                            <td><?= $row['total_harga'] ?></td>
+                            <td>Rp. <?= number_format($row['total_harga'], 2, ',', '.') ?></td>
                             <td>
                                 <?php if ($row['status_transaksi'] == 0) : ?>
-                                    <span class="badge badge-pill badge-primary" style="width: 170px; font-size:15px;">Belum Checkout</span>
+                                    <span class="badge badge-pill badge-danger" style="width: 170px; font-size:15px;">Belum Checkout</span>
                                 <?php elseif ($row['status_transaksi'] == 1) : ?>
                                     <span class="badge badge-pill badge-success" style="width: 170px; font-size:15px;">Sudah Checkout</span>
                                 <?php else : ?>
@@ -61,12 +61,12 @@
                             </td>
                             <td>
                                 <?php if ($row['status_transaksi'] == 0) : ?>
-                                    <a href="index.php?page=Transaksi&aksi=Keranjang" class="btn btn-outline-warning btn-sm text-dark"><i class="fa fa-shopping-basket mr-1 ml-1" data-toggle="tooltip" title="Lihat Keranjang"></a></i>
-                                    <a href="index.php?page=Transaksi&aksi=batalkan" class="btn btn-outline-danger btn-sm"><i class="fa fa-times mr-1 ml-1" data-toggle="tooltip" title="Batalkan Transaksi"></a></i>
+                                    <a href="index.php?page=Transaksi&aksi=Keranjang&idTransaksi=<?= $row['id_transaksi'] ?>" class="btn btn-outline-warning btn-sm text-dark"><i class="fa fa-shopping-basket mr-1 ml-1" data-toggle="tooltip" title="Lihat Keranjang"></a></i>
+                                    <a href="index.php?page=Transaksi&aksi=batalkan&idTransaksi=<?= $row['id_transaksi'] ?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-times mr-1 ml-1" data-toggle="tooltip" title="Batalkan Transaksi"></a></i>
                                 <?php elseif ($row['status_transaksi'] == 1) : ?>
-                                    <a href="index.php?page=Transaksi&aksi=detailTransaksi" class="btn btn-sm btn-outline-info"><i class="fas fa-eye mr-1 ml-1" data-toggle="tooltip" title="Detail Transaksi"></a></i>
+                                    <a href="index.php?page=Transaksi&aksi=detailPembelian&idTransaksi=<?= $row['id_transaksi'] ?>" class="btn btn-sm btn-outline-info"><i class="fas fa-eye mr-1 ml-1" data-toggle="tooltip" title="Detail Pembelian"></a></i>
                                 <?php else : ?>
-                                    <a href="index.php?page=Transaksi&aksi=aktifkan" class="btn btn-outline-success btn-sm text-dark"><i class="fa fa-check mr-1 ml-1" data-toggle="tooltip" title="Aktifkan Transaksi"></a></i>
+                                    <a href="index.php?page=Transaksi&aksi=aktifkan&idTransaksi=<?= $row['id_transaksi'] ?>" class="btn btn-outline-success btn-sm text-dark"><i class="fa fa-check mr-1 ml-1" data-toggle="tooltip" title="Aktifkan Transaksi"></a></i>
                                 <?php endif; ?>
                             </td>
                         </tr>

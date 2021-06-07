@@ -90,9 +90,6 @@
            var table = $('#example').DataTable({
                lengthChange: true,
            });
-       });
-
-       $(function() {
            $('[data-toggle="tooltip"]').tooltip();
        });
    </script>

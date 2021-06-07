@@ -3,22 +3,12 @@ class AuthModel
 {
 
     /**
-     * Untuk mengatur tampilan awal
+     * Untuk mengatur tampilan awal / login
      */
 
     public function index()
     {
         require_once("View/Auth/index.php");
-    }
-
-
-    /**
-     * Untuk mengatur tampilan login pegawai
-     */
-
-    public function loginPegawai()
-    {
-        require_once("View/Auth/pegawai.php");
     }
 
     /**
@@ -33,7 +23,7 @@ class AuthModel
     }
 
     /**
-     * auth admin
+     * untuk auth pegawai
      */
 
     public function authPegawai()
@@ -49,6 +39,10 @@ class AuthModel
             header("location: index.php?page=Auth&aksi=loginPegawai&pesan=Username atau password salah!!");
         }
     }
+
+    /**
+     * Function ini digunakan untuk logout dan destroy session
+     */
 
     public function logout()
     {

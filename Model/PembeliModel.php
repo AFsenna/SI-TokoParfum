@@ -2,6 +2,15 @@
 class PembeliModel
 {
     /**
+     * Pada Pembeli apabila :
+     * status_pembeli = 0 = tidak aktif
+     * status_pembeli = 1 = aktif
+     * status pembeli akan berubah menjadi tidak aktif secara otomatis apabila
+     * pembeli tidak membeli/melakukan transaksi/pembelian selama sebulan
+     * dan status pembeli menjadi aktif apabila melakukan/membuat transaksi
+     */
+
+    /**
      * Function get berfungsi untuk mengambil seluruh data pembeli dari database
      */
 
