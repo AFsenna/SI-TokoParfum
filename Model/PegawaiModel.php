@@ -35,27 +35,12 @@ class PegawaiModel
     }
 
     /**
-     * Untuk mengatur tampilan awal
-     */
-
-    public function index()
-    {
-        $pegawai = $this->CountPegawai();
-        $stok = $this->CountStok();
-        $transaksi = $this->CountTerjual();
-        extract($pegawai);
-        extract($stok);
-        extract($transaksi);
-        require_once("View/Pegawai/index.php");
-    }
-
-    /**
      * Function get berfungsi untuk mengambil seluruh data pegawai dari database
      */
 
     public function getPegawai()
     {
-        $sql = "SELECT nama_jabatan, nama_pegawai, 
+        $sql = "SELECT nama_jabatan, nama_pegawai, id_pegawai,
         nik_pegawai, username_pegawai,
         password_pegawai, email_pegawai, 
         notelp_pegawai FROM pegawai
@@ -69,54 +54,28 @@ class PegawaiModel
     }
 
     /**
-     * Untuk mengatur tampilan data pegawai
+     * function ini digunakan untuk mengambil seluruh data jabatan dari database 
      */
 
-    public function showPegawai()
+    public function getJabatan()
     {
-        $data = $this->getPegawai();
-        extract($data);
-        require_once("View/Pegawai/dataPegawai.php");
-    }
-
-    /**
-     * Function ini digunakan untuk menuju tampilan add pegawai
-     */
-
-    public function addPegawai()
-    {
-        require_once("View/Pegawai/addPegawai.php");
+        $sql = "SELECT * FROM jabatan";
+        $query = koneksi()->query($sql);
+        $hasil = [];
+        while ($jabatan = $query->fetch_assoc()) {
+            $hasil[] = $jabatan;
+        }
+        return $hasil;
     }
 
     /**
      * Function prosesStore berfungsi untuk input data pegawai
      */
 
-    public function prosesStore($nikPegawai, $namaPegawai, $usernamePegawai, $passwordPegawai, $emailPegawai, $notelpPegawai)
+    public function prosesStore($nikPegawai, $namaPegawai, $usernamePegawai, $passwordPegawai, $emailPegawai, $notelpPegawai, $jabatanID)
     {
-        $sql = "INSERT INTO pegawai(nik_pegawai,nama_pegawai,username_pegawai,password_pegawai,email_pegawai,notelp_pegawai) VALUES('$nikPegawai','$namaPegawai','$usernamePegawai','$passwordPegawai','$emailPegawai','$notelpPegawai')";
+        $sql = "INSERT INTO pegawai(nik_pegawai,nama_pegawai,username_pegawai,password_pegawai,email_pegawai,notelp_pegawai,jabatan_id) VALUES('$nikPegawai','$namaPegawai','$usernamePegawai','$passwordPegawai','$emailPegawai','$notelpPegawai',$jabatanID)";
         return koneksi()->query($sql);
-    }
-
-    /**
-     * Function store berfungsi untuk memproses data untuk di tambahkan
-     * Fungsi ini membutuhkan data nikPegawai, namaPegawai, usernamePegawai, passwordPegawai, emailPegawai, notelpPegawai dengan metode http request POST
-     */
-
-    public function storePegawai()
-    {
-        $nikPegawai = $_POST['NIK'];
-        $namaPegawai = $_POST['namapegawai'];
-        $usernamePegawai = $_POST['username'];
-        $passwordPegawai = $_POST['password'];
-        $emailPegawai = $_POST['email'];
-        $notelpPegawai = $_POST['notelpPG'];
-
-        if ($this->prosesStore($nikPegawai, $namaPegawai, $usernamePegawai, $passwordPegawai, $emailPegawai, $notelpPegawai)) {
-            header("location: index.php?page=Pegawai&aksi=viewPegawai&pesan=Berhasil Tambah Data");
-        } else {
-            header("location: index.php?page=Pegawai&aksi=viewPegawai&pesan=Gagal Tambah Data");
-        }
     }
 
     /**
@@ -132,53 +91,18 @@ class PegawaiModel
     }
 
     /**
-     * function ini berfungsi untuk menampilkan halaman edit pegawai
-     * juga mengambil salah satu data dari database berdasarkan id
-     * function membutuhkan data id dengan metode http request GET
-     */
-
-    public function editPegawai()
-    {
-        $id = $_GET['id'];
-        $data = $this->getById($id);
-        extract($data);
-        require_once("View/Pegawai/editPegawai.php");
-    }
-
-    /**
      * Function ini berfungsi untuk memproses update ke database
      */
 
-    public function prosesUpdate($idPegawai, $nikPegawai, $namaPegawai, $usernamePegawai, $passwordPegawai, $emailPegawai, $notelpPegawai)
+    public function prosesUpdate($idPegawai, $nikPegawai, $namaPegawai, $usernamePegawai, $passwordPegawai, $emailPegawai, $notelpPegawai, $jabatanID)
     {
         $sql = "UPDATE pegawai 
          SET nama_pegawai = '$namaPegawai', nik_pegawai = '$nikPegawai', 
          username_pegawai = '$usernamePegawai', password_pegawai = '$passwordPegawai', 
-         email_pegawai = '$emailPegawai', notelp_pegawai = '$notelpPegawai'
+         email_pegawai = '$emailPegawai', notelp_pegawai = '$notelpPegawai, jabatan_id = $jabatanID'
          WHERE id_pegawai = $idPegawai";
         $query = koneksi()->query($sql);
         return $query;
-    }
-
-    /**
-     * Function ini berfungsi untuk update pegawai
-     */
-
-    public function updatePegawai()
-    {
-        $idPegawai = $_POST['idPG'];
-        $nikPegawai = $_POST['NIK'];
-        $namaPegawai = $_POST['namapegawai'];
-        $usernamePegawai = $_POST['username'];
-        $passwordPegawai = $_POST['password'];
-        $emailPegawai = $_POST['email'];
-        $notelpPegawai = $_POST['notelpPG'];
-
-        if ($this->prosesUpdate($idPegawai, $nikPegawai, $namaPegawai, $usernamePegawai, $passwordPegawai, $emailPegawai, $notelpPegawai)) {
-            header("location: index.php?page=Pegawai&aksi=viewPegawai&pesan=Berhasil Ubah Data");
-        } else {
-            header("location: index.php?page=Pegawai&aksi=viewPegawai&pesan=Gagal Ubah Data");
-        }
     }
 
     /**
@@ -190,19 +114,5 @@ class PegawaiModel
     {
         $sql = "DELETE FROM pegawai WHERE id_pegawai = $idPegawai";
         return koneksi()->query($sql);
-    }
-
-    /**
-     * Function delete berfungsi untuk menghapus pegawai
-     */
-
-    public function deletePegawai()
-    {
-        $idPegawai = $_GET['id'];
-        if ($this->prosesDelete($idPegawai)) {
-            header("location: index.php?page=Pegawai&aksi=viewPegawai&pesan=Berhasil Delete Data");
-        } else {
-            header("location: index.php?page=Pegawai&aksi=viewPegawai&pesan=Gagal Delete Data");
-        }
     }
 }

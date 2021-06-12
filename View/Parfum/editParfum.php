@@ -8,7 +8,6 @@
             <div class="card-body ml-2 mr-2">
                 <form action="index.php?page=Parfum&aksi=updateParfum" method="POST">
                     <input type="hidden" name="idParfum" value="<?= $data['id_parfum'] ?>">
-                    <input type="hidden" name="idPegawai" value="<?= $_SESSION['pegawai']['id_pegawai'] ?>">
                     <div class="form-group">
                         <label for="kategoriP">Kategori</label>
                         <select name="kategoriP" class="form-control" style="width: 200px;">
@@ -20,19 +19,19 @@
                     </div>
                     <div class="form-group">
                         <label for="namaparfum">Nama Parfum</label>
-                        <input type="text" name="namaparfum" class="form-control" value="<?= $data['nama_parfum'] ?>">
+                        <input type="text" name="namaparfum" class="form-control" value="<?= $data['nama_parfum'] ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="expired">Tanggal Expired</label>
-                        <input type="date" name="expired" class="form-control" value="<?= $data['expired_parfum'] ?>">
+                        <input type="date" name="expired" class="form-control" value="<?= $data['expired_parfum'] ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="stok">Stok</label>
-                        <input type="number" name="stok" class="form-control" value="<?= $data['stok'] ?>">
+                        <input type="number" name="stok" class="form-control" value="<?= $data['stok'] ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="hargaparfum">Harga Satuan</label>
-                        <input type="number" name="hargaparfum" class="form-control" value="<?= $data['harga_parfum'] ?>">
+                        <input type="number" name="hargaparfum" class="form-control" value="<?= $data['harga_parfum'] ?>" required>
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle mr-2"></i>Simpan</button>
                 </form>

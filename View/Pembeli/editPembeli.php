@@ -11,13 +11,13 @@
                 <div class="form-group row">
                     <label for="namaPembeli" class="col-sm-2 col-form-label">Nama Pembeli</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="namaPembeli" value="<?= $data['nama_pembeli'] ?>">
+                        <input type="text" class="form-control" name="namaPembeli" value="<?= $data['nama_pembeli'] ?>" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="notelpPembeli" class="col-sm-2 col-form-label">No Telp Pembeli</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="notelpPembeli" value="<?= $data['notelp_pembeli'] ?>">
+                        <input type="text" class="form-control" name="notelpPembeli" value="<?= $data['notelp_pembeli'] ?>" required>
                     </div>
                 </div>
                 <div class="form-group row">

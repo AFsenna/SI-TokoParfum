@@ -6,31 +6,40 @@
                 <h5>Edit Pegawai</h5>
             </div>
             <div class="card-body ml-2 mr-2">
-                <form action="index.php?page=Admin&aksi=updatePegawai" method="POST">
+                <form action="index.php?page=Pegawai&aksi=updatePegawai" method="POST">
                     <input type="hidden" name="idPG" value="<?= $data['id_pegawai'] ?>">
                     <div class="form-group">
+                        <label for="jabatan">Jabatan</label>
+                        <select name="jabatan" class="form-control" style="width: 200px;">
+                            <option value="">- Pilih Jabatan</option>
+                            <?php foreach ($jabatan as $row) : ?>
+                                <option value="<?= $row['id_jabatan'] ?>" <?= $row['id_jabatan'] == $data['jabatan_id'] ? 'selected' : ''; ?>><?= $row['nama_jabatan'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="NIK">NIK</label>
-                        <input type="text" name="NIK" class="form-control" value="<?= $data['nik_pegawai'] ?>">
+                        <input type="text" name="NIK" class="form-control" value="<?= $data['nik_pegawai'] ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="namapegawai">Nama</label>
-                        <input type="text" name="namapegawai" class="form-control" value="<?= $data['nama_pegawai'] ?>">
+                        <input type="text" name="namapegawai" class="form-control" value="<?= $data['nama_pegawai'] ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" name="username" class="form-control" value="<?= $data['username_pegawai'] ?>">
+                        <input type="text" name="username" class="form-control" value="<?= $data['username_pegawai'] ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" value="<?= $data['password_pegawai'] ?>">
+                        <input type="password" name="password" class="form-control" value="<?= $data['password_pegawai'] ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="notelpPG">Nomor Telepon</label>
-                        <input type="text" name="notelpPG" class="form-control" value="<?= $data['notelp_pegawai'] ?>">
+                        <input type="text" name="notelpPG" class="form-control" value="<?= $data['notelp_pegawai'] ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" name="email" class="form-control" value="<?= $data['email_pegawai'] ?>">
+                        <input type="text" name="email" class="form-control" value="<?= $data['email_pegawai'] ?>" required>
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle mr-2"></i>Simpan</button>
                 </form>

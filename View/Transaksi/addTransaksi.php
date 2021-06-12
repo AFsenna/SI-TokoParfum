@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group">
                         <label for="jumlah">Jumlah Parfum</label>
-                        <input type="number" name="jumlahParfum" class="form-control">
+                        <input type="number" name="jumlahParfum" class="form-control" required>
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle mr-2"></i>Tambahkan</button>
                 </form>

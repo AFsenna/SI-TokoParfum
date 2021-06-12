@@ -46,19 +46,6 @@ class TransaksiModel
     }
 
     /**
-     * Untuk mengatur tampilan awal transaksi
-     */
-
-    public function index()
-    {
-        $data = $this->get();
-        $pembeli = $this->getPembeli();
-        extract($data);
-        extract($pembeli);
-        require_once("View/Transaksi/index.php");
-    }
-
-    /**
      * Function prosesStore berfungsi untuk input data transaksi
      */
 
@@ -84,7 +71,7 @@ class TransaksiModel
 
     public function getLast()
     {
-        $sql = "SELECT id_transaksi from transaksi
+        $sql = "SELECT id_transaksi+1 from transaksi
         ORDER BY id_transaksi DESC 
         LIMIT 1";
 
@@ -92,24 +79,6 @@ class TransaksiModel
         return $query->fetch_assoc();
     }
 
-    /**
-     * Function store berfungsi untuk memproses data untuk di tambahkan
-     * Fungsi ini membutuhkan data pembeli_id, pegawai_id dengan metode http request POST
-     */
-
-    public function createTransaksi()
-    {
-        $pembeli_id = $_POST['idPembeli'];
-        $pegawai_id = $_SESSION['pegawai']['id_pegawai'];
-        $idTransaksi = $this->getLast();
-        if ($this->prosesStore($pembeli_id, $pegawai_id)) {
-            if ($this->updateStatusPembeli($pembeli_id)) {
-                header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&idTransaksi=" . $idTransaksi['id_transaksi']);
-            }
-        } else {
-            header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Tambah Data");
-        }
-    }
 
     /**
      * Function ini digunakan untuk mendapatkan data tabel parfum
@@ -173,22 +142,6 @@ class TransaksiModel
     }
 
     /**
-     * Function ini digunakan untuk menuju tampilan add detail transaksi
-     */
-
-    public function addDetailTransaksi()
-    {
-        $idTransaksi = $_GET['idTransaksi'];
-        $detailTransaksi = $this->getDetailTransaksi($idTransaksi);
-        $pembeli = $this->getNamaPembeli($idTransaksi);
-        $parfum = $this->getParfum();
-        extract($detailTransaksi);
-        extract($pembeli);
-        extract($parfum);
-        require_once("View/Transaksi/addTransaksi.php");
-    }
-
-    /**
      * Function prosesStore berfungsi untuk proses input data detailTransaksi
      */
 
@@ -212,34 +165,6 @@ class TransaksiModel
     }
 
     /**
-     * Function store berfungsi untuk memproses data untuk di tambahkan
-     * Fungsi ini membutuhkan data parfum_id,jumlahParfum dengan metode http request POST
-     * dan transaksi_id dengan metode http request GET
-     */
-
-    public function storeDetailTransaksi()
-    {
-        $parfumID = $_POST['IDparfum'];
-        $transaksiID = $_POST['idTransaksi'];
-        $jumlahParfum = $_POST['jumlahParfum'];
-        $Parfum = $this->getParfumByID($parfumID);
-
-        if ($jumlahParfum > $Parfum['stok']) {
-            header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Tambah Data Jumlah Parfum Melebihi Stok!!!!!&idTransaksi=" . $transaksiID);
-        } else {
-            if ($this->updateStokParfum($Parfum['stok'], $jumlahParfum, $parfumID)) {
-                if ($this->prosesStoreDetailTransaksi($parfumID, $transaksiID, $jumlahParfum)) {
-                    header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Berhasil Tambah Data&idTransaksi=" . $transaksiID);
-                } else {
-                    header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Tambah Data&idTransaksi=" . $transaksiID);
-                }
-            } else {
-                header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Update Stok Parfum&idTransaksi=" . $transaksiID);
-            }
-        }
-    }
-
-    /**
      * Function delete berfungsi untuk menghapus data detail_transaksi dari database
      * @param Integer parfumID berisi id parfum
      * @param Integer transaksiID berisi id transaksi
@@ -252,23 +177,7 @@ class TransaksiModel
     }
 
     /**
-     * Function delete berfungsi untuk menghapus detail_transaksi
-     */
-
-    public function deleteDetailTransaksi()
-    {
-        $parfumID = $_GET['idParfum'];
-        $transaksiID = $_GET['idTransaksi'];
-
-        if ($this->prosesDeleteDetailTransaksi($parfumID, $transaksiID)) {
-            header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Berhasil Delete Data&idTransaksi=" . $transaksiID);
-        } else {
-            header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Delete Data&idTransaksi=" . $transaksiID);
-        }
-    }
-
-    /**
-     * 
+     * Function ini digunakan untuk mendapatkan total harga
      */
 
     public function getTotalHarga($idTransaksi)
@@ -280,24 +189,6 @@ class TransaksiModel
         WHERE detail_transaksi.transaksi_id = $idTransaksi ";
         $query = koneksi()->query($sql);
         return $query->fetch_assoc();
-    }
-
-    /**
-     * Function viewCheckout berfungsi untuk menuju halaman checkout transaksi
-     */
-
-    public function viewCheckout()
-    {
-        $idTransaksi = $_GET['idTransaksi'];
-        $detailTransaksi = $this->getDetailTransaksi($idTransaksi);
-        $pembeli = $this->getNamaPembeli($idTransaksi);
-        $parfum = $this->getParfum();
-        $total = $this->getTotalHarga($idTransaksi);
-        extract($detailTransaksi);
-        extract($pembeli);
-        extract($parfum);
-        extract($total);
-        require_once("View/Transaksi/checkoutTransaksi.php");
     }
 
     /**
@@ -314,38 +205,39 @@ class TransaksiModel
     }
 
     /**
-     * function ini digunakan untuk melakukan checkout
-     */
-
-    public function sudahCheckout()
-    {
-        $idTransaksi = $_GET['idTransaksi'];
-        $tunai = $_POST['tunai'];
-        $totalHarga = $_POST['totalH'];
-        if (($tunai >= $totalHarga)) {
-            if ($this->prosesCheckout($idTransaksi)) {
-                header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Checkout&idTransaksi=" . $idTransaksi);
-            } else {
-                header("location: index.php?page=Transaksi&aksi=checkoutTransaksi&pesan=Gagal checkout&idTransaksi=" . $idTransaksi);
-            }
-        } else {
-            header("location: index.php?page=Transaksi&aksi=checkoutTransaksi&pesan=Gagal Checkout Uang Kurang&idTransaksi=" . $idTransaksi);
-        }
-    }
-
-    /**
-     * Function getTransaksiByID digunakan untuk mendapatkan data Transaksi berdasarkan id
+     * Function ini digunakan untuk mendapatkan data transaksi dari database
      */
 
     public function getTransaksiByID($idTransaksi)
     {
+        $sql = "SELECT transaksi.tanggal, pembeli.nama_pembeli, pembeli.notelp_pembeli, 
+        pegawai.nama_pegawai  FROM transaksi
+        JOIN pembeli ON transaksi.pembeli_id = pembeli.id_pembeli
+        JOIN pegawai ON transaksi.pegawai_id = pegawai.id_pegawai
+        WHERE transaksi.id_transaksi = $idTransaksi";
+        $query = koneksi()->query($sql);
+        return $query->fetch_assoc();
     }
 
     /**
-     * Untuk mengatur tampilan halaman detail pembelian
+     * Function prosesAktifkan untuk mengupdatw status transaksi menjadi 0
+     * atau menjadi transaksi belum dicheckout
      */
 
-    public function viewDetailPembelian()
+    public function prosesAktifkan($idTransaksi)
     {
+        $sql = "UPDATE transaksi SET status_transaksi = 0 WHERE id_transaksi = $idTransaksi";
+        return koneksi()->query($sql);
+    }
+
+    /**
+     * Function prosesBatalkan untuk mengupdate status transaksi menjadi 2
+     * atau menjadi transaksi dibatalkan
+     */
+
+    public function prosesBatalkan($idTransaksi)
+    {
+        $sql = "UPDATE transaksi SET status_transaksi = 2 WHERE id_transaksi = $idTransaksi";
+        return koneksi()->query($sql);
     }
 }

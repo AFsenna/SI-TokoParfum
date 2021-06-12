@@ -10,7 +10,7 @@
                             <h5>Data Transaksi</h5>
                         </div>
                         <div class="col-md-6">
-                            <h6 class="float-right text-info">Nama Pegawai : Michael</h6>
+                            <h6 class="float-right text-info">Nama Pegawai : <?= $transaksi['nama_pegawai'] ?></h6>
                         </div>
                     </div>
                 </div>
@@ -19,15 +19,15 @@
                         <tbody>
                             <tr>
                                 <th width="20%">Tanggal Transaksi</th>
-                                <td> 20/10/2001</td>
+                                <td> <?= date('d-m-Y H:i:s', strtotime($transaksi['tanggal'])); ?></td>
                             </tr>
                             <tr>
                                 <th width="20%">Nama Pembeli</th>
-                                <td> Senna</td>
+                                <td> <?= $transaksi['nama_pembeli'] ?></td>
                             </tr>
                             <tr>
                                 <th width="20%">No. Telp Pembeli</th>
-                                <td> 043472384</td>
+                                <td> <?= $transaksi['notelp_pembeli'] ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -40,7 +40,7 @@
                             <h5>Detail Transaksi</h5>
                         </div>
                         <div class="col-md-6">
-                            <h6 class="float-right text-info">Total Harga : Rp. </h6>
+                            <h6 class="float-right text-info">Total Harga : Rp. <?= number_format($total['totalHarga'], 2, ',', '.') ?></h6>
                         </div>
                     </div>
                 </div>
@@ -56,11 +56,17 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td scope="row">1</td>
-                                <td>miami</td>
-                                <td>20</td>
-                                <td>Rp. 200000</td>
+                                <?php $no = 1;
+                                foreach ($detailTransaksi as $row) : ?>
+                            <tr>
+                                <td scope="row"><?= $no ?></td>
+                                <td><?= $row['nama_parfum'] ?></td>
+                                <td><?= $row['jumlah_parfum'] ?></td>
+                                <td>Rp. <?= number_format($row['jumlah_harga'], 2, ',', '.') ?></td>
                             </tr>
+                        <?php $no++;
+                                endforeach; ?>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

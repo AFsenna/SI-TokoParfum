@@ -15,7 +15,7 @@
    <div class="modal fade show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
        <div class="modal-dialog modal-lg" role="document">
            <div class="modal-content">
-               <div class="card" style="width: 53rem; height: 28rem;">
+               <div class="card" style="width: 53rem; height: 31rem;">
                    <div class="card-header text-light" style="background-color: #0F5675;">
                        <center>
                            <h4>My Profile</h4>
@@ -24,7 +24,7 @@
                    <div class="card-body">
                        <div class="row no-gutters mt-4">
                            <img src="assets/images/profilepicture.png" style="height: 250px; width: 250px">
-                           <div class="card ml-5" style="width: 31rem; height: 17rem;">
+                           <div class="card ml-5" style="width: 31rem; height: 20rem;">
                                <div class="row">
                                    <div class="col-md-5 ml-2 mt-3">
                                        <label>NIK</label>
@@ -32,6 +32,18 @@
                                    <div class="col-md-5 mt-3">
                                        <?php
                                         $tampil = $_SESSION['pegawai']['nik_pegawai'];
+                                        echo ": $tampil";
+                                        ?>
+                                   </div>
+                               </div>
+                               <hr>
+                               <div class="row">
+                                   <div class="col-md-5 ml-2">
+                                       <label>Jabatan</label>
+                                   </div>
+                                   <div class="col-md-5">
+                                       <?php
+                                        $tampil = $_SESSION['jabatan'];
                                         echo ": $tampil";
                                         ?>
                                    </div>

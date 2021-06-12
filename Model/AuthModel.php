@@ -3,15 +3,6 @@ class AuthModel
 {
 
     /**
-     * Untuk mengatur tampilan awal / login
-     */
-
-    public function index()
-    {
-        require_once("View/Auth/index.php");
-    }
-
-    /**
      * Untuk mengatur proses auth pegawai
      */
 
@@ -23,30 +14,13 @@ class AuthModel
     }
 
     /**
-     * untuk auth pegawai
+     * untuk mendapatkan jabatan administrasi
      */
 
-    public function authPegawai()
+    public function getJabatan($idJabatan)
     {
-        $username = $_POST['usernamePG'];
-        $password = $_POST['passwordPG'];
-        $data = $this->proses_authPegawai($username, $password);
-        if ($data) {
-            $_SESSION['role'] = 'Pegawai';
-            $_SESSION['pegawai'] = $data;
-            header("location: index.php?page=Pegawai&aksi=view&pesan=Berhasil login");
-        } else {
-            header("location: index.php?page=Auth&aksi=loginPegawai&pesan=Username atau password salah!!");
-        }
-    }
-
-    /**
-     * Function ini digunakan untuk logout dan destroy session
-     */
-
-    public function logout()
-    {
-        session_destroy();
-        header("location: index.php?page=Auth&aksi=view&pesan=Berhasil logout");
+        $sql = "SELECT * FROM jabatan WHERE id_jabatan=$idJabatan";
+        $query = koneksi()->query($sql);
+        return $query->fetch_assoc();
     }
 }

@@ -53,7 +53,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Rp.</div>
                                 </div>
-                                <input type="text" id="tunai" class="form-control" name="tunai">
+                                <input type="text" id="tunai" class="form-control" name="tunai" required>
                             </div>
                         </div>
                     </div>

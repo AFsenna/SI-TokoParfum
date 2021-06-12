@@ -11,7 +11,7 @@
                     <div class="form-group row">
                         <label for="inputKategori" class="col-sm-2 col-form-label">Nama Kategori</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="gender" value="<?= $data['gender'] ?>">
+                            <input type="text" class="form-control" name="gender" value="<?= $data['gender'] ?>" required>
                         </div>
                     </div>
                     <div class="form-group row">

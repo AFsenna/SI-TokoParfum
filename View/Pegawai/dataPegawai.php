@@ -6,7 +6,7 @@
                 <div class="float-left mt-2">
                     <h5>Data Pegawai</h5>
                 </div>
-                <a href="index.php?page=Admin&aksi=addPegawai" class=" btn btn-success float-right"><i class="fas fa-user-plus mr-2"></i>Tambah Pegawai</a>
+                <a href="index.php?page=Pegawai&aksi=addPegawai" class=" btn btn-success float-right"><i class="fas fa-user-plus mr-2"></i>Tambah Pegawai</a>
             </div>
             <div class="card-body">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -34,8 +34,8 @@
                                     <td><?= $row['email_pegawai']; ?></td>
                                     <td><?= $row['username_pegawai']; ?></td>
                                     <td><?= $row['password_pegawai']; ?></td>
-                                    <td><a href="index.php?page=Admin&aksi=editPegawai&id=<?= $row['id_pegawai'] ?>" class="btn btn-sm btn-warning text-white rounded p-2 mb-2"><i class="fas fa-user-edit ml-1" data-toggle="tooltip" title="Update Data"></i></a>
-                                        <a href="index.php?page=Admin&aksi=deletePegawai&id=<?= $row['id_pegawai'] ?>" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
+                                    <td><a href="index.php?page=Pegawai&aksi=editPegawai&id=<?= $row['id_pegawai'] ?>" class="btn btn-sm btn-warning text-white rounded p-2 mb-2"><i class="fas fa-user-edit ml-1" data-toggle="tooltip" title="Update Data"></i></a>
+                                        <a href="index.php?page=Pegawai&aksi=deletePegawai&id=<?= $row['id_pegawai'] ?>" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
                                     </td>
                                 </tr>
                             <?php $no++;

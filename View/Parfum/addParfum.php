@@ -7,7 +7,6 @@
             </div>
             <div class="card-body ml-2 mr-2">
                 <form action="index.php?page=Parfum&aksi=storeParfum" method="POST">
-                    <input type="hidden" name="idPegawai" value="<?= $_SESSION['pegawai']['id_pegawai'] ?>">
                     <div class="form-group">
                         <label for="kategoriP">Kategori</label>
                         <select name="kategoriP" class="form-control">
@@ -19,15 +18,15 @@
                     </div>
                     <div class="form-group">
                         <label for="namaparfum">Nama Parfum</label>
-                        <input type="text" name="namaparfum" class="form-control">
+                        <input type="text" name="namaparfum" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="expired">Tanggal Expired</label>
-                        <input type="date" name="expired" class="form-control">
+                        <input type="date" name="expired" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="stok">Stok</label>
-                        <input type="number" name="stok" class="form-control">
+                        <input type="number" name="stok" class="form-control" required>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 ">Harga Satuan</label>
@@ -36,7 +35,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Rp.</div>
                                 </div>
-                                <input type="number" name="hargaparfum" class="form-control">
+                                <input type="number" name="hargaparfum" class="form-control" required>
                             </div>
                         </div>
                     </div>

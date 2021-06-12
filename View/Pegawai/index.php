@@ -9,7 +9,7 @@
                     </div>
                     <h5 class="card-title">Pegawai Aktif</h5>
                     <div class="display-4"><strong><?= $pegawai['jumlahPegawai'] ?></strong></div>
-                    <a href="index.php?page=Admin&aksi=viewPegawai">
+                    <a href="index.php?page=Pegawai&aksi=dataPegawai">
                         <p class="card-text text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></p>
                     </a>
                 </div>

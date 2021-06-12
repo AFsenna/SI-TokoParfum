@@ -6,7 +6,16 @@
                 <h5>Tambah Pegawai</h5>
             </div>
             <div class="card-body ml-2 mr-2">
-                <form action="index.php?page=Admin&aksi=storePegawai" method="POST">
+                <form action="index.php?page=Pegawai&aksi=storePegawai" method="POST">
+                    <div class="form-group">
+                        <label for="jabatan">Jabatan</label>
+                        <select name="jabatan" class="form-control">
+                            <option value="">- Pilih Jabatan</option>
+                            <?php foreach ($jabatan as $row) : ?>
+                                <option value="<?= $row['id_jabatan'] ?>"><?= $row['nama_jabatan'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="NIK">NIK</label>
                         <input type="text" name="NIK" class="form-control" required>
