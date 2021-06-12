@@ -10,6 +10,7 @@ class TransaksiModel
 
     /**
      * Function get berfungsi untuk mengambil seluruh data transaksi dari database
+     * COALESCE() untuk memberi data pengganti ketika datanya null
      */
 
     public function get()

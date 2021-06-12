@@ -9,7 +9,7 @@
                     </div>
                     <h5 class="card-title">Pegawai Aktif</h5>
                     <div class="display-4"><strong><?= $pegawai['jumlahPegawai'] ?></strong></div>
-                    <a href="index.php?page=Pegawai&aksi=dataPegawai">
+                    <a href="index.php?page=Pegawai&aksi=viewData">
                         <p class="card-text text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></p>
                     </a>
                 </div>
@@ -42,7 +42,7 @@
         <div class="row text-white" style="width: 990px;">
             <div class="card bg-grey ml-4">
                 <div class="card-header text-dark">
-                    <center><b>Penjualan Tahun Ini</b></center>
+                    <center><b>Pendapatan Tahun Ini</b></center>
                 </div>
                 <div class="card-body">
                     <div class="chart ml-1" style="width: 915px;height: 440px">
@@ -54,16 +54,10 @@
     </div>
     <script>
         var dataFirst = {
-            label: 'Kategori 1',
-            data: [12, 19, 3, 23, 2, 3, 7, 8, 9, 60, 11, 12],
-            lineTension: 0,
-            fill: false,
-            borderColor: 'red'
-        };
-
-        var dataSecond = {
-            label: "Kategori 2",
-            data: [13, 12, 55, 10, 9, 8, 7, 6, 5, 4, 3, 2],
+            label: 'Jumlah Pendapatan',
+            data: [<?php foreach ($pendapatan as $row) {
+                        echo $row['jumlahPendapatan'] . " , ";
+                    } ?>],
             lineTension: 0,
             fill: false,
             borderColor: 'blue'
@@ -85,7 +79,7 @@
             type: 'line',
             data: {
                 labels: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "October", "November", "Desember"],
-                datasets: [dataFirst, dataSecond]
+                datasets: [dataFirst]
             },
             options: chartOptions
         });

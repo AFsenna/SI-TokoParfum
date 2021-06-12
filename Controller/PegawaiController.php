@@ -20,9 +20,11 @@ class PegawaiController
         $pegawai = $this->model->CountPegawai();
         $stok = $this->model->CountStok();
         $transaksi = $this->model->CountTerjual();
+        $pendapatan = $this->model->getPendapatan();
         extract($pegawai);
         extract($stok);
         extract($transaksi);
+        extract($pendapatan);
         require_once("View/Pegawai/index.php");
     }
 

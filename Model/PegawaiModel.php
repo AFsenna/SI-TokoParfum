@@ -35,6 +35,33 @@ class PegawaiModel
     }
 
     /**
+     * Function ini digunakan untuk mendapatkan data pendapatan per bulan
+     * COALESCE() untuk memberi data pengganti ketika datanya null
+     * MONTH() untuk mengambil bulan
+     * YEAR() untuk mengambil tahun
+     */
+
+    public function getPendapatan()
+    {
+        $i = 1;
+        while ($i < 13) {
+            $sql = "SELECT COALESCE(sum(detail_transaksi.jumlah_parfum*parfum.harga_parfum),0) 
+            AS jumlahPendapatan
+            from detail_transaksi 
+            JOIN transaksi ON detail_transaksi.transaksi_id = transaksi.id_transaksi 
+            JOIN parfum ON detail_transaksi.parfum_id = parfum.id_parfum 
+            WHERE transaksi.status_transaksi=1 
+            AND MONTH(transaksi.tanggal)=$i 
+            AND YEAR(transaksi.tanggal)=YEAR(now())";
+            $query = koneksi()->query($sql);
+            $data = $query->fetch_assoc();
+            $hasil[$i] = $data;
+            $i++;
+        }
+        return $hasil;
+    }
+
+    /**
      * Function get berfungsi untuk mengambil seluruh data pegawai dari database
      */
 
