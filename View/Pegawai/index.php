@@ -14,7 +14,7 @@
                     </a>
                 </div>
             </div>
-            <div class="card ml-5 mb-5" style="width: 18rem; background-color:#04047c;">
+            <div class="card ml-5 mb-5" style="width: 18rem; background-color:#7776fe;">
                 <div class="card-body">
                     <div class="card-body-icon">
                         <i class="fas fa-air-freshener mr-2"></i>
@@ -26,7 +26,7 @@
                     </a>
                 </div>
             </div>
-            <div class="card bg-danger ml-5 mb-5" style="width: 18rem;">
+            <div class="card ml-5 mb-5" style="width: 18rem; background-color:#9e41f5;">
                 <div class="card-body">
                     <div class="card-body-icon">
                         <i class="fas fa-shopping-cart mr-2"></i>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="row text-white" style="width: 990px;">
-            <div class="card bg-grey ml-4">
+            <div class="card bg-grey border-info ml-4">
                 <div class="card-header text-dark">
                     <center><b>Pendapatan Tahun Ini</b></center>
                 </div>

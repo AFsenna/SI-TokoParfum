@@ -5,9 +5,6 @@ class PembeliModel
      * Pada Pembeli apabila :
      * status_pembeli = 0 = tidak aktif
      * status_pembeli = 1 = aktif
-     * status pembeli akan berubah menjadi tidak aktif secara otomatis apabila
-     * pembeli tidak membeli/melakukan transaksi/pembelian selama sebulan
-     * dan status pembeli menjadi aktif apabila melakukan/membuat transaksi
      */
 
     /**
@@ -60,5 +57,27 @@ class PembeliModel
          WHERE id_pembeli = $idPembeli";
         $query = koneksi()->query($sql);
         return $query;
+    }
+
+    /**
+     * Function prosesAktifkan untuk mengupdate status pembeli menjadi 1
+     * atau menjadi pembeli Aktif
+     */
+
+    public function prosesAktifkan($idPembeli)
+    {
+        $sql = "UPDATE pembeli SET status_pembeli = 1 WHERE id_pembeli = $idPembeli";
+        return koneksi()->query($sql);
+    }
+
+    /**
+     * Function prosesBatalkan untuk mengupdate status transaksi menjadi 0
+     * atau menjadi pembeli tidak Aktif
+     */
+
+    public function prosesNonAktifkan($idPembeli)
+    {
+        $sql = "UPDATE pembeli SET status_pembeli = 0 WHERE id_pembeli = $idPembeli";
+        return koneksi()->query($sql);
     }
 }

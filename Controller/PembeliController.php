@@ -79,4 +79,32 @@ class PembeliController
             header("location: index.php?page=Pembeli&aksi=view&pesan=Gagal Ubah Data");
         }
     }
+
+    /**
+     * Function Aktifkan untuk untuk mengaktifkan pembeli
+     */
+
+    public function aktifkan()
+    {
+        $idPembeli = $_GET['idPembeli'];
+        if ($this->model->prosesAktifkan($idPembeli)) {
+            header("location: index.php?page=Pembeli&aksi=view&pesan=Berhasil Aktifkan Pembeli&idPembeli=" . $idPembeli);
+        } else {
+            header("location: index.php?page=Pembeli&aksi=view&pesan=Gagal Aktifkan Stok Parfum&idPembeli=" . $idPembeli);
+        }
+    }
+
+    /**
+     * Function nonAktifkan untuk nonAktifkan pembeli
+     */
+
+    public function nonAktifkan()
+    {
+        $idPembeli = $_GET['idPembeli'];
+        if ($this->model->prosesNonAktifkan($idPembeli)) {
+            header("location: index.php?page=Pembeli&aksi=view&pesan=Berhasil Non-Aktifkan Pembeli&idPembeli=" . $idPembeli);
+        } else {
+            header("location: index.php?page=Pembeli&aksi=view&pesan=Gagal Non-Aktifkan Pembeli&idPembeli=" . $idPembeli);
+        }
+    }
 }

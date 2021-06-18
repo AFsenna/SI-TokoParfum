@@ -165,11 +165,14 @@ class TransaksiController
     public function aktifkan()
     {
         $idTransaksi = $_GET['idTransaksi'];
-
-        if ($this->model->prosesAktifkan($idTransaksi)) {
-            header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Aktifkan Transaksi&idTransaksi=" . $idTransaksi);
+        if ($this->model->updateStokParfum3($idTransaksi)) {
+            if ($this->model->prosesAktifkan($idTransaksi)) {
+                header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Batalkan Transaksi&idTransaksi=" . $idTransaksi);
+            } else {
+                header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Batalkan Transaksi&idTransaksi=" . $idTransaksi);
+            }
         } else {
-            header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Aktifkan Transaksi&idTransaksi=" . $idTransaksi);
+            header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Mengupdate Stok Parfum&idTransaksi=" . $idTransaksi);
         }
     }
 
@@ -180,11 +183,14 @@ class TransaksiController
     public function batalkan()
     {
         $idTransaksi = $_GET['idTransaksi'];
-
-        if ($this->model->prosesBatalkan($idTransaksi)) {
-            header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Batalkan Transaksi&idTransaksi=" . $idTransaksi);
+        if ($this->model->updateStokParfum2($idTransaksi)) {
+            if ($this->model->prosesBatalkan($idTransaksi)) {
+                header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Batalkan Transaksi&idTransaksi=" . $idTransaksi);
+            } else {
+                header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Batalkan Transaksi&idTransaksi=" . $idTransaksi);
+            }
         } else {
-            header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Batalkan Transaksi&idTransaksi=" . $idTransaksi);
+            header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Mengupdate Stok Parfum&idTransaksi=" . $idTransaksi);
         }
     }
 }

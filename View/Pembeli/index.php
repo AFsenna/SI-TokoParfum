@@ -33,7 +33,14 @@
                                         <span class="badge badge-pill badge-danger" style="width: 100px; font-size:15px;">Non-Aktif</span>
                                     <?php endif; ?>
                                 </td>
-                                <td><a href="index.php?page=Pembeli&aksi=editPembeli&id=<?= $row['id_pembeli'] ?>" class="btn btn-sm btn-warning text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a></td>
+                                <td>
+                                    <a href="index.php?page=Pembeli&aksi=editPembeli&id=<?= $row['id_pembeli'] ?>" class="btn btn-sm btn-warning text-white rounded p-2 mr-1"><i class="fas fa-edit mr-1 ml-1" data-toggle="tooltip" title="Update Data"></i></a>
+                                    <?php if ($row['status_pembeli'] == 1) : ?>
+                                        <a href="index.php?page=Pembeli&aksi=nonAktifkan&idPembeli=<?= $row['id_pembeli'] ?>" class="btn btn-outline-danger btn-sm p-2 mr-1"><i class="fa fa-times mr-1 ml-1" data-toggle="tooltip" title="Non-Aktifkan Pembeli"></a></i>
+                                    <?php elseif ($row['status_pembeli'] == 0) : ?>
+                                        <a href="index.php?page=Pembeli&aksi=aktifkan&idPembeli=<?= $row['id_pembeli'] ?>" class="btn btn-outline-success btn-sm text-dark"><i class="fa fa-check mr-1 ml-1" data-toggle="tooltip" title="Aktifkan Pembeli"></a></i>
+                                    <?php endif; ?>
+                                </td>
                             </tr>
                         <?php $no++;
                         endforeach; ?>

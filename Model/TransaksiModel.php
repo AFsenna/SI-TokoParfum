@@ -47,41 +47,6 @@ class TransaksiModel
     }
 
     /**
-     * Function prosesStore berfungsi untuk input data transaksi
-     */
-
-    public function prosesStore($pembeli_id, $pegawai_id)
-    {
-        $sql = "INSERT INTO transaksi(pembeli_id,pegawai_id,tanggal,status_transaksi) VALUES($pembeli_id,$pegawai_id,now(),0)";
-        return koneksi()->query($sql);
-    }
-
-    /**
-     * Function updateStatusPembeli untuk update status pembeli menjadi aktif
-     */
-
-    public function updateStatusPembeli($pembeli_id)
-    {
-        $sql = "UPDATE pembeli SET status_pembeli = 1 WHERE id_pembeli = $pembeli_id";
-        return koneksi()->query($sql);
-    }
-
-    /**
-     * Function ini digunakan untuk mendapatkan id terakhir tabel transaksi
-     */
-
-    public function getLast()
-    {
-        $sql = "SELECT id_transaksi+1 from transaksi
-        ORDER BY id_transaksi DESC 
-        LIMIT 1";
-
-        $query = koneksi()->query($sql);
-        return $query->fetch_assoc();
-    }
-
-
-    /**
      * Function ini digunakan untuk mendapatkan data tabel parfum
      */
 
@@ -143,41 +108,6 @@ class TransaksiModel
     }
 
     /**
-     * Function prosesStore berfungsi untuk proses input data detailTransaksi
-     */
-
-    public function prosesStoreDetailTransaksi($parfumID, $transaksiID, $jumlahParfum)
-    {
-        $sql = "INSERT INTO detail_transaksi(parfum_id,transaksi_id,jumlah_parfum) VALUES($parfumID,$transaksiID,$jumlahParfum)";
-        return koneksi()->query($sql);
-    }
-
-    /**
-     * Function updateStokParfum berfungsi untuk mengupdate jumlah stok parfum
-     * stokParfum - jumlahParfum
-     */
-
-    public function updateStokParfum($stokParfum, $jumlahParfum, $parfumID)
-    {
-        $hitung = $stokParfum - $jumlahParfum;
-        $sql = "UPDATE parfum SET stok = $hitung WHERE id_parfum = $parfumID";
-        $query = koneksi()->query($sql);
-        return $query;
-    }
-
-    /**
-     * Function delete berfungsi untuk menghapus data detail_transaksi dari database
-     * @param Integer parfumID berisi id parfum
-     * @param Integer transaksiID berisi id transaksi
-     */
-
-    public function prosesDeleteDetailTransaksi($parfumID, $transaksiID)
-    {
-        $sql = "DELETE FROM detail_transaksi WHERE parfum_id=$parfumID AND transaksi_id = $transaksiID";
-        return koneksi()->query($sql);
-    }
-
-    /**
      * Function ini digunakan untuk mendapatkan total harga
      */
 
@@ -193,19 +123,6 @@ class TransaksiModel
     }
 
     /**
-     * Function checkout Transaksi untuk mengubah status transaksi menjadi
-     * sudah checkout
-     */
-
-    public function prosesCheckout($idTransaksi)
-    {
-        $sql = "UPDATE transaksi SET status_transaksi=1,tanggal=now() 
-        where id_Transaksi = $idTransaksi";
-        $query = koneksi()->query($sql);
-        return $query;
-    }
-
-    /**
      * Function ini digunakan untuk mendapatkan data transaksi dari database
      */
 
@@ -218,6 +135,65 @@ class TransaksiModel
         WHERE transaksi.id_transaksi = $idTransaksi";
         $query = koneksi()->query($sql);
         return $query->fetch_assoc();
+    }
+
+    /**
+     * Function ini digunakan untuk mendapatkan id terakhir tabel transaksi
+     */
+
+    public function getLast()
+    {
+        $sql = "SELECT id_transaksi+1 from transaksi
+        ORDER BY id_transaksi DESC 
+        LIMIT 1";
+
+        $query = koneksi()->query($sql);
+        return $query->fetch_assoc();
+    }
+
+    /**
+     * Function prosesStore berfungsi untuk input data transaksi
+     */
+
+    public function prosesStore($pembeli_id, $pegawai_id)
+    {
+        $sql = "INSERT INTO transaksi(pembeli_id,pegawai_id,tanggal,status_transaksi) VALUES($pembeli_id,$pegawai_id,now(),0)";
+        return koneksi()->query($sql);
+    }
+
+    /**
+     * Function prosesStore berfungsi untuk proses input data detailTransaksi
+     */
+
+    public function prosesStoreDetailTransaksi($parfumID, $transaksiID, $jumlahParfum)
+    {
+        $sql = "INSERT INTO detail_transaksi(parfum_id,transaksi_id,jumlah_parfum) VALUES($parfumID,$transaksiID,$jumlahParfum)";
+        return koneksi()->query($sql);
+    }
+
+    /**
+     * Function delete berfungsi untuk menghapus data detail_transaksi dari database
+     * @param Integer parfumID berisi id parfum
+     * @param Integer transaksiID berisi id transaksi
+     */
+
+    public function prosesDeleteDetailTransaksi($parfumID, $transaksiID)
+    {
+        $sql = "DELETE FROM detail_transaksi WHERE parfum_id=$parfumID AND transaksi_id = $transaksiID";
+        return koneksi()->query($sql);
+    }
+
+    /**
+     * Function checkout Transaksi untuk mengubah status transaksi menjadi
+     * sudah checkout
+     */
+
+    public function prosesCheckout($idTransaksi)
+    {
+        $sql = "UPDATE transaksi SET status_transaksi=1,tanggal=now() 
+        where id_Transaksi = $idTransaksi";
+        $query = koneksi()->query($sql);
+        return $query;
     }
 
     /**
@@ -240,5 +216,64 @@ class TransaksiModel
     {
         $sql = "UPDATE transaksi SET status_transaksi = 2 WHERE id_transaksi = $idTransaksi";
         return koneksi()->query($sql);
+    }
+
+    /**
+     * Function updateStatusPembeli untuk update status pembeli menjadi aktif
+     */
+
+    public function updateStatusPembeli($pembeli_id)
+    {
+        $sql = "UPDATE pembeli SET status_pembeli = 1 WHERE id_pembeli = $pembeli_id";
+        return koneksi()->query($sql);
+    }
+
+    /**
+     * Function updateStokParfum berfungsi untuk mengupdate jumlah stok parfum
+     * stokParfum - jumlahParfum
+     */
+
+    public function updateStokParfum($stokParfum, $jumlahParfum, $parfumID)
+    {
+        $hitung = $stokParfum - $jumlahParfum;
+        $sql = "UPDATE parfum SET stok = $hitung WHERE id_parfum = $parfumID";
+        $query = koneksi()->query($sql);
+        return $query;
+    }
+
+    /**
+     * Function ini digunakan untuk mengupdate stok parfum ketika transaksi dibatalkan
+     */
+
+    public function updateStokParfum2($idTransaksi)
+    {
+        $detailTransaksi = $this->getDetailTransaksi($idTransaksi);
+        foreach ($detailTransaksi as $row) {
+            $parfumID = $row['parfum_id'];
+            $parfum = $this->getParfumByID($parfumID);
+            $jumlahParfum = $row['jumlah_parfum'] + $parfum['stok'];
+            $sql = "UPDATE parfum SET stok = $jumlahParfum
+            WHERE id_parfum = $parfumID";
+            $query = koneksi()->query($sql);
+        }
+        return $query;
+    }
+
+    /**
+     * Function ini digunakan untuk mengupdate stok parfum ketika transaksi diaktifkan
+     */
+
+    public function updateStokParfum3($idTransaksi)
+    {
+        $detailTransaksi = $this->getDetailTransaksi($idTransaksi);
+        foreach ($detailTransaksi as $row) {
+            $parfumID = $row['parfum_id'];
+            $parfum = $this->getParfumByID($parfumID);
+            $jumlahParfum = $parfum['stok'] - $row['jumlah_parfum'];
+            $sql = "UPDATE parfum SET stok = $jumlahParfum
+            WHERE id_parfum = $parfumID";
+            $query = koneksi()->query($sql);
+        }
+        return $query;
     }
 }

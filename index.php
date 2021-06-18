@@ -60,7 +60,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             }
             require_once("View/Menu/footer.php");
         } else {
-            header("location: index.php?page=Kategori&aksi=view&pesan=Anda Bukan Pegawai Administrasi Cabriz Parfum");
+            header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
         }
     } else if ($page == "Pegawai") {
         require_once("View/Menu/header.php");
@@ -85,7 +85,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                     echo "Method Not Found";
                 }
             } else {
-                header("location: index.php?page=Pegawai&aksi=viewData&pesan=Anda Bukan Pegawai Administrasi Cabriz Parfum");
+                header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
             }
         }
         require_once("View/Menu/footer.php");
@@ -110,7 +110,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                     echo "Method Not Found";
                 }
             } else {
-                header("location: index.php?page=Kategori&aksi=view&pesan=Anda Bukan Pegawai Administrasi Cabriz Parfum");
+                header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
             }
         }
         require_once("View/Menu/footer.php");
@@ -135,7 +135,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                     echo "Method Not Found";
                 }
             } else {
-                header("location: index.php?page=Parfum&aksi=view&pesan=Anda Bukan Pegawai Administrasi Cabriz Parfum");
+                header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
             }
         }
         require_once("View/Menu/footer.php");
@@ -154,11 +154,15 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                     $pembeli->editPembeli();
                 } else if ($aksi == 'updatePembeli') {
                     $pembeli->updatePembeli();
+                } else if ($aksi == 'aktifkan') {
+                    $pembeli->aktifkan();
+                } else if ($aksi == 'nonAktifkan') {
+                    $pembeli->nonAktifkan();
                 } else {
                     echo "Method Not Found";
                 }
             } else {
-                header("location: index.php?page=Pembeli&aksi=view&pesan=Anda Bukan Pegawai Administrasi Cabriz Parfum");
+                header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
             }
         }
         require_once("View/Menu/footer.php");
@@ -193,7 +197,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                     echo "Method Not Found";
                 }
             } else {
-                header("location: index.php?page=Transaksi&aksi=view&pesan=Anda Bukan Kasir Cabriz Parfum");
+                header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Kasir Cabriz Parfum");
             }
         }
         require_once("View/Menu/footer.php");
