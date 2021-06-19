@@ -22,7 +22,7 @@
                         foreach ($detailTransaksi as $row) : ?>
                             <tr>
                                 <td scope="row"><?= $no ?></td>
-                                <td><?= $row['nama_parfum'] ?></td>
+                                <td><?= ucfirst($row['nama_parfum']) ?></td>
                                 <td><?= $row['jumlah_parfum'] ?></td>
                                 <td>Rp. <?= number_format($row['jumlah_harga'], 2, ',', '.') ?></td>
                             </tr>

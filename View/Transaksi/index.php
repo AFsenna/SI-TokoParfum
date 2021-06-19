@@ -15,7 +15,7 @@
                         <select name="idPembeli" class="form-control">
                             <option value="">- Pilih Nama -</option>
                             <?php foreach ($pembeli as $row) : ?>
-                                <option value="<?= $row['id_pembeli'] ?>"><?= $row['nama_pembeli'] ?></option>
+                                <option value="<?= $row['id_pembeli'] ?>"><?= ucfirst($row['nama_pembeli']) ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -44,15 +44,9 @@
                         <th colspan="1" scope="col">
                             <center>Status</center>
                         </th>
-                        <?php
-                        if ($_SESSION['jabatan'] == 'Kasir') :
-                        ?>
-                            <th colspan="1" scope="col">
-                                <center>Aksi</center>
-                            </th>
-                        <?php
-                        endif
-                        ?>
+                        <th colspan="1" scope="col">
+                            <center>Aksi</center>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,7 +55,7 @@
                         <tr>
                             <td scope="row"><?= $no ?></td>
                             <td><?= date('d-m-Y H:i:s', strtotime($row['tanggal'])); ?></td>
-                            <td><?= $row['nama_pembeli'] ?></td>
+                            <td><?= ucfirst($row['nama_pembeli']) ?></td>
                             <td>Rp. <?= number_format($row['total_harga'], 2, ',', '.') ?></td>
                             <td>
                                 <?php if ($row['status_transaksi'] == 0) : ?>
@@ -72,22 +66,29 @@
                                     <span class="badge badge-pill badge-danger" style="width: 170px; font-size:15px;">Transaksi Dibatalkan</span>
                                 <?php endif; ?>
                             </td>
-                            <?php
-                            if ($_SESSION['jabatan'] == 'Kasir') :
-                            ?>
-                                <td>
-                                    <?php if ($row['status_transaksi'] == 0) : ?>
-                                        <a href="index.php?page=Transaksi&aksi=Keranjang&idTransaksi=<?= $row['id_transaksi'] ?>" class="btn btn-outline-warning btn-sm text-dark"><i class="fa fa-shopping-basket mr-1 ml-1" data-toggle="tooltip" title="Lihat Keranjang"></a></i>
+                            <td>
+                                <?php if ($row['status_transaksi'] == 0) : ?>
+                                    <a href="index.php?page=Transaksi&aksi=Keranjang&idTransaksi=<?= $row['id_transaksi'] ?>" class="btn btn-outline-warning btn-sm text-dark"><i class="fa fa-shopping-basket mr-1 ml-1" data-toggle="tooltip" title="Lihat Keranjang"></a></i>
+                                    <?php
+                                    if ($_SESSION['jabatan'] == 'Kasir') :
+                                    ?>
                                         <a href="index.php?page=Transaksi&aksi=batalkan&idTransaksi=<?= $row['id_transaksi'] ?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-times mr-1 ml-1" data-toggle="tooltip" title="Batalkan Transaksi"></a></i>
-                                    <?php elseif ($row['status_transaksi'] == 1) : ?>
-                                        <a href="index.php?page=Transaksi&aksi=detailPembelian&idTransaksi=<?= $row['id_transaksi'] ?>" class="btn btn-sm btn-outline-info"><i class="fas fa-eye mr-1 ml-1" data-toggle="tooltip" title="Detail Pembelian"></a></i>
-                                    <?php else : ?>
+                                    <?php
+                                    endif;
+                                    ?>
+                                <?php elseif ($row['status_transaksi'] == 1) : ?>
+                                    <a href="index.php?page=Transaksi&aksi=detailTransaksi&idTransaksi=<?= $row['id_transaksi'] ?>" class="btn btn-sm btn-outline-info"><i class="fas fa-eye mr-1 ml-1" data-toggle="tooltip" title="Detail Pembelian"></a></i>
+                                <?php else : ?>
+                                    <?php
+                                    if ($_SESSION['jabatan'] == 'Kasir') :
+                                    ?>
                                         <a href="index.php?page=Transaksi&aksi=aktifkan&idTransaksi=<?= $row['id_transaksi'] ?>" class="btn btn-outline-success btn-sm text-dark"><i class="fa fa-check mr-1 ml-1" data-toggle="tooltip" title="Aktifkan Transaksi"></a></i>
-                                    <?php endif; ?>
-                                </td>
-                            <?php
-                            endif
-                            ?>
+                                    <?php
+                                    endif;
+                                    ?>
+                                <?php endif; ?>
+                            </td>
+
                         </tr>
                     <?php $no++;
                     endforeach; ?>

@@ -40,167 +40,189 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             echo "Method Not Found";
         }
     } else if ($page == "Jabatan") {
-        if ($_SESSION['jabatan'] == 'Administrasi') {
-            require_once("View/Menu/header.php");
-            $jabatan = new JabatanController();
-            if ($aksi == 'view') {
-                $jabatan->index();
-            } else if ($aksi == 'addJabatan') {
-                $jabatan->addJabatan();
-            } else if ($aksi == 'storeJabatan') {
-                $jabatan->storeJabatan();
-            } else if ($aksi == 'editJabatan') {
-                $jabatan->editJabatan();
-            } else if ($aksi == 'updateJabatan') {
-                $jabatan->updateJabatan();
-            } else if ($aksi == 'deleteJabatan') {
-                $jabatan->deleteJabatan();
+        if ($_SESSION != NULL) {
+            if ($_SESSION['jabatan'] == 'Administrasi') {
+                require_once("View/Menu/header.php");
+                $jabatan = new JabatanController();
+                if ($aksi == 'view') {
+                    $jabatan->index();
+                } else if ($aksi == 'addJabatan') {
+                    $jabatan->addJabatan();
+                } else if ($aksi == 'storeJabatan') {
+                    $jabatan->storeJabatan();
+                } else if ($aksi == 'editJabatan') {
+                    $jabatan->editJabatan();
+                } else if ($aksi == 'updateJabatan') {
+                    $jabatan->updateJabatan();
+                } else if ($aksi == 'deleteJabatan') {
+                    $jabatan->deleteJabatan();
+                } else {
+                    echo "Method Not Found";
+                }
+                require_once("View/Menu/footer.php");
             } else {
-                echo "Method Not Found";
+                header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
+                session_destroy();
+            }
+        }
+    } else if ($page == "Pegawai") {
+        if ($_SESSION != NULL) {
+            require_once("View/Menu/header.php");
+            $pegawai = new PegawaiController();
+            if ($aksi == 'view') {
+                $pegawai->index();
+            } else {
+                if ($_SESSION['jabatan'] == 'Administrasi') {
+                    if ($aksi == 'viewData') {
+                        $pegawai->showPegawai();
+                    } else if ($aksi == 'addPegawai') {
+                        $pegawai->addPegawai();
+                    } else if ($aksi == 'storePegawai') {
+                        $pegawai->storePegawai();
+                    } else if ($aksi == 'editPegawai') {
+                        $pegawai->editPegawai();
+                    } else if ($aksi == 'updatePegawai') {
+                        $pegawai->updatePegawai();
+                    } else if ($aksi == 'deletePegawai') {
+                        $pegawai->deletePegawai();
+                    } else {
+                        echo "Method Not Found";
+                    }
+                } else {
+                    header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
+                    session_destroy();
+                }
             }
             require_once("View/Menu/footer.php");
         } else {
-            header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
+            header("location: index.php?page=Auth&aksi=view&pesan=Silahkan Login Terlebih Dahulu");
         }
-    } else if ($page == "Pegawai") {
-        require_once("View/Menu/header.php");
-        $pegawai = new PegawaiController();
-        if ($aksi == 'view') {
-            $pegawai->index();
-        } else {
-            if ($_SESSION['jabatan'] == 'Administrasi') {
-                if ($aksi == 'viewData') {
-                    $pegawai->showPegawai();
-                } else if ($aksi == 'addPegawai') {
-                    $pegawai->addPegawai();
-                } else if ($aksi == 'storePegawai') {
-                    $pegawai->storePegawai();
-                } else if ($aksi == 'editPegawai') {
-                    $pegawai->editPegawai();
-                } else if ($aksi == 'updatePegawai') {
-                    $pegawai->updatePegawai();
-                } else if ($aksi == 'deletePegawai') {
-                    $pegawai->deletePegawai();
-                } else {
-                    echo "Method Not Found";
-                }
-            } else {
-                header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
-            }
-        }
-        require_once("View/Menu/footer.php");
     } else if ($page == "Kategori") {
-        require_once("View/Menu/header.php");
-        $kategori = new KategoriController();
-        if ($aksi == 'view') {
-            $kategori->index();
-        } else {
-            if ($_SESSION['jabatan'] == 'Administrasi') {
-                if ($aksi == 'createKategori') {
-                    $kategori->addKategori();
-                } else if ($aksi == 'storeKategori') {
-                    $kategori->storeKategori();
-                } else if ($aksi == 'editKategori') {
-                    $kategori->editKategori();
-                } else if ($aksi == 'updateKategori') {
-                    $kategori->updateKategori();
-                } else if ($aksi == 'deleteKategori') {
-                    $kategori->deleteKategori();
-                } else {
-                    echo "Method Not Found";
-                }
+        if ($_SESSION != NULL) {
+            require_once("View/Menu/header.php");
+            $kategori = new KategoriController();
+            if ($aksi == 'view') {
+                $kategori->index();
             } else {
-                header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
+                if ($_SESSION['jabatan'] == 'Administrasi') {
+                    if ($aksi == 'createKategori') {
+                        $kategori->addKategori();
+                    } else if ($aksi == 'storeKategori') {
+                        $kategori->storeKategori();
+                    } else if ($aksi == 'editKategori') {
+                        $kategori->editKategori();
+                    } else if ($aksi == 'updateKategori') {
+                        $kategori->updateKategori();
+                    } else if ($aksi == 'deleteKategori') {
+                        $kategori->deleteKategori();
+                    } else {
+                        echo "Method Not Found";
+                    }
+                } else {
+                    header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
+                    session_destroy();
+                }
             }
+            require_once("View/Menu/footer.php");
         }
-        require_once("View/Menu/footer.php");
     } else if ($page == "Parfum") {
-        require_once("View/Menu/header.php");
-        $parfum = new ParfumController();
-        if ($aksi == 'view') {
-            $parfum->index();
-        } else {
-            if ($_SESSION['jabatan'] == 'Administrasi') {
-                if ($aksi == 'addParfum') {
-                    $parfum->addParfum();
-                } else if ($aksi == 'storeParfum') {
-                    $parfum->storeParfum();
-                } else if ($aksi == 'editParfum') {
-                    $parfum->editParfum();
-                } else if ($aksi == 'updateParfum') {
-                    $parfum->updateParfum();
-                } else if ($aksi == 'deleteParfum') {
-                    $parfum->deleteParfum();
-                } else {
-                    echo "Method Not Found";
-                }
+        if ($_SESSION != NULL) {
+            require_once("View/Menu/header.php");
+            $parfum = new ParfumController();
+            if ($aksi == 'view') {
+                $parfum->index();
             } else {
-                header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
+                if ($_SESSION['jabatan'] == 'Administrasi') {
+                    if ($aksi == 'addParfum') {
+                        $parfum->addParfum();
+                    } else if ($aksi == 'storeParfum') {
+                        $parfum->storeParfum();
+                    } else if ($aksi == 'editParfum') {
+                        $parfum->editParfum();
+                    } else if ($aksi == 'updateParfum') {
+                        $parfum->updateParfum();
+                    } else if ($aksi == 'deleteParfum') {
+                        $parfum->deleteParfum();
+                    } else {
+                        echo "Method Not Found";
+                    }
+                } else {
+                    header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
+                    session_destroy();
+                }
             }
+            require_once("View/Menu/footer.php");
         }
-        require_once("View/Menu/footer.php");
     } else if ($page == "Pembeli") {
-        require_once("View/Menu/header.php");
-        $pembeli = new PembeliController();
-        if ($aksi == 'view') {
-            $pembeli->index();
-        } else {
-            if ($_SESSION['jabatan'] == 'Administrasi') {
-                if ($aksi == 'addPembeli') {
-                    $pembeli->addPembeli();
-                } else if ($aksi == 'storePembeli') {
-                    $pembeli->storePembeli();
-                } else if ($aksi == 'editPembeli') {
-                    $pembeli->editPembeli();
-                } else if ($aksi == 'updatePembeli') {
-                    $pembeli->updatePembeli();
-                } else if ($aksi == 'aktifkan') {
-                    $pembeli->aktifkan();
-                } else if ($aksi == 'nonAktifkan') {
-                    $pembeli->nonAktifkan();
-                } else {
-                    echo "Method Not Found";
-                }
+        if ($_SESSION != NULL) {
+            require_once("View/Menu/header.php");
+            $pembeli = new PembeliController();
+            if ($aksi == 'view') {
+                $pembeli->index();
             } else {
-                header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
+                if ($_SESSION['jabatan'] == 'Kasir') {
+                    if ($aksi == 'addPembeli') {
+                        $pembeli->addPembeli();
+                    } else if ($aksi == 'storePembeli') {
+                        $pembeli->storePembeli();
+                    } else if ($aksi == 'editPembeli') {
+                        $pembeli->editPembeli();
+                    } else if ($aksi == 'updatePembeli') {
+                        $pembeli->updatePembeli();
+                    } else if ($aksi == 'aktifkan') {
+                        $pembeli->aktifkan();
+                    } else if ($aksi == 'nonAktifkan') {
+                        $pembeli->nonAktifkan();
+                    } else {
+                        echo "Method Not Found";
+                    }
+                } else {
+                    header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
+                    session_destroy();
+                }
             }
+            require_once("View/Menu/footer.php");
         }
-        require_once("View/Menu/footer.php");
     } else if ($page == "Transaksi") {
-        require_once("View/Menu/header.php");
-        $transaksi = new TransaksiController();
-        if ($aksi == 'view') {
-            $transaksi->index();
-        } else if ($aksi == 'detailPembelian') {
-            $transaksi->viewDetailPembelian();
-        } else {
-            if ($_SESSION['jabatan'] == 'Kasir') {
-                if ($aksi == 'createTransaksi') {
-                    $transaksi->createTransaksi();
-                } else if ($aksi == 'addDetailTransaksi') {
-                    $transaksi->addDetailTransaksi();
-                } else if ($aksi == 'storeDetailTransaksi') {
-                    $transaksi->storeDetailTransaksi();
-                } else if ($aksi == 'deleteDetailTransaksi') {
-                    $transaksi->deleteDetailTransaksi();
-                } else if ($aksi == 'checkoutTransaksi') {
-                    $transaksi->viewCheckout();
-                } else if ($aksi == 'sudahCheckout') {
-                    $transaksi->sudahCheckout();
+        if ($_SESSION != NULL) {
+            if ($_SESSION['jabatan'] == 'Administrasi' || $_SESSION['jabatan'] == 'Kasir') {
+                require_once("View/Menu/header.php");
+                $transaksi = new TransaksiController();
+                if ($aksi == 'view') {
+                    $transaksi->index();
+                } else if ($aksi == 'detailTransaksi') {
+                    $transaksi->viewDetailTransaksi();
                 } else if ($aksi == 'Keranjang') {
                     $transaksi->addDetailTransaksi();
-                } else if ($aksi == 'aktifkan') {
-                    $transaksi->aktifkan();
-                } else if ($aksi == 'batalkan') {
-                    $transaksi->batalkan();
                 } else {
-                    echo "Method Not Found";
+                    if ($_SESSION['jabatan'] == 'Kasir') {
+                        if ($aksi == 'createTransaksi') {
+                            $transaksi->createTransaksi();
+                        } else if ($aksi == 'addDetailTransaksi') {
+                            $transaksi->addDetailTransaksi();
+                        } else if ($aksi == 'storeDetailTransaksi') {
+                            $transaksi->storeDetailTransaksi();
+                        } else if ($aksi == 'deleteDetailTransaksi') {
+                            $transaksi->deleteDetailTransaksi();
+                        } else if ($aksi == 'checkoutTransaksi') {
+                            $transaksi->viewCheckout();
+                        } else if ($aksi == 'sudahCheckout') {
+                            $transaksi->sudahCheckout();
+                        } else if ($aksi == 'aktifkan') {
+                            $transaksi->aktifkan();
+                        } else if ($aksi == 'batalkan') {
+                            $transaksi->batalkan();
+                        } else {
+                            echo "Method Not Found";
+                        }
+                    } else {
+                        header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Kasir Cabriz Parfum");
+                        session_destroy();
+                    }
                 }
-            } else {
-                header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Kasir Cabriz Parfum");
+                require_once("View/Menu/footer.php");
             }
         }
-        require_once("View/Menu/footer.php");
     }
 } else {
     header("location: index.php?page=Auth&aksi=view");

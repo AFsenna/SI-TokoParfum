@@ -12,7 +12,7 @@
                         <select name="kategoriP" class="form-control">
                             <option value="">- Pilih Kategori</option>
                             <?php foreach ($kategori as $row) : ?>
-                                <option value="<?= $row['id_kategori'] ?>"><?= $row['gender'] ?></option>
+                                <option value="<?= $row['id_kategori'] ?>"><?= ucfirst($row['gender']) ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

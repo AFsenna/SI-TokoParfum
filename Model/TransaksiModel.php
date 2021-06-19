@@ -152,6 +152,19 @@ class TransaksiModel
     }
 
     /**
+     * Function ini digunakan untuk mengecek apakah parfum sudah diinputkan pada 
+     * database detail_transaksi sebelumnya
+     */
+
+    public function getCekParfum($idTransaksi, $idParfum)
+    {
+        $sql = "SELECT * FROM detail_transaksi 
+        WHERE transaksi_id = $idTransaksi AND parfum_id = $idParfum";
+        $query = koneksi()->query($sql);
+        return $query->fetch_assoc();
+    }
+
+    /**
      * Function prosesStore berfungsi untuk input data transaksi
      */
 
@@ -167,8 +180,18 @@ class TransaksiModel
 
     public function prosesStoreDetailTransaksi($parfumID, $transaksiID, $jumlahParfum)
     {
-        $sql = "INSERT INTO detail_transaksi(parfum_id,transaksi_id,jumlah_parfum) VALUES($parfumID,$transaksiID,$jumlahParfum)";
-        return koneksi()->query($sql);
+        $detailTransaksi = $this->getCekParfum($transaksiID, $parfumID);
+        if ($detailTransaksi != NULL) {
+            $jumlahDibeli = $detailTransaksi['jumlah_parfum'] + $jumlahParfum;
+            $sql = "UPDATE detail_transaksi SET jumlah_parfum = $jumlahDibeli
+            WHERE parfum_id = $parfumID AND transaksi_id = $transaksiID";
+            $query = koneksi()->query($sql);
+            return $query;
+        } else {
+            $sql = "INSERT INTO detail_transaksi(parfum_id,transaksi_id,jumlah_parfum) 
+            VALUES($parfumID,$transaksiID,$jumlahParfum)";
+            return koneksi()->query($sql);
+        }
     }
 
     /**
@@ -274,6 +297,19 @@ class TransaksiModel
             WHERE id_parfum = $parfumID";
             $query = koneksi()->query($sql);
         }
+        return $query;
+    }
+
+    /**
+     * Function updateStokParfum berfungsi untuk mengupdate jumlah stok parfum ketika delete
+     * stokParfum + jumlahParfum
+     */
+
+    public function updateStokParfum4($stokParfum, $jumlahParfum, $parfumID)
+    {
+        $hitung = $stokParfum + $jumlahParfum;
+        $sql = "UPDATE parfum SET stok = $hitung WHERE id_parfum = $parfumID";
+        $query = koneksi()->query($sql);
         return $query;
     }
 }

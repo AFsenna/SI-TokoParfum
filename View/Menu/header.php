@@ -47,10 +47,12 @@
             </p>
             <div class="collapse" id="collapseExample">
                 <div class="card card-body" style="width: 190px;">
-                    <a class="navcollapse nav-link active text-dark" href="index.php?page=Jabatan&aksi=view"><i class="fa fa-user mr-2"></i>Jabatan</a>
-                    <hr class="bg-secondary" style="width: 150px;">
-                    <a class="navcollapse nav-link active text-dark" href="index.php?page=Pegawai&aksi=viewData"><i class="fa fa-users mr-2"></i>Pegawai</a>
-                    <hr class="bg-secondary" style="width: 150px;">
+                    <?php if ($_SESSION['jabatan'] == 'Administrasi') : ?>
+                        <a class="navcollapse nav-link active text-dark" href="index.php?page=Jabatan&aksi=view"><i class="fa fa-user mr-2"></i>Jabatan</a>
+                        <hr class="bg-secondary" style="width: 150px;">
+                        <a class="navcollapse nav-link active text-dark" href="index.php?page=Pegawai&aksi=viewData"><i class="fa fa-users mr-2"></i>Pegawai</a>
+                        <hr class="bg-secondary" style="width: 150px;">
+                    <?php endif; ?>
                     <a class="navcollapse nav-link active text-dark" href="index.php?page=Kategori&aksi=view"><i class="fas fa-clipboard-list mr-2"></i>Kategori</a>
                     <hr class="bg-secondary" style="width: 150px;">
                     <a class="navcollapse nav-link active text-dark" href="index.php?page=Parfum&aksi=view"><i class="fas fa-air-freshener mr-2"></i>Parfum</a>

@@ -98,11 +98,17 @@ class TransaksiController
     {
         $parfumID = $_GET['idParfum'];
         $transaksiID = $_GET['idTransaksi'];
+        $jumlahParfum = $_GET['JumlahParfum'];
+        $Parfum = $this->model->getParfumByID($parfumID);
 
-        if ($this->model->prosesDeleteDetailTransaksi($parfumID, $transaksiID)) {
-            header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Berhasil Delete Data&idTransaksi=" . $transaksiID);
+        if ($this->model->updateStokParfum4($Parfum['stok'], $jumlahParfum, $parfumID)) {
+            if ($this->model->prosesDeleteDetailTransaksi($parfumID, $transaksiID)) {
+                header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Berhasil Delete Data&idTransaksi=" . $transaksiID);
+            } else {
+                header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Delete Data&idTransaksi=" . $transaksiID);
+            }
         } else {
-            header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Delete Data&idTransaksi=" . $transaksiID);
+            header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal update stok parfum&Parfum_id=" . $parfumID);
         }
     }
 
@@ -146,7 +152,7 @@ class TransaksiController
      * Untuk mengatur tampilan halaman detail pembelian
      */
 
-    public function viewDetailPembelian()
+    public function viewDetailTransaksi()
     {
         $idTransaksi = $_GET['idTransaksi'];
         $detailTransaksi = $this->model->getDetailTransaksi($idTransaksi);
@@ -155,7 +161,7 @@ class TransaksiController
         extract($detailTransaksi);
         extract($transaksi);
         extract($total);
-        require_once("View/Transaksi/detailPembelian.php");
+        require_once("View/Transaksi/detailTransaksi.php");
     }
 
     /**

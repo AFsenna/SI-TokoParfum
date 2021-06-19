@@ -12,7 +12,7 @@
                         <select name="jabatan" class="form-control">
                             <option value="">- Pilih Jabatan</option>
                             <?php foreach ($jabatan as $row) : ?>
-                                <option value="<?= $row['id_jabatan'] ?>"><?= $row['nama_jabatan'] ?></option>
+                                <option value="<?= $row['id_jabatan'] ?>"><?= ucfirst($row['nama_jabatan']) ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

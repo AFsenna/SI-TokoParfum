@@ -34,7 +34,7 @@
                         foreach ($data as $row) : ?>
                             <tr>
                                 <th scope="row"><?= $no ?></th>
-                                <td><?= $row['gender'] ?></td>
+                                <td><?= ucfirst($row['gender']) ?></td>
                                 <?php
                                 if ($_SESSION['jabatan'] == 'Administrasi') :
                                 ?>

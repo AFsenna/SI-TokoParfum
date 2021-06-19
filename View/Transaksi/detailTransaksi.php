@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-striped table-bordered">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -55,18 +55,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <?php $no = 1;
-                                foreach ($detailTransaksi as $row) : ?>
-                            <tr>
-                                <td scope="row"><?= $no ?></td>
-                                <td><?= $row['nama_parfum'] ?></td>
-                                <td><?= $row['jumlah_parfum'] ?></td>
-                                <td>Rp. <?= number_format($row['jumlah_harga'], 2, ',', '.') ?></td>
-                            </tr>
-                        <?php $no++;
-                                endforeach; ?>
-                        </tr>
+                            <?php $no = 1;
+                            foreach ($detailTransaksi as $row) : ?>
+                                <tr>
+                                    <td scope="row"><?= $no ?></td>
+                                    <td><?= $row['nama_parfum'] ?></td>
+                                    <td><?= $row['jumlah_parfum'] ?></td>
+                                    <td>Rp. <?= number_format($row['jumlah_harga'], 2, ',', '.') ?></td>
+                                </tr>
+                            <?php $no++;
+                            endforeach; ?>
                         </tbody>
                     </table>
                 </div>

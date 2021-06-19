@@ -28,10 +28,10 @@
                             foreach ($data as $row) : ?>
                                 <tr>
                                     <th scope="row"><?= $no ?></th>
-                                    <td><?= $row['nama_pegawai']; ?></td>
-                                    <td><?= $row['nama_jabatan']; ?></td>
+                                    <td><?= ucfirst($row['nama_pegawai']); ?></td>
+                                    <td><?= ucfirst($row['nama_jabatan']); ?></td>
                                     <td><?= $row['notelp_pegawai']; ?></td>
-                                    <td><?= $row['email_pegawai']; ?></td>
+                                    <td><?= ucfirst($row['email_pegawai']); ?></td>
                                     <td><?= $row['username_pegawai']; ?></td>
                                     <td><?= $row['password_pegawai']; ?></td>
                                     <td><a href="index.php?page=Pegawai&aksi=editPegawai&id=<?= $row['id_pegawai'] ?>" class="btn btn-sm btn-warning text-white rounded p-2 mb-2"><i class="fas fa-user-edit ml-1" data-toggle="tooltip" title="Update Data"></i></a>

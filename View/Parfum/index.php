@@ -38,8 +38,8 @@
                         foreach ($data as $row) : ?>
                             <tr>
                                 <td scope="row"><?= $no ?></td>
-                                <td><?= $row['nama_parfum'] ?></td>
-                                <td><?= $row['nama_kategori'] ?></td>
+                                <td><?= ucfirst($row['nama_parfum']) ?></td>
+                                <td><?= ucfirst($row['nama_kategori']) ?></td>
                                 <td><?= $row['expired_parfum'] ?></td>
                                 <td><?= $row['stok'] ?></td>
                                 <td>Rp. <?= number_format($row['harga_parfum'], 2, ',', '.') ?></td>
