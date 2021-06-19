@@ -13,10 +13,19 @@
                         <input type="hidden" name="idTransaksi" value="<?= $_GET['idTransaksi'] ?>">
                         <div class="form-group">
                             <label for="parfum">Parfum</label>
-                            <select name="IDparfum" class="form-control">
-                                <option value="">- Pilih Parfum -</option>
-                                <?php foreach ($parfum as $row) : ?>
-                                    <option value="<?= $row['id_parfum'] ?>"><?= ucfirst($row['nama_parfum']) . " || Stok = " . $row['stok'] ?></option>
+                            <select name="IDparfum" class="form-control select2">
+                                <option value="" selected>--- Pilih Parfum ---</option>
+                                <?php foreach ($kategori as $baris) : ?>
+                                    <option value="" disabled="disabled">- <?= $baris['gender'] ?> -</option>
+                                    <?php
+                                    foreach ($parfum as $row) :
+                                        if ($baris['id_kategori'] == $row['kategori_id']) : ?>
+                                            <option value="<?= $row['id_parfum'] ?>">
+                                                <?= ucfirst($row['nama_parfum']) . " || Stok = " . $row['stok'] . " || Rp " . number_format($row['harga_parfum'], 2, ',', '.') ?>
+                                            </option>
+                                    <?php
+                                        endif;
+                                    endforeach; ?>
                                 <?php endforeach; ?>
                             </select>
                         </div>

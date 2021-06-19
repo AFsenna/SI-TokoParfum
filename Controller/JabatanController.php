@@ -42,9 +42,9 @@ class JabatanController
         $namaJabatan = $_POST['namaJabatan'];
 
         if ($this->model->prosesStore($namaJabatan)) {
-            header("location: index.php?page=Jabatan&aksi=view&pesan=Berhasil Tambah Data");
+            echo ("<script>location.href = 'index.php?page=Jabatan&aksi=view&pesan=Berhasil Tambah Data';</script>");
         } else {
-            header("location: index.php?page=Jabatan&aksi=view&pesan=Gagal Tambah Data");
+            echo ("<script>location.href = 'index.php?page=Jabatan&aksi=view&pesan=Gagal Tambah Data';</script>");
         }
     }
 
@@ -71,9 +71,9 @@ class JabatanController
         $namaJabatan = $_POST['namaJabatan'];
 
         if ($this->model->prosesUpdate($idJabatan, $namaJabatan)) {
-            header("location: index.php?page=Jabatan&aksi=view&pesan=Berhasil Ubah Data");
+            echo ("<script>location.href = 'index.php?page=Jabatan&aksi=view&pesan=Berhasil Ubah Data';</script>");
         } else {
-            header("location: index.php?page=Jabatan&aksi=view&pesan=Gagal Ubah Data");
+            echo ("<script>location.href = 'index.php?page=Jabatan&aksi=view&pesan=Gagal Ubah Data';</script>");
         }
     }
 
@@ -85,9 +85,9 @@ class JabatanController
     {
         $idJabatan = $_GET['id'];
         if ($this->model->prosesDelete($idJabatan)) {
-            header("location: index.php?page=Jabatan&aksi=view&pesan=Berhasil Delete Data");
+            echo ("<script>location.href = 'index.php?page=Jabatan&aksi=view&pesan=Berhasil Delete Data';</script>");
         } else {
-            header("location: index.php?page=Jabatan&aksi=view&pesan=Gagal Delete Data");
+            echo ("<script>location.href = 'index.php?page=Jabatan&aksi=view&pesan=Gagal Delete Data';</script>");
         }
     }
 }

@@ -1,7 +1,7 @@
 <?php
 class TransaksiController
 {
-    private $model;
+    private $model, $kategori;
 
     /**
      * Function ini adalah constructor yang berguna menginisialisasi obyek transaksi Model
@@ -10,6 +10,7 @@ class TransaksiController
     public function __construct()
     {
         $this->model = new TransaksiModel();
+        $this->kategori = new KategoriModel();
     }
 
     /**
@@ -56,6 +57,8 @@ class TransaksiController
         $detailTransaksi = $this->model->getDetailTransaksi($idTransaksi);
         $pembeli = $this->model->getNamaPembeli($idTransaksi);
         $parfum = $this->model->getParfum();
+        $kategori = $this->kategori->get();
+        extract($kategori);
         extract($detailTransaksi);
         extract($pembeli);
         extract($parfum);

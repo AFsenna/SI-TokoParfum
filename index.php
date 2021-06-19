@@ -23,6 +23,7 @@ require_once("Controller/PegawaiController.php");
 require_once("Controller/PembeliController.php");
 require_once("Controller/TransaksiController.php");
 
+
 //Routing dari URL ke Obyek Class PHP
 if (isset($_GET['page']) && isset($_GET['aksi'])) {
     session_start();
@@ -64,6 +65,8 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                 header("location: index.php?page=Auth&aksi=view&pesan=Anda Bukan Administrasi Cabriz Parfum");
                 session_destroy();
             }
+        } else {
+            header("location: index.php?page=Auth&aksi=view&pesan=Silahkan Login Terlebih Dahulu");
         }
     } else if ($page == "Pegawai") {
         if ($_SESSION != NULL) {
@@ -98,9 +101,9 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             header("location: index.php?page=Auth&aksi=view&pesan=Silahkan Login Terlebih Dahulu");
         }
     } else if ($page == "Kategori") {
+        $kategori = new KategoriController();
         if ($_SESSION != NULL) {
             require_once("View/Menu/header.php");
-            $kategori = new KategoriController();
             if ($aksi == 'view') {
                 $kategori->index();
             } else {
@@ -124,6 +127,8 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                 }
             }
             require_once("View/Menu/footer.php");
+        } else {
+            header("location: index.php?page=Auth&aksi=view&pesan=Silahkan Login Terlebih Dahulu");
         }
     } else if ($page == "Parfum") {
         if ($_SESSION != NULL) {
@@ -152,6 +157,8 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                 }
             }
             require_once("View/Menu/footer.php");
+        } else {
+            header("location: index.php?page=Auth&aksi=view&pesan=Silahkan Login Terlebih Dahulu");
         }
     } else if ($page == "Pembeli") {
         if ($_SESSION != NULL) {
@@ -182,6 +189,8 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                 }
             }
             require_once("View/Menu/footer.php");
+        } else {
+            header("location: index.php?page=Auth&aksi=view&pesan=Silahkan Login Terlebih Dahulu");
         }
     } else if ($page == "Transaksi") {
         if ($_SESSION != NULL) {
@@ -222,6 +231,8 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                 }
                 require_once("View/Menu/footer.php");
             }
+        } else {
+            header("location: index.php?page=Auth&aksi=view&pesan=Silahkan Login Terlebih Dahulu");
         }
     }
 } else {

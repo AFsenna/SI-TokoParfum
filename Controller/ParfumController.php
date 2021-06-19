@@ -48,9 +48,9 @@ class ParfumController
         $stok = $_POST['stok'];
 
         if ($this->model->prosesStore($kategori_id, $nama_parfum, $expired, $harga, $stok)) {
-            header("location: index.php?page=Parfum&aksi=view&pesan=Berhasil Tambah Data");
+            echo ("<script>location.href = 'index.php?page=Parfum&aksi=view&pesan=Berhasil Tambah Data';</script>");
         } else {
-            header("location: index.php?page=Parfum&aksi=view&pesan=Gagal Tambah Data");
+            echo ("<script>location.href = 'index.php?page=Parfum&aksi=view&pesan=Gagal Tambah Data';</script>");
         }
     }
 
@@ -84,9 +84,9 @@ class ParfumController
         $stok = $_POST['stok'];
 
         if ($this->model->prosesUpdate($idParfum, $kategori_id, $nama_parfum, $expired, $harga, $stok)) {
-            header("location: index.php?page=Parfum&aksi=view&pesan=Berhasil Ubah Data");
+            echo ("<script>location.href = 'index.php?page=Parfum&aksi=view&pesan=Berhasil Ubah Data';</script>");
         } else {
-            header("location: index.php?page=Parfum&aksi=editParfum&pesan=Gagal Ubah Data");
+            echo ("<script>location.href = 'index.php?page=Parfum&aksi=editParfum&pesan=Gagal Ubah Data';</script>");
         }
     }
 
@@ -98,9 +98,9 @@ class ParfumController
     {
         $idParfum = $_GET['id'];
         if ($this->model->prosesDelete($idParfum)) {
-            header("location: index.php?page=Parfum&aksi=view&pesan=Berhasil Delete Data");
+            echo ("<script>location.href = 'index.php?page=Parfum&aksi=view&pesan=Berhasil Delete Data';</script>");
         } else {
-            header("location: index.php?page=Parfum&aksi=view&pesan=Gagal Delete Data");
+            echo ("<script>location.href = 'index.php?page=Parfum&aksi=view&pesan=Gagal Delete Data';</script>");
         }
     }
 }

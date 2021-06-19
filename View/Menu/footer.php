@@ -11,6 +11,8 @@
 
    <script src="assets/js/popper.min.js"></script>
    <script src="assets/js/bootstrap.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
    <!-- Modal -->
    <div class="modal fade show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
        <div class="modal-dialog modal-lg" role="document">
@@ -103,6 +105,7 @@
                lengthChange: true,
            });
            $('[data-toggle="tooltip"]').tooltip();
+           $('.select2').select2();
        });
    </script>
 

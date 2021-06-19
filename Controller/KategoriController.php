@@ -42,9 +42,9 @@ class KategoriController
         $gender = $_POST['gender'];
 
         if ($this->model->prosesStore($gender)) {
-            header("location: index.php?page=Kategori&aksi=view&pesan=Berhasil Tambah Data");
+            echo ("<script>location.href = 'index.php?page=Kategori&aksi=view&pesan=Berhasil Tambah Data';</script>");
         } else {
-            header("location: index.php?page=Kategori&aksi=view&pesan=Gagal Tambah Data");
+            echo ("<script>location.href = 'index.php?page=Kategori&aksi=view&pesan=Gagal Tambah Data';</script>");
         }
     }
 
@@ -71,9 +71,9 @@ class KategoriController
         $gender = $_POST['gender'];
 
         if ($this->model->prosesUpdate($idKategori, $gender)) {
-            header("location: index.php?page=Kategori&aksi=view&pesan=Berhasil Ubah Data");
+            echo ("<script>location.href = 'index.php?page=Kategori&aksi=view&pesan=Berhasil Ubah Data';</script>");
         } else {
-            header("location: index.php?page=Kategori&aksi=view&pesan=Gagal Ubah Data");
+            echo ("<script>location.href = 'index.php?page=Kategori&aksi=view&pesan=Gagal Ubah Data';</script>");
         }
     }
 
@@ -85,9 +85,9 @@ class KategoriController
     {
         $idKategori = $_GET['id'];
         if ($this->model->prosesDelete($idKategori)) {
-            header("location: index.php?page=Kategori&aksi=view&pesan=Berhasil Delete Data");
+            echo ("<script>location.href = 'index.php?page=Kategori&aksi=view&pesan=Berhasil Delete Data';</script>");
         } else {
-            header("location: index.php?page=Kategori&aksi=view&pesan=Gagal Delete Data");
+            echo ("<script>location.href = 'index.php?page=Kategori&aksi=view&pesan=Gagal Delete Data';</script>");
         }
     }
 }

@@ -19,7 +19,7 @@
                     <div class="card-body-icon">
                         <i class="fas fa-air-freshener mr-2"></i>
                     </div>
-                    <h5 class="card-title">Stok Parfum</h5>
+                    <h5 class="card-title">Persedian Parfum</h5>
                     <div class="display-4"><strong><?= $stok['stokParfum'] ?></strong></div>
                     <a href="index.php?page=Parfum&aksi=view">
                         <p class="card-text text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></p>

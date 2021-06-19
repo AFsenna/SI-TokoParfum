@@ -12,10 +12,10 @@
                 <form action="index.php?page=Transaksi&aksi=createTransaksi" method="POST">
                     <div class="form-group">
                         <label for="namaPembeli">Nama Pembeli</label>
-                        <select name="idPembeli" class="form-control">
+                        <select name="idPembeli" class="form-control select2">
                             <option value="">- Pilih Nama -</option>
                             <?php foreach ($pembeli as $row) : ?>
-                                <option value="<?= $row['id_pembeli'] ?>"><?= ucfirst($row['nama_pembeli']) ?></option>
+                                <option value="<?= $row['id_pembeli'] ?>"><?= ucfirst($row['nama_pembeli']) . ' || notelp : ' . $row['notelp_pembeli']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

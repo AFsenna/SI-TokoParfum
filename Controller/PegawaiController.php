@@ -66,9 +66,9 @@ class PegawaiController
         $jabatanID = $_POST['jabatan'];
 
         if ($this->model->prosesStore($nikPegawai, $namaPegawai, $usernamePegawai, $passwordPegawai, $emailPegawai, $notelpPegawai, $jabatanID)) {
-            header("location: index.php?page=Pegawai&aksi=viewData&pesan=Berhasil Tambah Data");
+            echo ("<script>location.href = 'index.php?page=Pegawai&aksi=viewData&pesan=Berhasil Tambah Data';</script>");
         } else {
-            header("location: index.php?page=Pegawai&aksi=viewData&pesan=Gagal Tambah Data");
+            echo ("<script>location.href = 'index.php?page=Pegawai&aksi=viewData&pesan=Gagal Tambah Data';</script>");
         }
     }
 
@@ -104,9 +104,9 @@ class PegawaiController
         $jabatanID = $_POST['jabatan'];
 
         if ($this->model->prosesUpdate($idPegawai, $nikPegawai, $namaPegawai, $usernamePegawai, $passwordPegawai, $emailPegawai, $notelpPegawai, $jabatanID)) {
-            header("location: index.php?page=Pegawai&aksi=viewData&pesan=Berhasil Ubah Data");
+            echo ("<script>location.href = 'index.php?page=Pegawai&aksi=viewData&pesan=Berhasil Ubah Data';</script>");
         } else {
-            header("location: index.php?page=Pegawai&aksi=viewData&pesan=Gagal Ubah Data");
+            echo ("<script>location.href = 'index.php?page=Pegawai&aksi=viewData&pesan=Gagal Ubah Data';</script>");
         }
     }
 
@@ -118,9 +118,9 @@ class PegawaiController
     {
         $idPegawai = $_GET['id'];
         if ($this->model->prosesDelete($idPegawai)) {
-            header("location: index.php?page=Pegawai&aksi=viewData&pesan=Berhasil Delete Data");
+            echo ("<script>location.href = 'index.php?page=Pegawai&aksi=viewData&pesan=Berhasil Delete Data';</script>");
         } else {
-            header("location: index.php?page=Pegawai&aksi=viewData&pesan=Gagal Delete Data");
+            echo ("<script>location.href = 'index.php?page=Pegawai&aksi=viewData&pesan=Gagal Delete Data';</script>");
         }
     }
 }

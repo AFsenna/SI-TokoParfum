@@ -12,6 +12,7 @@
     <link href="assets/css/solid.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/allprogramview.css">
     <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -40,27 +41,34 @@
                 <a class="nav-link active text-white mt-3" href="index.php?page=Pegawai&aksi=view"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a>
                 <hr class="bg-secondary" style="width: 185px;">
             </li>
-            <p>
-                <button class="btn btn-dark ml-1" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fas fa-database mr-2"></i>Manage Data<i class="fas fa-caret-down ml-4"></i>
-                </button>
-            </p>
-            <div class="collapse" id="collapseExample">
-                <div class="card card-body" style="width: 190px;">
-                    <a class="navcollapse nav-link active text-dark" href="index.php?page=Jabatan&aksi=view"><i class="fa fa-user mr-2"></i>Jabatan</a>
-                    <hr class="bg-secondary" style="width: 150px;">
-                    <a class="navcollapse nav-link active text-dark" href="index.php?page=Pegawai&aksi=viewData"><i class="fa fa-users mr-2"></i>Pegawai</a>
-                    <hr class="bg-secondary" style="width: 150px;">
-                    <a class="navcollapse nav-link active text-dark" href="index.php?page=Kategori&aksi=view"><i class="fas fa-clipboard-list mr-2"></i>Kategori</a>
-                    <hr class="bg-secondary" style="width: 150px;">
-                    <a class="navcollapse nav-link active text-dark" href="index.php?page=Parfum&aksi=view"><i class="fas fa-air-freshener mr-2"></i>Parfum</a>
-                    <hr class="bg-secondary" style="width: 150px;">
-
+            <?php
+            if ($_SESSION['jabatan'] != 'Kasir') :
+            ?>
+                <p>
+                    <button class="btn btn-dark ml-1" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fas fa-database mr-2"></i>Manage Data<i class="fas fa-caret-down ml-4"></i>
+                    </button>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body" style="width: 190px;">
+                        <a class="navcollapse nav-link active text-dark" href="index.php?page=Jabatan&aksi=view"><i class="fa fa-user mr-2"></i>Jabatan</a>
+                        <hr class="bg-secondary" style="width: 150px;">
+                        <a class="navcollapse nav-link active text-dark" href="index.php?page=Pegawai&aksi=viewData"><i class="fa fa-users mr-2"></i>Pegawai</a>
+                        <hr class="bg-secondary" style="width: 150px;">
+                        <a class="navcollapse nav-link active text-dark" href="index.php?page=Kategori&aksi=view"><i class="fas fa-clipboard-list mr-2"></i>Kategori</a>
+                        <hr class="bg-secondary" style="width: 150px;">
+                        <a class="navcollapse nav-link active text-dark" href="index.php?page=Parfum&aksi=view"><i class="fas fa-air-freshener mr-2"></i>Parfum</a>
+                        <hr class="bg-secondary" style="width: 150px;">
+                    </div>
                 </div>
-            </div>
+                <li class="nav-item">
+                    <hr class="bg-secondary" style="width: 185px;">
+                </li>
+            <?php
+            endif;
+            ?>
             <li class="nav-item">
-                <hr class="bg-secondary" style="width: 185px;">
-                <a class="nav-link active text-white mt-3" href="index.php?page=Pembeli&aksi=view"><i class="fas fa-user-friends mr-2"></i>Pembeli</a>
+                <a class="nav-link active text-white" href="index.php?page=Pembeli&aksi=view"><i class="fas fa-user-friends mr-2"></i>Pembeli</a>
                 <hr class="bg-secondary" style="width: 185px;">
                 <a class="nav-link active text-white ml-1" href="index.php?page=Transaksi&aksi=view"><i class="fas fa-info-circle mr-2"></i>Transaksi</a>
                 <hr class="bg-secondary" style="width: 185px;">
