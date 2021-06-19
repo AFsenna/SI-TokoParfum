@@ -126,7 +126,7 @@ class PegawaiModel
         $sql = "UPDATE pegawai 
          SET nama_pegawai = '$namaPegawai', nik_pegawai = '$nikPegawai', 
          username_pegawai = '$usernamePegawai', password_pegawai = '$passwordPegawai', 
-         email_pegawai = '$emailPegawai', notelp_pegawai = '$notelpPegawai, jabatan_id = $jabatanID'
+         email_pegawai = '$emailPegawai', notelp_pegawai = '$notelpPegawai', jabatan_id = '$jabatanID'
          WHERE id_pegawai = $idPegawai";
         $query = koneksi()->query($sql);
         return $query;

@@ -14,12 +14,11 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
+                                <th scope="col">Nik</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Jabatan</th>
                                 <th scope="col">No telp</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Password</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -28,14 +27,13 @@
                             foreach ($data as $row) : ?>
                                 <tr>
                                     <th scope="row"><?= $no ?></th>
+                                    <td><?= $row['nik_pegawai']; ?></td>
                                     <td><?= ucfirst($row['nama_pegawai']); ?></td>
                                     <td><?= ucfirst($row['nama_jabatan']); ?></td>
                                     <td><?= $row['notelp_pegawai']; ?></td>
                                     <td><?= ucfirst($row['email_pegawai']); ?></td>
-                                    <td><?= $row['username_pegawai']; ?></td>
-                                    <td><?= $row['password_pegawai']; ?></td>
                                     <td><a href="index.php?page=Pegawai&aksi=editPegawai&id=<?= $row['id_pegawai'] ?>" class="btn btn-sm btn-warning text-white rounded p-2 mb-2"><i class="fas fa-user-edit ml-1" data-toggle="tooltip" title="Update Data"></i></a>
-                                        <a href="index.php?page=Pegawai&aksi=deletePegawai&id=<?= $row['id_pegawai'] ?>" class="btn btn-sm btn-danger text-white rounded p-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
+                                        <a href="index.php?page=Pegawai&aksi=deletePegawai&id=<?= $row['id_pegawai'] ?>" class="btn btn-sm btn-danger text-white rounded p-2 mb-2"><i class="fas fa-trash-alt mr-1 ml-1" data-toggle="tooltip" title="Hapus Data"></i></a>
                                     </td>
                                 </tr>
                             <?php $no++;
