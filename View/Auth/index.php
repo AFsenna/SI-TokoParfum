@@ -26,12 +26,12 @@
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter username">
-                        <input class="input100" type="text" name="usernamePG" placeholder="Username">
+                        <input class="input100" type="text" name="usernamePG" placeholder="Username" required>
                         <span class="focus-input100" data-placeholder="&#xf207;"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
-                        <input class="input100" type="password" name="passwordPG" placeholder="Password">
+                        <input class="input100" type="password" name="passwordPG" placeholder="Password" required>
                         <span class="focus-input100" data-placeholder="&#xf191;"></span>
                     </div>
                     <div class="container-login100-form-btn">
