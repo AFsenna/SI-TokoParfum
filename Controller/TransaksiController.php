@@ -58,6 +58,7 @@ class TransaksiController
         $pembeli = $this->model->getNamaPembeli($idTransaksi);
         $parfum = $this->model->getParfum();
         $kategori = $this->kategori->get();
+
         extract($kategori);
         extract($detailTransaksi);
         extract($pembeli);
@@ -77,13 +78,18 @@ class TransaksiController
         $transaksiID = $_POST['idTransaksi'];
         $jumlahParfum = $_POST['jumlahParfum'];
         $Parfum = $this->model->getParfumByID($parfumID);
-
         if ($jumlahParfum > $Parfum['stok']) {
+            $_SESSION['message'] = 'gagal';
             header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Tambah Data Jumlah Parfum Melebihi Stok!!!!!&idTransaksi=" . $transaksiID);
+            exit();
         } else {
             if ($this->model->updateStokParfum($Parfum['stok'], $jumlahParfum, $parfumID)) {
                 if ($this->model->prosesStoreDetailTransaksi($parfumID, $transaksiID, $jumlahParfum)) {
+
+                    $_SESSION['message'] = 'success';
                     header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Berhasil Tambah Data&idTransaksi=" . $transaksiID);
+
+                    exit();
                 } else {
                     header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Tambah Data&idTransaksi=" . $transaksiID);
                 }
@@ -106,6 +112,7 @@ class TransaksiController
 
         if ($this->model->updateStokParfum4($Parfum['stok'], $jumlahParfum, $parfumID)) {
             if ($this->model->prosesDeleteDetailTransaksi($parfumID, $transaksiID)) {
+                $_SESSION['message'] = 'success';
                 header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Berhasil Delete Data&idTransaksi=" . $transaksiID);
             } else {
                 header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Delete Data&idTransaksi=" . $transaksiID);

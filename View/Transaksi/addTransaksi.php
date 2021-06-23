@@ -4,9 +4,12 @@
         <?php
         if ($_SESSION['jabatan'] == 'Kasir') :
         ?>
-            <div class="card">
+            <div class="card border-info">
                 <div class="card-header">
-                    <h5>Tambah Barang</h5>
+                    <div class="float-left mt-2">
+                        <h5>Tambah Data</h5>
+                    </div>
+                    <a href="index.php?page=Transaksi&aksi=view" class="btn btn-warning float-right"><i class="fas fa-arrow-alt-circle-left mr-2"></i>Kembali</a>
                 </div>
                 <div class="card-body ml-2 mr-2">
                     <form action="index.php?page=Transaksi&aksi=storeDetailTransaksi" method="POST">
@@ -40,7 +43,7 @@
         <?php
         endif
         ?>
-        <div class="card mt-4">
+        <div class="card mt-4 border-dark">
             <div class="card-header">
                 <div class="float-left mt-2">
                     <h5>Keranjang : <?= $pembeli['nama_pembeli'] ?></h5>

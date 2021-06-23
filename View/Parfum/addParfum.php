@@ -3,7 +3,10 @@
         <hr class="garis">
         <div class="card">
             <div class="card-header">
-                <h5>Tambah Parfum</h5>
+                <div class="float-left mt-2">
+                    <h5>Tambah Parfum</h5>
+                </div>
+                <a href="index.php?page=Parfum&aksi=view" class="btn btn-warning float-right"><i class="fas fa-arrow-alt-circle-left mr-2"></i>Kembali</a>
             </div>
             <div class="card-body ml-2 mr-2">
                 <form action="index.php?page=Parfum&aksi=storeParfum" method="POST">

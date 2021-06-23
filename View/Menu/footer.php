@@ -12,6 +12,7 @@
    <script src="assets/js/popper.min.js"></script>
    <script src="assets/js/bootstrap.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
    <!-- Modal -->
    <div class="modal fade show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -95,6 +96,36 @@
        </div>
    </div>
    </div>
+   <?php
+
+    if (isset($_SESSION['message'])) {
+
+        switch ($_SESSION['message']) {
+            case 'success':
+                echo "<script>
+        Swal.fire(
+               'Good job!',
+               '',
+               'success'
+           )
+        </script>";
+                break;
+
+            case 'gagal':
+                echo "<script>
+        Swal.fire(
+               'Gagal!',
+               '',
+               'error'
+           )
+        </script>";
+                break;
+        }
+
+
+        unset($_SESSION['message']);
+    }
+    ?>
    <script>
        $("#btnTes").click(function() {
            $("#myModal").modal("show")

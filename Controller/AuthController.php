@@ -35,11 +35,12 @@ class AuthController
         if ($data) {
             $_SESSION['role'] = 'Pegawai';
             $_SESSION['pegawai'] = $data;
-            $jabatanAdmin = $this->model->getJabatan($_SESSION['pegawai']['jabatan_id']);
-            $_SESSION['jabatan'] = ucfirst($jabatanAdmin['nama_jabatan']);
+            $_SESSION['message'] = 'success';
+            $jabatan = $this->model->getJabatan($_SESSION['pegawai']['jabatan_id']);
+            $_SESSION['jabatan'] = ucfirst($jabatan['nama_jabatan']);
             header("location: index.php?page=Pegawai&aksi=view&pesan=Berhasil login");
         } else {
-            header("location: index.php?page=Auth&aksi=loginPegawai&pesan=Username atau password salah!!");
+            header("location: index.php?page=Auth&aksi=view&pesan=Username atau password salah!!");
         }
     }
 
