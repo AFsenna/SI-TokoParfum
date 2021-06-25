@@ -80,18 +80,18 @@ class TransaksiController
         $Parfum = $this->model->getParfumByID($parfumID);
         if ($jumlahParfum > $Parfum['stok']) {
             $_SESSION['message'] = 'gagal';
-            header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Tambah Data Jumlah Parfum Melebihi Stok!!!!!&idTransaksi=" . $transaksiID);
+            header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Jumlah Parfum Melebihi Stok!!&idTransaksi=" . $transaksiID);
             exit();
         } else {
             if ($this->model->updateStokParfum($Parfum['stok'], $jumlahParfum, $parfumID)) {
                 if ($this->model->prosesStoreDetailTransaksi($parfumID, $transaksiID, $jumlahParfum)) {
-
-                    $_SESSION['message'] = 'success';
+                    $_SESSION['message'] = 'berhasil';
                     header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Berhasil Tambah Data&idTransaksi=" . $transaksiID);
-
                     exit();
                 } else {
+                    $_SESSION['message'] = 'gagal';
                     header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Tambah Data&idTransaksi=" . $transaksiID);
+                    exit();
                 }
             } else {
                 header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Update Stok Parfum&idTransaksi=" . $transaksiID);
@@ -112,10 +112,13 @@ class TransaksiController
 
         if ($this->model->updateStokParfum4($Parfum['stok'], $jumlahParfum, $parfumID)) {
             if ($this->model->prosesDeleteDetailTransaksi($parfumID, $transaksiID)) {
-                $_SESSION['message'] = 'success';
+                $_SESSION['message'] = 'deleted';
                 header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Berhasil Delete Data&idTransaksi=" . $transaksiID);
+                exit();
             } else {
+                $_SESSION['message'] = 'undeleted';
                 header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Delete Data&idTransaksi=" . $transaksiID);
+                exit();
             }
         } else {
             header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal update stok parfum&Parfum_id=" . $parfumID);
@@ -183,9 +186,9 @@ class TransaksiController
         $idTransaksi = $_GET['idTransaksi'];
         if ($this->model->updateStokParfum3($idTransaksi)) {
             if ($this->model->prosesAktifkan($idTransaksi)) {
-                header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Batalkan Transaksi&idTransaksi=" . $idTransaksi);
+                header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Aktifkan Transaksi&idTransaksi=" . $idTransaksi);
             } else {
-                header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Batalkan Transaksi&idTransaksi=" . $idTransaksi);
+                header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Aktifkan Transaksi&idTransaksi=" . $idTransaksi);
             }
         } else {
             header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Mengupdate Stok Parfum&idTransaksi=" . $idTransaksi);

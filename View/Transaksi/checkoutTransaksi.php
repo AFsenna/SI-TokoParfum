@@ -6,6 +6,7 @@
                 <div class="float-left mt-2">
                     <h5>Barang yang dibeli oleh <?= $pembeli['nama_pembeli'] ?></h5>
                 </div>
+                <a href="index.php?page=Transaksi&aksi=addDetailTransaksi&idTransaksi=<?= $_GET['idTransaksi'] ?>" class="btn btn-warning float-right"><i class="fas fa-arrow-alt-circle-left mr-2"></i>Kembali</a>
             </div>
             <div class="card-body ml-2 mr-2">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">

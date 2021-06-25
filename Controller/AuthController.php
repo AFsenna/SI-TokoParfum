@@ -33,14 +33,14 @@ class AuthController
         $data = $this->model->proses_authPegawai($username, $password);
 
         if ($data) {
-            $_SESSION['role'] = 'Pegawai';
             $_SESSION['pegawai'] = $data;
             $_SESSION['message'] = 'success';
             $jabatan = $this->model->getJabatan($_SESSION['pegawai']['jabatan_id']);
             $_SESSION['jabatan'] = ucfirst($jabatan['nama_jabatan']);
-            header("location: index.php?page=Pegawai&aksi=view&pesan=Berhasil login");
+            header("location: index.php?page=Pegawai&aksi=view");
         } else {
-            header("location: index.php?page=Auth&aksi=view&pesan=Username atau password salah!!");
+            $_SESSION['message'] = 'error';
+            header("location: index.php?page=Auth&aksi=view");
         }
     }
 

@@ -104,7 +104,7 @@
             case 'success':
                 echo "<script>
         Swal.fire(
-               'Good job!',
+               'Berhasil login!!',
                '',
                'success'
            )
@@ -114,9 +114,36 @@
             case 'gagal':
                 echo "<script>
         Swal.fire(
-               'Gagal!',
+               'Gagal Menambahkan Data',
                '',
                'error'
+           )
+        </script>";
+                break;
+            case 'deleted':
+                echo "<script>
+        Swal.fire(
+               'Berhasil Menambahkan Data',
+               '',
+               'success'
+           )
+        </script>";
+                break;
+            case 'undeleted':
+                echo "<script>
+        Swal.fire(
+               'Gagal Menambahkan Data',
+               '',
+               'error'
+           )
+        </script>";
+                break;
+            case 'berhasil':
+                echo "<script>
+        Swal.fire(
+               'Berhasil Menambahkan Data',
+               '',
+               'success'
            )
         </script>";
                 break;

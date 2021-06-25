@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jun 2021 pada 13.46
+-- Waktu pembuatan: 25 Jun 2021 pada 08.16
 -- Versi server: 10.1.40-MariaDB
 -- Versi PHP: 7.3.5
 
@@ -47,7 +47,13 @@ INSERT INTO `detail_transaksi` (`parfum_id`, `transaksi_id`, `jumlah_parfum`) VA
 (2, 1, 15),
 (2, 3, 20),
 (4, 3, 10),
-(4, 4, 2);
+(4, 7, 3),
+(1, 6, 5),
+(2, 6, 11),
+(1, 8, 1),
+(2, 9, 2),
+(1, 9, 1),
+(1, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -66,8 +72,7 @@ CREATE TABLE `jabatan` (
 
 INSERT INTO `jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
 (1, 'administrasi'),
-(2, 'kasir'),
-(5, 'contoh');
+(2, 'kasir');
 
 -- --------------------------------------------------------
 
@@ -109,10 +114,10 @@ CREATE TABLE `parfum` (
 --
 
 INSERT INTO `parfum` (`id_parfum`, `kategori_id`, `nama_parfum`, `expired_parfum`, `harga_parfum`, `stok`) VALUES
-(1, 1, 'Harmony', '2022-06-10', 20000, 3),
-(2, 2, 'Miami', '2022-05-29', 50000, 50),
+(1, 1, 'Harmony', '2022-06-10', 20000, 4),
+(2, 2, 'Miami', '2022-05-29', 50000, 39),
 (3, 6, 'juliar', '2022-08-25', 100000, 45),
-(4, 6, 'bacarat', '2022-08-25', 100000, 76);
+(4, 6, 'bacarat', '2022-08-25', 100000, 75);
 
 -- --------------------------------------------------------
 
@@ -136,9 +141,9 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `nik_pegawai`, `nama_pegawai`, `username_pegawai`, `password_pegawai`, `email_pegawai`, `notelp_pegawai`, `jabatan_id`) VALUES
-(1, '6745362986391627', 'Michael Araona Wily', 'michael', '123', 'awee@gmail.com', '086788338621', 1),
-(2, '73543743', 'Alexandria Felicia Seanne', 'senna', '123', 'fgelicia@gmail.com', '0936547', 2),
-(6, '242472', 'Benedicta Fidelis Areta', 'areta', '123', 'areta@gmail.com', '8214124343', 2);
+(1, '6745362986391627', 'Alexandria Felicia Seanne', 'senna', '123', 'fgelicia@gmail.com', '086788338621', 1),
+(2, '7354374', 'Corrine Fadia Haya', 'corrine', '123', 'korin@gmail.com', '0936547121', 2),
+(6, '2424723', 'Benedicta Fidelis Areta', 'areta', '123', 'areta@gmail.com', '8214124343', 2);
 
 -- --------------------------------------------------------
 
@@ -160,8 +165,9 @@ CREATE TABLE `pembeli` (
 INSERT INTO `pembeli` (`id_pembeli`, `nama_pembeli`, `notelp_pembeli`, `status_pembeli`) VALUES
 (1, 'Areta', '0653537', 1),
 (2, 'Dyah', '0927135213', 1),
-(5, 'kucing', '08232864', 1),
-(6, 'tes', '24y28', 1);
+(5, 'michael', '08232864', 1),
+(6, 'efendy', '0687858858', 1),
+(7, 'aqila', '08239223', 0);
 
 -- --------------------------------------------------------
 
@@ -184,9 +190,12 @@ CREATE TABLE `transaksi` (
 INSERT INTO `transaksi` (`id_transaksi`, `pembeli_id`, `pegawai_id`, `tanggal`, `status_transaksi`) VALUES
 (1, 1, 1, '2021-06-07 21:08:11', 1),
 (2, 2, 1, '2021-06-07 21:18:42', 1),
-(3, 1, 1, '2021-05-28 01:21:50', 0),
+(3, 1, 1, '2021-06-22 16:07:51', 1),
 (4, 5, 1, '2021-05-29 00:12:41', 0),
-(6, 5, 2, '2021-06-19 02:02:19', 1);
+(6, 5, 2, '2021-06-19 02:02:19', 0),
+(7, 5, 2, '2021-06-20 00:15:10', 0),
+(8, 1, 2, '2021-06-23 14:47:50', 0),
+(9, 2, 2, '2021-06-23 15:10:29', 2);
 
 --
 -- Indexes for dumped tables
@@ -216,7 +225,7 @@ ALTER TABLE `kategori`
 --
 ALTER TABLE `parfum`
   ADD PRIMARY KEY (`id_parfum`),
-  ADD KEY `kategori_id` (`kategori_id`);
+  ADD KEY `parfum_ibfk_1` (`kategori_id`);
 
 --
 -- Indeks untuk tabel `pegawai`
@@ -247,7 +256,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT untuk tabel `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`
@@ -265,19 +274,19 @@ ALTER TABLE `parfum`
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `pembeli`
 --
 ALTER TABLE `pembeli`
-  MODIFY `id_pembeli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pembeli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -294,7 +303,7 @@ ALTER TABLE `detail_transaksi`
 -- Ketidakleluasaan untuk tabel `parfum`
 --
 ALTER TABLE `parfum`
-  ADD CONSTRAINT `parfum_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id_kategori`);
+  ADD CONSTRAINT `parfum_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `pegawai`

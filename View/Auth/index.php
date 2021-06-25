@@ -48,7 +48,22 @@
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <?php
+    if (isset($_SESSION['message']) == 'error') {
+        echo "<script>
+           Swal.fire({
+            icon: 'warning',
+            title: 'Username atau Password salah!!',
+            width: 400,
+            height: 200,
+            padding: '3em',
+            })
+        </script>";
+        unset($_SESSION['message']);
+    }
+    ?>
 </body>
 
 </html>
