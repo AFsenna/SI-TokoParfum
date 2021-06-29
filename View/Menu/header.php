@@ -50,8 +50,14 @@
                 </p>
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body" style="width: 190px;">
-                        <a class="navcollapse nav-link active text-dark mb-3" href="index.php?page=Jabatan&aksi=view"><i class="fa fa-user mr-2"></i>Jabatan</a>
-                        <a class="navcollapse nav-link active text-dark mb-3" href="index.php?page=Pegawai&aksi=viewData"><i class="fa fa-users mr-2"></i>Pegawai</a>
+                        <?php
+                        if ($_SESSION['jabatan'] != 'Administrasi') :
+                        ?>
+                            <a class="navcollapse nav-link active text-dark mb-3" href="index.php?page=Jabatan&aksi=view"><i class="fa fa-user mr-2"></i>Jabatan</a>
+                            <a class="navcollapse nav-link active text-dark mb-3" href="index.php?page=Pegawai&aksi=viewData"><i class="fa fa-users mr-2"></i>Pegawai</a>
+                        <?php
+                        endif;
+                        ?>
                         <a class="navcollapse nav-link active text-dark mb-3" href="index.php?page=Kategori&aksi=view"><i class="fas fa-clipboard-list mr-2"></i>Kategori</a>
                         <a class="navcollapse nav-link active text-dark mb-3" href="index.php?page=Parfum&aksi=view"><i class="fas fa-air-freshener mr-2"></i>Parfum</a>
                     </div>
@@ -59,10 +65,16 @@
             <?php
             endif;
             ?>
-            <li class="nav-item">
-                <a class="nav-link active text-white mb-3" href="index.php?page=Pembeli&aksi=view"><i class="fas fa-user-friends mr-2"></i>Pembeli</a>
-                <a class="nav-link active text-white mb-3" href="index.php?page=Transaksi&aksi=view"><i class="fas fa-info-circle mr-2"></i>Transaksi</a>
-            </li>
+            <?php
+            if ($_SESSION['jabatan'] == 'Administrasi' || $_SESSION['jabatan'] == 'Kasir') :
+            ?>
+                <li class="nav-item">
+                    <a class="nav-link active text-white mb-3" href="index.php?page=Pembeli&aksi=view"><i class="fas fa-user-friends mr-2"></i>Pembeli</a>
+                    <a class="nav-link active text-white mb-3" href="index.php?page=Transaksi&aksi=view"><i class="fas fa-info-circle mr-2"></i>Transaksi</a>
+                </li>
+            <?php
+            endif;
+            ?>
         </ul>
     </div>
     <div class="main pt-3" style="background-color: rgba(251, 253, 255, 0.966);">

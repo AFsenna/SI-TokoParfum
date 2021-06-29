@@ -35,8 +35,7 @@ class AuthController
         if ($data) {
             $_SESSION['pegawai'] = $data;
             $_SESSION['message'] = 'success';
-            $jabatan = $this->model->getJabatan($_SESSION['pegawai']['jabatan_id']);
-            $_SESSION['jabatan'] = ucfirst($jabatan['nama_jabatan']);
+            $_SESSION['jabatan'] = ucfirst($_SESSION['pegawai']['nama_jabatan']);
             header("location: index.php?page=Pegawai&aksi=view");
         } else {
             $_SESSION['message'] = 'error';

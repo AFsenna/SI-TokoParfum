@@ -38,9 +38,7 @@ class TransaksiController
         $pegawai_id = $_SESSION['pegawai']['id_pegawai'];
         $idTransaksi = $this->model->getLast();
         if ($this->model->prosesStore($pembeli_id, $pegawai_id)) {
-            if ($this->model->updateStatusPembeli($pembeli_id)) {
-                header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&idTransaksi=" . $idTransaksi['id_transaksi+1']);
-            }
+            header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&idTransaksi=" . $idTransaksi['id_transaksi+1']);
         } else {
             header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Tambah Data");
         }

@@ -11,11 +11,14 @@ class TransaksiModel
     /**
      * Function get berfungsi untuk mengambil seluruh data transaksi dari database
      * COALESCE() untuk memberi data pengganti ketika datanya null
+     * LEFT JOIN digunakan untuk menampilkan semua data table transaksi 
+     * dan menampilkan data tabel detail_transaksi,pembeli,parfum yang cocok dengan kondisi join. 
+     * Jika tidak ditemukan kecocokan, maka akan di set NULL secara otomatis
      */
 
     public function get()
     {
-        $sql = "SELECT pembeli.nama_pembeli, transaksi.tanggal,id_transaksi, 
+        $sql = "SELECT pembeli.nama_pembeli, transaksi.tanggal,transaksi.id_transaksi, 
         COALESCE(SUM(detail_transaksi.jumlah_parfum * parfum.harga_parfum),0) AS total_harga,
         transaksi.status_transaksi FROM transaksi 
         LEFT JOIN detail_transaksi ON transaksi.id_transaksi = detail_transaksi.transaksi_id
@@ -113,12 +116,26 @@ class TransaksiModel
 
     public function getTotalHarga($idTransaksi)
     {
-        $sql = "SELECT SUM(detail_transaksi.jumlah_parfum * parfum.harga_parfum) AS totalHarga
-        FROM detail_transaksi 
-        JOIN transaksi ON detail_transaksi.transaksi_id = transaksi.id_transaksi
-        JOIN parfum ON detail_transaksi.parfum_id = parfum.id_parfum 
-        WHERE detail_transaksi.transaksi_id = $idTransaksi ";
-        $query = koneksi()->query($sql);
+        $sqlCek = "SELECT pembeli.status_pembeli FROM transaksi
+         JOIN pembeli ON transaksi.pembeli_id = pembeli.id_pembeli
+         WHERE id_transaksi = $idTransaksi";
+        $cek = koneksi()->query($sqlCek);
+        $status = $cek->fetch_assoc();
+        if ($status['status_pembeli'] == 0) {
+            $sql = "SELECT SUM(detail_transaksi.jumlah_parfum * parfum.harga_parfum AS totalHarga
+             FROM detail_transaksi 
+             JOIN transaksi ON detail_transaksi.transaksi_id = transaksi.id_transaksi
+             JOIN parfum ON detail_transaksi.parfum_id = parfum.id_parfum 
+             WHERE detail_transaksi.transaksi_id = $idTransaksi ";
+            $query = koneksi()->query($sql);
+        } else {
+            $sql = "SELECT (SUM(detail_transaksi.jumlah_parfum * parfum.harga_parfum))-(SUM(detail_transaksi.jumlah_parfum * parfum.harga_parfum)*0.15) AS totalHarga
+             FROM detail_transaksi 
+             JOIN transaksi ON detail_transaksi.transaksi_id = transaksi.id_transaksi
+             JOIN parfum ON detail_transaksi.parfum_id = parfum.id_parfum 
+             WHERE detail_transaksi.transaksi_id = $idTransaksi ";
+            $query = koneksi()->query($sql);
+        }
         return $query->fetch_assoc();
     }
 
@@ -238,16 +255,6 @@ class TransaksiModel
     public function prosesBatalkan($idTransaksi)
     {
         $sql = "UPDATE transaksi SET status_transaksi = 2 WHERE id_transaksi = $idTransaksi";
-        return koneksi()->query($sql);
-    }
-
-    /**
-     * Function updateStatusPembeli untuk update status pembeli menjadi aktif
-     */
-
-    public function updateStatusPembeli($pembeli_id)
-    {
-        $sql = "UPDATE pembeli SET status_pembeli = 1 WHERE id_pembeli = $pembeli_id";
         return koneksi()->query($sql);
     }
 
