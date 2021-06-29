@@ -51,7 +51,7 @@
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body" style="width: 190px;">
                         <?php
-                        if ($_SESSION['jabatan'] != 'Administrasi') :
+                        if ($_SESSION['jabatan'] == 'Administrasi') :
                         ?>
                             <a class="navcollapse nav-link active text-dark mb-3" href="index.php?page=Jabatan&aksi=view"><i class="fa fa-user mr-2"></i>Jabatan</a>
                             <a class="navcollapse nav-link active text-dark mb-3" href="index.php?page=Pegawai&aksi=viewData"><i class="fa fa-users mr-2"></i>Pegawai</a>
