@@ -52,7 +52,9 @@
 
     <?php
     if (isset($_SESSION['message']) == 'error') {
-        echo "<script>
+        switch ($_SESSION['message']) {
+            case 'error':
+                echo "<script>
            Swal.fire({
             icon: 'warning',
             title: 'Username atau Password salah!!',
@@ -61,6 +63,8 @@
             padding: '3em',
             })
         </script>";
+                break;
+        }
         unset($_SESSION['message']);
     }
     ?>

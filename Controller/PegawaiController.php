@@ -66,9 +66,13 @@ class PegawaiController
         $jabatanID = $_POST['jabatan'];
 
         if ($this->model->prosesStore($nikPegawai, $namaPegawai, $usernamePegawai, $passwordPegawai, $emailPegawai, $notelpPegawai, $jabatanID)) {
+            $_SESSION['message'] = 'berhasil';
             echo ("<script>location.href = 'index.php?page=Pegawai&aksi=viewData&pesan=Berhasil Tambah Data';</script>");
+            exit();
         } else {
+            $_SESSION['message'] = 'gagal';
             echo ("<script>location.href = 'index.php?page=Pegawai&aksi=viewData&pesan=Gagal Tambah Data';</script>");
+            exit();
         }
     }
 
@@ -104,9 +108,13 @@ class PegawaiController
         $jabatanID = $_POST['jabatan'];
 
         if ($this->model->prosesUpdate($idPegawai, $nikPegawai, $namaPegawai, $usernamePegawai, $passwordPegawai, $emailPegawai, $notelpPegawai, $jabatanID)) {
+            $_SESSION['message'] = 'updated';
             echo ("<script>location.href = 'index.php?page=Pegawai&aksi=viewData&pesan=Berhasil Ubah Data';</script>");
+            exit();
         } else {
+            $_SESSION['message'] = 'unupdated';
             echo ("<script>location.href = 'index.php?page=Pegawai&aksi=viewData&pesan=Gagal Ubah Data';</script>");
+            exit();
         }
     }
 
@@ -118,9 +126,13 @@ class PegawaiController
     {
         $idPegawai = $_GET['id'];
         if ($this->model->prosesDelete($idPegawai)) {
+            $_SESSION['message'] = 'deleted';
             echo ("<script>location.href = 'index.php?page=Pegawai&aksi=viewData&pesan=Berhasil Delete Data';</script>");
+            exit();
         } else {
+            $_SESSION['message'] = 'undeleted';
             echo ("<script>location.href = 'index.php?page=Pegawai&aksi=viewData&pesan=Gagal Delete Data';</script>");
+            exit();
         }
     }
 }

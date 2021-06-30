@@ -43,9 +43,13 @@ class PembeliController
         $notelpPembeli = $_POST['notelpPembeli'];
 
         if ($this->model->prosesStore($namaPembeli, $notelpPembeli)) {
+            $_SESSION['message'] = 'berhasil';
             header("location: index.php?page=Pembeli&aksi=view&pesan=Berhasil Tambah Data");
+            exit();
         } else {
+            $_SESSION['message'] = 'gagal';
             header("location: index.php?page=Pembeli&aksi=view&pesan=Gagal Tambah Data");
+            exit();
         }
     }
 
@@ -74,9 +78,13 @@ class PembeliController
         $notelpPembeli = $_POST['notelpPembeli'];
 
         if ($this->model->prosesUpdate($idPembeli, $namaPembeli, $notelpPembeli)) {
+            $_SESSION['message'] = 'updated';
             header("location: index.php?page=Pembeli&aksi=view&pesan=Berhasil Ubah Data");
+            exit();
         } else {
+            $_SESSION['message'] = 'unupdated';
             header("location: index.php?page=Pembeli&aksi=view&pesan=Gagal Ubah Data");
+            exit();
         }
     }
 
@@ -88,9 +96,13 @@ class PembeliController
     {
         $idPembeli = $_GET['idPembeli'];
         if ($this->model->prosesAktifkan($idPembeli)) {
+            $_SESSION['message'] = 'berhasilaktifkan';
             header("location: index.php?page=Pembeli&aksi=view&pesan=Berhasil Aktifkan Pembeli&idPembeli=" . $idPembeli);
+            exit();
         } else {
+            $_SESSION['message'] = 'gagalaktifkan';
             header("location: index.php?page=Pembeli&aksi=view&pesan=Gagal Aktifkan Stok Parfum&idPembeli=" . $idPembeli);
+            exit();
         }
     }
 
@@ -102,9 +114,13 @@ class PembeliController
     {
         $idPembeli = $_GET['idPembeli'];
         if ($this->model->prosesNonAktifkan($idPembeli)) {
+            $_SESSION['message'] = 'berhasilaktifkan';
             header("location: index.php?page=Pembeli&aksi=view&pesan=Berhasil Non-Aktifkan Pembeli&idPembeli=" . $idPembeli);
+            exit();
         } else {
+            $_SESSION['message'] = 'gagalaktifkan';
             header("location: index.php?page=Pembeli&aksi=view&pesan=Gagal Non-Aktifkan Pembeli&idPembeli=" . $idPembeli);
+            exit();
         }
     }
 }

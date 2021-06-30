@@ -123,7 +123,7 @@
             case 'deleted':
                 echo "<script>
         Swal.fire(
-               'Berhasil Menambahkan Data',
+               'Berhasil Delete Data',
                '',
                'success'
            )
@@ -132,7 +132,25 @@
             case 'undeleted':
                 echo "<script>
         Swal.fire(
-               'Gagal Menambahkan Data',
+               'Gagal delete Data',
+               '',
+               'error'
+           )
+        </script>";
+                break;
+            case 'updated':
+                echo "<script>
+        Swal.fire(
+               'Berhasil Update Data',
+               '',
+               'success'
+           )
+        </script>";
+                break;
+            case 'unupdated':
+                echo "<script>
+        Swal.fire(
+               'Gagal Update Data',
                '',
                'error'
            )
@@ -147,8 +165,106 @@
            )
         </script>";
                 break;
+            case 'gagalstok':
+                echo "<script>
+        Swal.fire(
+               'Jumlah Parfum Melebihi Stok!!',
+               '',
+               'error'
+           )
+        </script>";
+                break;
+            case 'gagalcheckout':
+                echo "<script>
+        Swal.fire(
+               'Gagal melakukan checkout',
+               '',
+               'error'
+           )
+        </script>";
+                break;
+            case 'uangkurang':
+                echo "<script>
+        Swal.fire(
+               'Uang kurang',
+               '',
+               'error'
+           )
+        </script>";
+                break;
+            case 'berhasilcheckout':
+                echo "<script>
+        Swal.fire(
+               'Berhasil Checkout',
+               '',
+               'success'
+           )
+        </script>";
+                break;
+            case 'gagalupdatestok':
+                echo "<script>
+        Swal.fire(
+               'Gagal update stok parfum',
+               '',
+               'error'
+           )
+        </script>";
+                break;
+            case 'gagalaktifkan':
+                echo "<script>
+        Swal.fire(
+               'Gagal Aktifkan',
+               '',
+               'error'
+           )
+        </script>";
+                break;
+            case 'berhasilaktifkan':
+                echo "<script>
+        Swal.fire(
+               'Berhasil Aktifkan',
+               '',
+               'success'
+           )
+        </script>";
+                break;
+            case 'gagalbatalkan':
+                echo "<script>
+        Swal.fire(
+               'Gagal Batalkan',
+               '',
+               'error'
+           )
+        </script>";
+                break;
+            case 'berhasilbatalkan':
+                echo "<script>
+        Swal.fire(
+               'Berhasil Batalkan',
+               '',
+               'success'
+           )
+        </script>";
+                break;
+            case 'gagalnonaktifkan':
+                echo "<script>
+        Swal.fire(
+               'Gagal Non-Aktifkan',
+               '',
+               'error'
+           )
+        </script>";
+                break;
+            case 'berhasilnonaktifkan':
+                echo "<script>
+        Swal.fire(
+               'Berhasil Non-Aktifkan',
+               '',
+               'success'
+           )
+        </script>";
+                break;
         }
-
 
         unset($_SESSION['message']);
     }

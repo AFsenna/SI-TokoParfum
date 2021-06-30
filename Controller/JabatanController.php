@@ -42,9 +42,13 @@ class JabatanController
         $namaJabatan = $_POST['namaJabatan'];
 
         if ($this->model->prosesStore($namaJabatan)) {
+            $_SESSION['message'] = 'berhasil';
             echo ("<script>location.href = 'index.php?page=Jabatan&aksi=view&pesan=Berhasil Tambah Data';</script>");
+            exit();
         } else {
+            $_SESSION['message'] = 'gagal';
             echo ("<script>location.href = 'index.php?page=Jabatan&aksi=view&pesan=Gagal Tambah Data';</script>");
+            exit();
         }
     }
 
@@ -71,9 +75,13 @@ class JabatanController
         $namaJabatan = $_POST['namaJabatan'];
 
         if ($this->model->prosesUpdate($idJabatan, $namaJabatan)) {
+            $_SESSION['message'] = 'updated';
             echo ("<script>location.href = 'index.php?page=Jabatan&aksi=view&pesan=Berhasil Ubah Data';</script>");
+            exit();
         } else {
+            $_SESSION['message'] = 'unupdated';
             echo ("<script>location.href = 'index.php?page=Jabatan&aksi=view&pesan=Gagal Ubah Data';</script>");
+            exit();
         }
     }
 
@@ -85,9 +93,13 @@ class JabatanController
     {
         $idJabatan = $_GET['id'];
         if ($this->model->prosesDelete($idJabatan)) {
+            $_SESSION['message'] = 'deleted';
             echo ("<script>location.href = 'index.php?page=Jabatan&aksi=view&pesan=Berhasil Delete Data';</script>");
+            exit();
         } else {
+            $_SESSION['message'] = 'undeleted';
             echo ("<script>location.href = 'index.php?page=Jabatan&aksi=view&pesan=Gagal Delete Data';</script>");
+            exit();
         }
     }
 }

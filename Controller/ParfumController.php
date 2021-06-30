@@ -48,9 +48,13 @@ class ParfumController
         $stok = $_POST['stok'];
 
         if ($this->model->prosesStore($kategori_id, $nama_parfum, $expired, $harga, $stok)) {
+            $_SESSION['message'] = 'berhasil';
             echo ("<script>location.href = 'index.php?page=Parfum&aksi=view&pesan=Berhasil Tambah Data';</script>");
+            exit();
         } else {
+            $_SESSION['message'] = 'gagal';
             echo ("<script>location.href = 'index.php?page=Parfum&aksi=view&pesan=Gagal Tambah Data';</script>");
+            exit();
         }
     }
 
@@ -84,9 +88,13 @@ class ParfumController
         $stok = $_POST['stok'];
 
         if ($this->model->prosesUpdate($idParfum, $kategori_id, $nama_parfum, $expired, $harga, $stok)) {
+            $_SESSION['message'] = 'updated';
             echo ("<script>location.href = 'index.php?page=Parfum&aksi=view&pesan=Berhasil Ubah Data';</script>");
+            exit();
         } else {
+            $_SESSION['message'] = 'unupdated';
             echo ("<script>location.href = 'index.php?page=Parfum&aksi=editParfum&pesan=Gagal Ubah Data';</script>");
+            exit();
         }
     }
 
@@ -98,9 +106,13 @@ class ParfumController
     {
         $idParfum = $_GET['id'];
         if ($this->model->prosesDelete($idParfum)) {
+            $_SESSION['message'] = 'deleted';
             echo ("<script>location.href = 'index.php?page=Parfum&aksi=view&pesan=Berhasil Delete Data';</script>");
+            exit();
         } else {
+            $_SESSION['message'] = 'undeleted';
             echo ("<script>location.href = 'index.php?page=Parfum&aksi=view&pesan=Gagal Delete Data';</script>");
+            exit();
         }
     }
 }

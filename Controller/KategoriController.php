@@ -42,9 +42,13 @@ class KategoriController
         $gender = $_POST['gender'];
 
         if ($this->model->prosesStore($gender)) {
+            $_SESSION['message'] = 'berhasil';
             echo ("<script>location.href = 'index.php?page=Kategori&aksi=view&pesan=Berhasil Tambah Data';</script>");
+            exit();
         } else {
+            $_SESSION['message'] = 'gagal';
             echo ("<script>location.href = 'index.php?page=Kategori&aksi=view&pesan=Gagal Tambah Data';</script>");
+            exit();
         }
     }
 
@@ -71,9 +75,13 @@ class KategoriController
         $gender = $_POST['gender'];
 
         if ($this->model->prosesUpdate($idKategori, $gender)) {
+            $_SESSION['message'] = 'updated';
             echo ("<script>location.href = 'index.php?page=Kategori&aksi=view&pesan=Berhasil Ubah Data';</script>");
+            exit();
         } else {
+            $_SESSION['message'] = 'unupdated';
             echo ("<script>location.href = 'index.php?page=Kategori&aksi=view&pesan=Gagal Ubah Data';</script>");
+            exit();
         }
     }
 
@@ -85,9 +93,13 @@ class KategoriController
     {
         $idKategori = $_GET['id'];
         if ($this->model->prosesDelete($idKategori)) {
+            $_SESSION['message'] = 'deleted';
             echo ("<script>location.href = 'index.php?page=Kategori&aksi=view&pesan=Berhasil Delete Data';</script>");
+            exit();
         } else {
+            $_SESSION['message'] = 'undeleted';
             echo ("<script>location.href = 'index.php?page=Kategori&aksi=view&pesan=Gagal Delete Data';</script>");
+            exit();
         }
     }
 }

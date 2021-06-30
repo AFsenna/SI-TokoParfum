@@ -40,7 +40,9 @@ class TransaksiController
         if ($this->model->prosesStore($pembeli_id, $pegawai_id)) {
             header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&idTransaksi=" . $idTransaksi['id_transaksi+1']);
         } else {
+            $_SESSION['message'] = 'gagal';
             header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Tambah Data");
+            die();
         }
     }
 
@@ -77,7 +79,7 @@ class TransaksiController
         $jumlahParfum = $_POST['jumlahParfum'];
         $Parfum = $this->model->getParfumByID($parfumID);
         if ($jumlahParfum > $Parfum['stok']) {
-            $_SESSION['message'] = 'gagal';
+            $_SESSION['message'] = 'gagalstok';
             header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Jumlah Parfum Melebihi Stok!!&idTransaksi=" . $transaksiID);
             exit();
         } else {
@@ -92,7 +94,9 @@ class TransaksiController
                     exit();
                 }
             } else {
+                $_SESSION['message'] = 'gagalupdatestok';
                 header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal Update Stok Parfum&idTransaksi=" . $transaksiID);
+                die();
             }
         }
     }
@@ -119,7 +123,9 @@ class TransaksiController
                 exit();
             }
         } else {
+            $_SESSION['message'] = 'gagalupdatestok';
             header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Gagal update stok parfum&Parfum_id=" . $parfumID);
+            exit();
         }
     }
 
@@ -150,12 +156,18 @@ class TransaksiController
         $totalHarga = $_POST['totalH'];
         if (($tunai >= $totalHarga)) {
             if ($this->model->prosesCheckout($idTransaksi)) {
+                $_SESSION['message'] = 'berhasilcheckout';
                 header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Checkout&idTransaksi=" . $idTransaksi);
+                exit();
             } else {
+                $_SESSION['message'] = 'gagalcheckout';
                 header("location: index.php?page=Transaksi&aksi=checkoutTransaksi&pesan=Gagal checkout&idTransaksi=" . $idTransaksi);
+                exit();
             }
         } else {
+            $_SESSION['message'] = 'uangkurang';
             header("location: index.php?page=Transaksi&aksi=checkoutTransaksi&pesan=Gagal Checkout Uang Kurang&idTransaksi=" . $idTransaksi);
+            exit();
         }
     }
 
@@ -184,12 +196,18 @@ class TransaksiController
         $idTransaksi = $_GET['idTransaksi'];
         if ($this->model->updateStokParfum3($idTransaksi)) {
             if ($this->model->prosesAktifkan($idTransaksi)) {
+                $_SESSION['message'] = 'berhasilaktifkan';
                 header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Aktifkan Transaksi&idTransaksi=" . $idTransaksi);
+                die();
             } else {
+                $_SESSION['message'] = 'gagalaktifkan';
                 header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Aktifkan Transaksi&idTransaksi=" . $idTransaksi);
+                die();
             }
         } else {
+            $_SESSION['message'] = 'gagalupdatestok';
             header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Mengupdate Stok Parfum&idTransaksi=" . $idTransaksi);
+            die();
         }
     }
 
@@ -202,12 +220,18 @@ class TransaksiController
         $idTransaksi = $_GET['idTransaksi'];
         if ($this->model->updateStokParfum2($idTransaksi)) {
             if ($this->model->prosesBatalkan($idTransaksi)) {
+                $_SESSION['message'] = 'berhasilbatalkan';
                 header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Batalkan Transaksi&idTransaksi=" . $idTransaksi);
+                exit();
             } else {
+                $_SESSION['message'] = 'gagalbatalkan';
                 header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Batalkan Transaksi&idTransaksi=" . $idTransaksi);
+                exit();
             }
         } else {
+            $_SESSION['message'] = 'gagalupdatestok';
             header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Mengupdate Stok Parfum&idTransaksi=" . $idTransaksi);
+            die();
         }
     }
 }

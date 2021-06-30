@@ -122,7 +122,7 @@ class TransaksiModel
         $cek = koneksi()->query($sqlCek);
         $status = $cek->fetch_assoc();
         if ($status['status_pembeli'] == 0) {
-            $sql = "SELECT SUM(detail_transaksi.jumlah_parfum * parfum.harga_parfum AS totalHarga
+            $sql = "SELECT SUM(detail_transaksi.jumlah_parfum * parfum.harga_parfum) AS totalHarga
              FROM detail_transaksi 
              JOIN transaksi ON detail_transaksi.transaksi_id = transaksi.id_transaksi
              JOIN parfum ON detail_transaksi.parfum_id = parfum.id_parfum 
