@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label for="notelpPG">Nomor Telepon</label>
-                        <input type="text" name="notelpPG" class="form-control" required>
+                        <input type="number" name="notelpPG" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>

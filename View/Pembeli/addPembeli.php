@@ -19,7 +19,7 @@
                 <div class="form-group row">
                     <label for="notelpPembeli" class="col-sm-2 col-form-label">No Telp Pembeli</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="notelpPembeli" required>
+                        <input type="number" class="form-control" name="notelpPembeli" required>
                     </div>
                 </div>
                 <div class="form-group row">

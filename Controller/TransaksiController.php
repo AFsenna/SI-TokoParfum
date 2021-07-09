@@ -11,6 +11,7 @@ class TransaksiController
     {
         $this->model = new TransaksiModel();
         $this->kategori = new KategoriModel();
+        $this->pembeli = new PembeliModel();
     }
 
     /**
@@ -20,7 +21,7 @@ class TransaksiController
     public function index()
     {
         $data = $this->model->get();
-        $pembeli = $this->model->getPembeli();
+        $pembeli = $this->pembeli->getPembeli();
         extract($data);
         extract($pembeli);
         require_once("View/Transaksi/index.php");
@@ -42,7 +43,7 @@ class TransaksiController
         } else {
             $_SESSION['message'] = 'gagal';
             header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Tambah Data");
-            die();
+            exit();
         }
     }
 
@@ -112,7 +113,7 @@ class TransaksiController
         $jumlahParfum = $_GET['JumlahParfum'];
         $Parfum = $this->model->getParfumByID($parfumID);
 
-        if ($this->model->updateStokParfum4($Parfum['stok'], $jumlahParfum, $parfumID)) {
+        if ($this->model->updateStokParfum2($Parfum['stok'], $jumlahParfum, $parfumID)) {
             if ($this->model->prosesDeleteDetailTransaksi($parfumID, $transaksiID)) {
                 $_SESSION['message'] = 'deleted';
                 header("location: index.php?page=Transaksi&aksi=addDetailTransaksi&pesan=Berhasil Delete Data&idTransaksi=" . $transaksiID);
@@ -194,20 +195,14 @@ class TransaksiController
     public function aktifkan()
     {
         $idTransaksi = $_GET['idTransaksi'];
-        if ($this->model->updateStokParfum3($idTransaksi)) {
-            if ($this->model->prosesAktifkan($idTransaksi)) {
-                $_SESSION['message'] = 'berhasilaktifkan';
-                header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Aktifkan Transaksi&idTransaksi=" . $idTransaksi);
-                die();
-            } else {
-                $_SESSION['message'] = 'gagalaktifkan';
-                header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Aktifkan Transaksi&idTransaksi=" . $idTransaksi);
-                die();
-            }
+        if ($this->model->prosesAktifkan($idTransaksi)) {
+            $_SESSION['message'] = 'berhasilaktifkan';
+            header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Aktifkan Transaksi&idTransaksi=" . $idTransaksi);
+            exit();
         } else {
-            $_SESSION['message'] = 'gagalupdatestok';
-            header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Mengupdate Stok Parfum&idTransaksi=" . $idTransaksi);
-            die();
+            $_SESSION['message'] = 'gagalaktifkan';
+            header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Aktifkan Transaksi&idTransaksi=" . $idTransaksi);
+            exit();
         }
     }
 
@@ -218,20 +213,14 @@ class TransaksiController
     public function batalkan()
     {
         $idTransaksi = $_GET['idTransaksi'];
-        if ($this->model->updateStokParfum2($idTransaksi)) {
-            if ($this->model->prosesBatalkan($idTransaksi)) {
-                $_SESSION['message'] = 'berhasilbatalkan';
-                header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Batalkan Transaksi&idTransaksi=" . $idTransaksi);
-                exit();
-            } else {
-                $_SESSION['message'] = 'gagalbatalkan';
-                header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Batalkan Transaksi&idTransaksi=" . $idTransaksi);
-                exit();
-            }
+        if ($this->model->prosesBatalkan($idTransaksi)) {
+            $_SESSION['message'] = 'berhasilbatalkan';
+            header("location: index.php?page=Transaksi&aksi=view&pesan=Berhasil Batalkan Transaksi&idTransaksi=" . $idTransaksi);
+            exit();
         } else {
-            $_SESSION['message'] = 'gagalupdatestok';
-            header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Mengupdate Stok Parfum&idTransaksi=" . $idTransaksi);
-            die();
+            $_SESSION['message'] = 'gagalbatalkan';
+            header("location: index.php?page=Transaksi&aksi=view&pesan=Gagal Batalkan Transaksi&idTransaksi=" . $idTransaksi);
+            exit();
         }
     }
 }

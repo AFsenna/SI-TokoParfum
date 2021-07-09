@@ -81,21 +81,6 @@ class PegawaiModel
     }
 
     /**
-     * function ini digunakan untuk mengambil seluruh data jabatan dari database 
-     */
-
-    public function getJabatan()
-    {
-        $sql = "SELECT * FROM jabatan";
-        $query = koneksi()->query($sql);
-        $hasil = [];
-        while ($jabatan = $query->fetch_assoc()) {
-            $hasil[] = $jabatan;
-        }
-        return $hasil;
-    }
-
-    /**
      * Function prosesStore berfungsi untuk input data pegawai
      */
 

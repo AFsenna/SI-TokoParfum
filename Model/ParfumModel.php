@@ -20,21 +20,6 @@ class ParfumModel
     }
 
     /**
-     * function ini digunakan untuk mengambil seluruh data kategori dari database 
-     */
-
-    public function getKategori()
-    {
-        $sql = "SELECT * FROM kategori";
-        $query = koneksi()->query($sql);
-        $hasil = [];
-        while ($kategori = $query->fetch_assoc()) {
-            $hasil[] = $kategori;
-        }
-        return $hasil;
-    }
-
-    /**
      * Function prosesStore berfungsi untuk input data parfum
      */
 

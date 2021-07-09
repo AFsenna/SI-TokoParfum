@@ -10,6 +10,7 @@ class ParfumController
     public function __construct()
     {
         $this->model = new ParfumModel();
+        $this->kategori = new KategoriModel();
     }
 
     /**
@@ -29,7 +30,7 @@ class ParfumController
 
     public function addParfum()
     {
-        $kategori = $this->model->getKategori();
+        $kategori = $this->kategori->get();
         extract($kategori);
         require_once("View/Parfum/addParfum.php");
     }
@@ -67,7 +68,7 @@ class ParfumController
     public function editParfum()
     {
         $id = $_GET['id'];
-        $kategori = $this->model->getKategori();
+        $kategori = $this->kategori->get();
         $data = $this->model->getById($id);
         extract($kategori);
         extract($data);

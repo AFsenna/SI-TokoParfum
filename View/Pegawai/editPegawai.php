@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label for="NIK">NIK</label>
-                        <input type="text" name="NIK" class="form-control" value="<?= $data['nik_pegawai'] ?>" required>
+                        <input type="number" name="NIK" class="form-control" value="<?= $data['nik_pegawai'] ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="namapegawai">Nama</label>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="form-group">
                         <label for="notelpPG">Nomor Telepon</label>
-                        <input type="text" name="notelpPG" class="form-control" value="<?= $data['notelp_pegawai'] ?>" required>
+                        <input type="number" name="notelpPG" class="form-control" value="<?= $data['notelp_pegawai'] ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>

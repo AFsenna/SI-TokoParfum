@@ -10,6 +10,7 @@ class PegawaiController
     public function __construct()
     {
         $this->model = new PegawaiModel();
+        $this->jabatan = new JabatanModel();
     }
     /**
      * Untuk mengatur tampilan awal
@@ -45,7 +46,7 @@ class PegawaiController
 
     public function addPegawai()
     {
-        $jabatan = $this->model->getJabatan();
+        $jabatan = $this->jabatan->get();
         extract($jabatan);
         require_once("View/Pegawai/addPegawai.php");
     }
@@ -86,7 +87,7 @@ class PegawaiController
     {
         $id = $_GET['id'];
         $data = $this->model->getById($id);
-        $jabatan = $this->model->getJabatan();
+        $jabatan = $this->jabatan->get();
         extract($jabatan);
         extract($data);
         require_once("View/Pegawai/editPegawai.php");
