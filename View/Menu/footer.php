@@ -1,3 +1,8 @@
+   <footer class="main-footer" style="background-color: #6777ef;">
+       <div class="float-right" style="color:#6c757d; font-size: 10px;">
+           Dibuat Oleh Alexandria Felicia Seanne
+       </div>
+   </footer>
    </div>
    <script type="text/javascript" charset="utf8" src="assets/js/jquery.dataTables.min.js"></script>
    <script type="text/javascript" charset="utf8" src="assets/js/dataTables.bootstrap4.min.js"></script>

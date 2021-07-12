@@ -1,4 +1,4 @@
-<div class="col-md-10 p-5 pt-2">
+<div class="col-md-10 p-3 ml-3 mb-5">
     <h3><i class="fas fa-clipboard-list mr-2 mt-3"></i>Jabatan</h3>
     <hr class="garis">
     <div class="card">

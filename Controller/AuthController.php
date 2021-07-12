@@ -37,9 +37,11 @@ class AuthController
             $_SESSION['message'] = 'success';
             $_SESSION['jabatan'] = ucfirst($_SESSION['pegawai']['nama_jabatan']);
             header("location: index.php?page=Pegawai&aksi=view");
+            exit();
         } else {
             $_SESSION['message'] = 'error';
             header("location: index.php?page=Auth&aksi=view");
+            exit();
         }
     }
 
@@ -49,7 +51,9 @@ class AuthController
 
     public function logout()
     {
-        session_destroy();
+        $_SESSION['message'] = 'berhasil';
         header("location: index.php?page=Auth&aksi=view&pesan=Berhasil logout");
+        exit();
+        session_destroy();
     }
 }

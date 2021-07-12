@@ -1,4 +1,4 @@
-<div class="col-md-10 p-5 pt-2">
+<div class="col-md-10 p-3 ml-3">
     <h3><i class="fas fa-info-circle mr-2 mt-3"></i>Transaksi</h3>
     <hr class="garis">
     <?php

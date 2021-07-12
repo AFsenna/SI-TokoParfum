@@ -19,47 +19,59 @@
     <script src="assets/js/chart.js"></script>
     <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
 
-    <nav class="navbar navbar-light fixed-top" style="background-color: #64E9EE; ">
-        <a class="navbar-brand mr-auto">
-            <img src="assets/images/logo.jpg" alt="logo" width="12%">
-        </a>
+    <nav class="navbar navbar-expand-lg" style="background-color: #6777ef; margin-left: 220px; ">
         <div class="form-inline my-2 my-lg-0 ml-auto">
             <label class="form-control"> Page <?= $_SESSION['jabatan'] ?></label>
         </div>
         <div class="icon ml-4">
-            <button class="btn btn-sm" id="btnTes" style="background-color: #64E9EE;">
-                <h5><i class="fas fa-address-card mr-2 mt-1" data-toggle="tooltip" title="Profile"></i></h5>
+            <button class="btn btn-sm" id="btnTes" style="background-color: #6777ef;">
+                <h5><i class="fas fa-address-card mr-2 mt-1 text-white" data-toggle="tooltip" title="Profile"></i></h5>
             </button>
         </div>
         <h5>
-            <a href="index.php?page=Auth&aksi=view"><i class="fas fa-sign-out-alt mr-3 mt-1 text-dark" data-toggle="tooltip" title="Logout"></i></a>
+            <a href="index.php?page=Auth&aksi=logout"><i class="fas fa-sign-out-alt mr-3 mt-1 text-white" data-toggle="tooltip" title="Logout"></i></a>
         </h5>
     </nav>
-    <div class="sidenav mt-5" style="background-color: #001011; ">
-        <ul class="nav flex-column ml-3 mb-4">
-            <li class="nav-item mb-3">
-                <a class="nav-link active text-white mt-3" href="index.php?page=Pegawai&aksi=view"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a>
+    <div class="sidenav" style="background-color: #FFFFFF; ">
+        <center>
+            <img src="assets/images/logo.jpg" alt="logo" width="30%">
+        </center>
+        <ul class="nav flex-column ml-3">
+            <li class="nav-item mb-3 mt-3">
+                <a href="index.php?page=Pegawai&aksi=view" class="nav-link active text-dark mt-3">
+                    <span class="icon"><i class="fas fa-tachometer-alt" style="margin-right: 12px;"></i></span>
+                    <span class="text">Dashboard</span>
+                </a>
             </li>
             <?php
             if ($_SESSION['jabatan'] != 'Kasir') :
             ?>
                 <p>
-                    <button class="btn ml-1 text-white" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="background-color: #001011; ">
-                        <i class="fas fa-database mr-2"></i>Manage Data<i class="fas fa-caret-down ml-4"></i>
+                    <button class="btn ml-1 text-dark buttoncollapse" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="background-color: #FFFFFF; ">
+                        <span>
+                            <span class="icon"><i class="fas fa-database" style="margin-right: 17px;"></i></span>
+                            <span class="text">Manage Data<i class="fas fa-caret-down ml-4"></i></span>
+                        </span>
                     </button>
                 </p>
                 <div class="collapse" id="collapseExample">
-                    <div class="card card-body" style="width: 190px;">
-                        <?php
-                        if ($_SESSION['jabatan'] == 'Administrasi') :
-                        ?>
-                            <a class="navcollapse nav-link active text-dark mb-3" href="index.php?page=Jabatan&aksi=view"><i class="fa fa-user mr-2"></i>Jabatan</a>
-                            <a class="navcollapse nav-link active text-dark mb-3" href="index.php?page=Pegawai&aksi=viewData"><i class="fa fa-users mr-2"></i>Pegawai</a>
-                        <?php
-                        endif;
-                        ?>
-                        <a class="navcollapse nav-link active text-dark mb-3" href="index.php?page=Kategori&aksi=view"><i class="fas fa-clipboard-list mr-2"></i>Kategori</a>
-                        <a class="navcollapse nav-link active text-dark mb-3" href="index.php?page=Parfum&aksi=view"><i class="fas fa-air-freshener mr-2"></i>Parfum</a>
+                    <div class="card card-body" style="width: 190px; background-color: rgba(251, 253, 255, 0.966);">
+                        <a href="index.php?page=Jabatan&aksi=view" class="navcollapse nav-link active text-dark">
+                            <span class="icon"><i class="fa fa-user" style="margin-right: 17px;"></i></span>
+                            <span class="text">Jabatan</span>
+                        </a>
+                        <a href="index.php?page=Pegawai&aksi=viewData" class="navcollapse nav-link active text-dark mt-3">
+                            <span class="icon"><i class="fa fa-users" style="margin-right: 11px;"></i></span>
+                            <span class="text">Pegawai</span>
+                        </a>
+                        <a href="index.php?page=Kategori&aksi=view" class="navcollapse nav-link active text-dark mt-3">
+                            <span class="icon"><i class="fas fa-clipboard-list" style="margin-right: 20px;"></i></span>
+                            <span class="text">Kategori</span>
+                        </a>
+                        <a href="index.php?page=Parfum&aksi=view" class="navcollapse nav-link active text-dark mt-3">
+                            <span class="icon"><i class="fas fa-air-freshener" style="margin-right: 15px;"></i></span>
+                            <span class="text">Parfum</span>
+                        </a>
                     </div>
                 </div>
             <?php
@@ -69,12 +81,18 @@
             if ($_SESSION['jabatan'] == 'Administrasi' || $_SESSION['jabatan'] == 'Kasir') :
             ?>
                 <li class="nav-item">
-                    <a class="nav-link active text-white mb-3" href="index.php?page=Pembeli&aksi=view"><i class="fas fa-user-friends mr-2"></i>Pembeli</a>
-                    <a class="nav-link active text-white mb-3" href="index.php?page=Transaksi&aksi=view"><i class="fas fa-info-circle mr-2"></i>Transaksi</a>
+                    <a href="index.php?page=Pembeli&aksi=view" class="nav-link active text-dark mb-3">
+                        <span class="icon"><i class="fas fa-user-friends" style="margin-right: 12px;"></i></span>
+                        <span class="text">Pembeli</span>
+                    </a>
+                    <a href="index.php?page=Transaksi&aksi=view" class="nav-link active text-dark mb-3">
+                        <span class="icon"><i class="fas fa-info-circle" style="margin-right: 14px;"></i></span>
+                        <span class="text">Transaksi</span>
+                    </a>
                 </li>
             <?php
             endif;
             ?>
         </ul>
     </div>
-    <div class="main pt-3" style="background-color: rgba(251, 253, 255, 0.966);">
+    <div class="main" style="background-color: rgba(251, 253, 255, 0.966);">

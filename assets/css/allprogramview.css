@@ -1,5 +1,5 @@
 .card {
-    width: 990px;
+    width: 1000px;
 }
 
 .garis {
@@ -8,13 +8,18 @@
 
 }
 
+.nav-link{
+    transition: .4s;
+}
+
 .nav-link:hover {
-    background-color: rgb(90, 89, 87);
+    background-color: rgb(202, 201, 198);
     width: 185px;
+    padding-left: 30px;
 }
 
 .navcollapse:hover {
-    background-color: rgb(175, 174, 171);
+    background-color: rgb(202, 201, 198);
     width: 150px;
 }
 
@@ -48,20 +53,13 @@
 
 .main {
     z-index: 0;
-    margin-left: 220px;
+    margin-left: 228px;
     /* Same as the width of the sidenav */
     font-size: 15px;
     /* Increased text to enable scrolling */
     padding: 0px 10px;
-    width: 1129px;
-}
-
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-
-    .sidenav a {
-        font-size: 18px;
-    }
+    max-width: 1129px;
+    min-height: 566px;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }

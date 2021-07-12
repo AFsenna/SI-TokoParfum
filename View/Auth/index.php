@@ -51,13 +51,24 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <?php
-    if (isset($_SESSION['message']) == 'error') {
+    if (isset($_SESSION['message'])) {
         switch ($_SESSION['message']) {
             case 'error':
                 echo "<script>
            Swal.fire({
             icon: 'warning',
             title: 'Username atau Password salah!!',
+            width: 400,
+            height: 200,
+            padding: '3em',
+            })
+        </script>";
+                break;
+            case 'berhasil':
+                echo "<script>
+           Swal.fire({
+            icon: 'success',
+            title: 'Berhasil Logout',
             width: 400,
             height: 200,
             padding: '3em',
